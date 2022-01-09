@@ -1,0 +1,9 @@
+.dt-buttons .dt-button {
+    color: #000000 !important;
+    font-weight: 800;
+    background-color: #f1f2f3!important;
+    border-color: #f1f2f3;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    margin-right: 5px;
+}

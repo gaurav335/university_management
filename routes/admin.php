@@ -16,4 +16,17 @@ Route::group(['middleware'=>'auth:admin'],function(){
         Route::get('/',[DashboardController::class,'index'])->name('index');
     });
     
+    //college
+    Route::get('College','CollegeController@collegeIndex')->name('college');
+
+    //course
+    Route::get('Course','CourseController@courseIndex')->name('course');
+
+    //meritround
+    Route::get('MeritRound','MeritRoundController@MeritroundIndex')->name('meritround');
+
+    //subject
+    Route::get('Subject','SubjectController@subjectIndex')->name('subject');
+
+
 });

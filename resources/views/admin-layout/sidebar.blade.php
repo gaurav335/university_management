@@ -43,15 +43,32 @@
                           <span>Dashboard</span>
                       </a>
                   </li>
+
+                  <li>
+                  <a href="{{ route('admin.college')}}">
+                          <i class="fas fa-tachometer-alt"></i>
+                          <span>College</span>
+                      </a>
+                  </li>
+
+                  <li>
+                  <a href="{{ route('admin.course')}}">
+                          <i class="fas fa-tachometer-alt"></i>
+                          <span>Course</span>
+                      </a>
+                  </li>
                   
                   
                   <li>
                       <a href="javascript: void(0);" class="has-arrow waves-effect">
                           <i class="fas fa-shopping-cart"></i>
-                          <span>abc</span>
+                          <span>Common Setting</span>
                       </a>
                       <ul class="sub-menu" aria-expanded="false">
-                          <li><a href="#">123</a></li>
+                          <li><a href="{{ route('admin.subject')}}">Subject</a></li>
+                      </ul>
+                      <ul class="sub-menu" aria-expanded="false">
+                          <li><a href="{{ route('admin.meritround')}}">Merit Round</a></li>
                       </ul>
                   </li>
 

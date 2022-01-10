@@ -18,6 +18,12 @@ Route::group(['middleware'=>'auth:admin'],function(){
     
     //college
     Route::get('College','CollegeController@collegeIndex')->name('college');
+    Route::post('AddCollege','CollegeController@addCollege')->name('addcollege');
+    Route::post('EditCollege', 'CollegeController@editCollege')->name('editcollege');
+    Route::post('UpdateCollege', 'CollegeController@updateCollege')->name('updatecollege');
+    Route::post('DeleteCollege', 'CollegeController@deleteCollege')->name('deletecollege');
+    Route::post('StatusCollege', 'CollegeController@statusCollege')->name('statuscollege');
+
 
     //course
     Route::get('Course','CourseController@courseIndex')->name('course');

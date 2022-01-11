@@ -49,6 +49,11 @@
                                             <label>College Password</label>
                                             <input type="password" name="password" id="password" class="form-control"
                                                 placeholder="College password..." />
+                                            <div class="col-sm-9">
+                                                <div class="form-group">
+                                                    <input type="checkbox" id="check">&nbsp;Show Password
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="form-group">
@@ -111,8 +116,8 @@
 
                                         <div class="form-group">
                                             <label>College Contact No.</label>
-                                            <input type="number" name="contact_no" id="contact_no" class="form-control"
-                                                placeholder="College Contact No..." />
+                                            <input type="number" name="contact_no" maxlength="10" id="contact_no"
+                                                class="form-control" placeholder="College Contact No..." />
                                         </div>
 
                                         <div class="form-group">
@@ -171,6 +176,20 @@ $(document).ready(function() {
     $('.dt-buttons').html('');
 })
 
+//show password
+$('#check').click(function() {
+    if (document.getElementById('check').checked) {
+        $('#password').get(0).type = 'text';
+    } else {
+        $('#password').get(0).type = 'password';
+    }
+});
+
+//strong Password
+$.validator.addMethod("pwcheck", function(value, element) {
+    return this.optional(element) || /^(?=.*\d)(?=.*[A-Z])(?=.*\W).*$/i.test(value);
+});
+
 // add
 $(document).on('click', '.btn-save', function() {
     $('.error').text('');
@@ -184,10 +203,36 @@ $('#college_form').validate({
             required: true
         },
         'email': {
-            required: true
+            required: true,
+            email: true,
+            remote: {
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: "{{ route('admin.checkemail') }}",
+                type: "POST",
+                data: {
+                    email: function() {
+                        return $("#email").val();
+                    }
+                }
+            }
         },
         'contact_no': {
-            required: true
+            required: true,
+            maxlength: 10,
+            remote: {
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: "{{ route('admin.checkcontactno') }}",
+                type: "POST",
+                data: {
+                    email: function() {
+                        return $("#contact_no").val();
+                    }
+                }
+            }
         },
         'address': {
             required: true
@@ -196,7 +241,9 @@ $('#college_form').validate({
             required: true
         },
         'password': {
-            required: true
+            required: true,
+            pwcheck: true,
+            minlength: 8,
         }
     },
     messages: {
@@ -204,10 +251,14 @@ $('#college_form').validate({
             required: 'The College name is required'
         },
         'email': {
-            required: 'The Email  is required'
+            required: 'The Email  is required',
+            email: "Email must have valid format",
+            remote: "Email already register"
         },
         'contact_no': {
-            required: 'The Contact No is required'
+            required: 'The Contact No is required',
+            maxlength: "Please Enter Maximum 10 number!",
+            remote: "Contact No already register"
         },
         'address': {
             required: 'The Address  is required'
@@ -216,7 +267,10 @@ $('#college_form').validate({
             required: 'The College Logo is required'
         },
         'password': {
-            required: 'The Password is required'
+            required: 'The Password is required',
+            pwcheck: "Password must contain one capital letter,one numerical and one special character",
+            minlength: "Please Enter Minimim 8 Character!"
+
         }
     },
     submitHandler: function(form) {
@@ -253,7 +307,7 @@ function collegeAdd(form) {
         },
         error: function(response) {
 
-            $.each(response.responseJSON.error, function(field_name, error) {
+            $.each(response.responseJSON.errors, function(field_name, error) {
 
                 $('[name=' + field_name + ']').after(
                     '<span class="text-strong" style="color:red">' + error + '</span>')
@@ -359,7 +413,7 @@ function updateCollege(form) {
         },
         error: function(response) {
 
-            $.each(response.responseJSON.error, function(field_name, error) {
+            $.each(response.responseJSON.errors, function(field_name, error) {
                 $('[name=' + field_name + ']').after(
                     '<span class="text-strong" style="color:red">' + error + '</span>')
             })
@@ -395,32 +449,32 @@ $(document).on('click', '.delete-btn', function() {
     }
 });
 
- //status
- $(document).on('click','.status',function(){
+//status
+$(document).on('click', '.status', function() {
 
-var status=$(this).data('status');
-var id=$(this).data('id');
+    var status = $(this).data('status');
+    var id = $(this).data('id');
 
-$.ajax({
-    headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url:'{{ route("admin.statuscollege") }}',
-            type:'post',
-            data:{'status':status,'id':id},
-            success:function(res)
-            {
-                if(res.mesage==1)
-                {
-                    toastr.success('College Active Successfully');
-                }
-            if(res.mesage==2)
-                {
-                    toastr.error('College InActive Successfully');
-
-                }
-                $('#admin-college-table').DataTable().ajax.reload();
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+        url: '{{ route("admin.statuscollege") }}',
+        type: 'post',
+        data: {
+            'status': status,
+            'id': id
+        },
+        success: function(res) {
+            if (res.mesage == 1) {
+                toastr.success('College Active Successfully');
             }
+            if (res.mesage == 2) {
+                toastr.error('College InActive Successfully');
+
+            }
+            $('#admin-college-table').DataTable().ajax.reload();
+        }
     })
 });
 </script>

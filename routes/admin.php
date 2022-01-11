@@ -23,10 +23,17 @@ Route::group(['middleware'=>'auth:admin'],function(){
     Route::post('UpdateCollege', 'CollegeController@updateCollege')->name('updatecollege');
     Route::post('DeleteCollege', 'CollegeController@deleteCollege')->name('deletecollege');
     Route::post('StatusCollege', 'CollegeController@statusCollege')->name('statuscollege');
+    Route::post('CheckEmail', 'CollegeController@checkEmail')->name('checkemail');
+    Route::post('CheckContactNo', 'CollegeController@checkContactNo')->name('checkcontactno');
 
 
     //course
     Route::get('Course','CourseController@courseIndex')->name('course');
+    Route::post('AddCourse','CourseController@addCourse')->name('addcourse');
+    Route::post('EditCourse', 'CourseController@editCourse')->name('editcourse');
+    Route::post('UpdateCourse', 'CourseController@updateCourse')->name('updatecourse');
+    Route::post('DeleteCourse', 'CourseController@deleteCourse')->name('deletecourse');
+    Route::post('StatusCourse', 'CourseController@statusCourse')->name('statuscourse');
 
     //meritround
     Route::get('MeritRound','MeritRoundController@MeritroundIndex')->name('meritround');

@@ -21,7 +21,7 @@ class CollegeRepository implements CollegeInterface
             'address'=>$data->address,
             'password'  => Hash::make($data['password']),
             'logo'=>$logo,
-            'status' => true
+            'status' => 1
         ]);
 
         Mail::to($data->email)->send(new CollegeSendMail($addCollege));
@@ -97,5 +97,25 @@ class CollegeRepository implements CollegeInterface
     public function statusCollege($data)
     {
         return statusChanges($data,'College');
+    }
+
+    public function checkEmail($data)
+    {
+        $email = College::where('email', $data->email)->first();
+        if (!empty($email)) {
+            return "false";
+        } else {
+            return "true";
+        }        
+    }
+
+    public function checkContactNo($data)
+    {
+        $contactno = College::where('contact_no', $data->contact_no)->first();
+        if (!empty($contactno)) {
+            return "false";
+        } else {
+            return "true";
+        }        
     }
 }

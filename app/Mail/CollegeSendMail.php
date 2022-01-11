@@ -29,7 +29,8 @@ class CollegeSendMail extends Mailable
      */
     public function build()
     {
+
         $collegemail = $this->collegemail;
-        return $this->view('email.collegemail',compact('collegemail'))->subject(config('app.name').' Welcome');
+        return $this->markdown('admin.email.collegemail',compact('collegemail'));
     }
 }

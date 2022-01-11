@@ -28,7 +28,7 @@ class CollegeRequest extends FormRequest
             return [
                 'name' => 'required',
                 'email'=>'required|unique:colleges,email,'.$id.',id,deleted_at,NULL',
-                'contact_no' => 'required|min:10|max:15',
+                'contact_no' => 'required|max:10|unique:colleges,contact_no,'.$id.',id,deleted_at,NULL',
                 'address' => 'required',
                 'logo' => 'required',
             ];
@@ -36,8 +36,8 @@ class CollegeRequest extends FormRequest
             return [
                 'name' => 'required',
                 'email'=>'required|unique:colleges,email,NULL,id,deleted_at,NULL',
-                'password' => 'required|min:6',
-                'contact_no' => 'required|min:10|max:15',
+                'password' => 'required|min:8',
+                'contact_no' => 'required|max:10|unique:colleges,contact_no,NULL,id,deleted_at,NULL',
                 'address' => 'required',
                 'logo' => 'required',
             ];

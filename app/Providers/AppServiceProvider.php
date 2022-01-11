@@ -4,7 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\CollegeInterface;
+use App\Interfaces\CourseInterface;
 use App\Repositories\CollegeRepository;
+use App\Repositories\CourseRepository;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(CollegeInterface::class, CollegeRepository::class);
+        $this->app->bind(CourseInterface::class, CourseRepository::class);
     }
 
     /**

@@ -46,4 +46,14 @@ class CollegeController extends Controller
     {
         return $this->college->statusCollege($request);
     }
+
+    public function checkEmail(Request $request)
+    {
+        return $this->college->checkEmail($request);
+    }
+
+    public function checkContactNo(Request $request)
+    {
+        return $this->college->checkContactNo($request);
+    }
 }

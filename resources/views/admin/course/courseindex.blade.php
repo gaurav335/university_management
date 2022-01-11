@@ -147,8 +147,6 @@ $('#course_form').validate({
     unhighlight: function unhighlight(element, errorClass, validClass) {
         $(element).parents(".error").removeClass(errorClass).addClass(validClass);
     }
-
-
 });
 
 function collegeAdd(form) {

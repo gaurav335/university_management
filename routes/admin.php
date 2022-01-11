@@ -15,6 +15,10 @@ Route::group(['middleware'=>'auth:admin'],function(){
 
         Route::get('/',[DashboardController::class,'index'])->name('index');
     });
+
+    //admin profile
+    Route::get('AdminProfile', 'DashboardController@adminprofile')->name('adminprofile');
+    Route::post('AdminProfileUpdate', 'DashboardController@adminprofileupdate')->name('adminprofileupdate');
     
     //college
     Route::get('College','CollegeController@collegeIndex')->name('college');

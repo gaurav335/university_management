@@ -17,9 +17,14 @@ class CreateCollegeMeritsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('college_id');
             $table->foreign('college_id')->references('id')->on('colleges');
-            $table->unsignedBigInteger('subject_id');
-            $table->foreign('subject_id')->references('id')->on('subjects');
-            $table->string('marks')->nullable()->comment('Marks enter in %');
+
+            $table->unsignedBigInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('college_courses');
+
+            $table->unsignedBigInteger('merit_round_id');
+            $table->foreign('merit_round_id')->references('id')->on('merit_rounds');
+
+            $table->string('merit')->nullable()->comment('merit enter in %');
             $table->softDeletes();
             $table->timestamps();
         });

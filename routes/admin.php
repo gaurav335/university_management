@@ -37,6 +37,10 @@ Route::group(['middleware'=>'auth:admin'],function(){
 
     //meritround
     Route::get('MeritRound','MeritRoundController@MeritroundIndex')->name('meritround');
+    Route::post('AddMeritRound','MeritRoundController@addMeritround')->name('addmeritround');
+    Route::post('EditMeritRound','MeritRoundController@editMeritround')->name('editmeritround');
+    Route::post('UpdateMeritRound','MeritRoundController@updateMeritround')->name('updatemeritround');
+    Route::post('DeleteMeritRound','MeritRoundController@deleteMeritround')->name('deletemeritround');
 
     //subject
     Route::get('Subject','SubjectController@subjectIndex')->name('subject');

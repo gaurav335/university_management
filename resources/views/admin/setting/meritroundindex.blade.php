@@ -1,5 +1,5 @@
 @extends('admin-layout.master')
-<title>University | Course</title>
+<title>University | Merite Round</title>
 @section('content')
 <div class="page-content">
     <div class="container-fluid">
@@ -14,7 +14,8 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="workerLabel">Add Merit Round</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close btn-cancel" data-dismiss="modal"
+                                        aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -23,19 +24,20 @@
                                         @csrf
                                         <div class="form-group">
                                             <label>Merit Round Start Date</label>
-                                            <input type="date" name="start_date" id="start_date" class="form-control"
+                                            <input type="text" name="start_date" id="start_date" class="form-control"
                                                 placeholder="Merit Round Start Date..." />
                                         </div>
 
                                         <div class="form-group">
                                             <label>Merit Round End Date</label>
-                                            <input type="date" name="end_date" id="end_date" class="form-control"
+                                            <input type="text" name="end_date" id="end_date" class="form-control"
                                                 placeholder="Merit Round End Date..." />
                                         </div>
 
                                         <div class="form-group">
                                             <label>Merit Result Declare Date</label>
-                                            <input type="date" name="merit_result_declare_date" id="merit_result_declare_date" class="form-control"
+                                            <input type="text" name="merit_result_declare_date"
+                                                id="merit_result_declare_date" class="form-control"
                                                 placeholder="Merit Result Declare Date..." />
                                         </div>
 
@@ -45,7 +47,59 @@
                                                     Submit
                                                 </button>
                                                 <button type="button" data-dismiss="modal"
-                                                    class="btn  reset btn-secondary waves-effect m-l-5">
+                                                    class="btn btn-cancel reset btn-secondary waves-effect m-l-5">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="meritround_edit_model" tabindex="-1" role="dialog"
+                        aria-labelledby="services_add_modal" aria-hidden="true" data-backdrop="static"
+                        data-keyboard="false">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="workerLabel">Add Merit Round</h5>
+                                    <button type="button" class="close btn-cancel" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" enctype="multipart/form-data" id="meritround_edit_form">
+                                        @csrf
+                                        <input type="hidden" id="id" name="id">
+                                        <div class="form-group">
+                                            <label>Merit Round Start Date</label>
+                                            <input type="text" name="start_date" id="startdate" class="form-control"
+                                                placeholder="Merit Round Start Date..." />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Merit Round End Date</label>
+                                            <input type="text" name="end_date" id="enddate" class="form-control"
+                                                placeholder="Merit Round End Date..." />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Merit Result Declare Date</label>
+                                            <input type="text" name="merit_result_declare_date"
+                                                id="meritresultdeclaredate" class="form-control"
+                                                placeholder="Merit Result Declare Date..." />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                    Submit
+                                                </button>
+                                                <button type="button" data-dismiss="modal"
+                                                    class="btn btn-cancel reset btn-secondary waves-effect m-l-5">
                                                     Cancel
                                                 </button>
                                             </div>
@@ -57,8 +111,9 @@
                     </div>
 
                     <div class="card-header">
-                        <button type="button" class="btn btn-save btn-outline-primary float-right" title="Add Merit Round"
-                            data-toggle="modal" data-target="#meritround_add_model"> + Add Merit Round</button>
+                        <button type="button" class="btn btn-save btn-outline-primary float-right"
+                            title="Add Merit Round" data-toggle="modal" data-target="#meritround_add_model"> + Add Merit
+                            Round</button>
                     </div>
                 </div>
 
@@ -79,10 +134,286 @@
 @endsection
 @push('admin-script')
 {!! $dataTable->scripts() !!}
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 $(document).ready(function() {
     $('.dt-buttons').html('');
 })
+
+
+$(document).ready(function() {
+    $("#start_date").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
+        minDate: +1,
+        changeMonth: true,
+        changeYear: true,
+        onSelect: function(selected) {
+            var sdate = new Date(selected);
+            sdate.setDate(sdate.getDate() + 1);
+            $("#end_date").datepicker("option", "minDate", sdate);
+        }
+    });
+    $("#end_date").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
+        minDate: new Date(),
+        changeMonth: true,
+        changeYear: true,
+        onSelect: function(selected) {
+            var edate = new Date(selected);
+            edate.setDate(edate.getDate() + 1);
+            $("#merit_result_declare_date").datepicker("option", "minDate", edate);
+        }
+    });
+
+    $("#merit_result_declare_date").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
+        changeMonth: true,
+        changeYear: true,
+    });
+});
+
+$(document).ready(function() {
+
+    $("#startdate").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
+        minDate: +1,
+        changeMonth: true,
+        changeYear: true,
+        onSelect: function(selected) {
+            var sdate = new Date(selected);
+            sdate.setDate(sdate.getDate() + 1);
+            $("#enddate").datepicker("option", "minDate", sdate);
+        }
+    });
+    $("#enddate").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
+        minDate: new Date(),
+        changeMonth: true,
+        changeYear: true,
+        onSelect: function(selected) {
+            var edate = new Date(selected);
+            edate.setDate(edate.getDate() + 1);
+            $("#meritresultdeclaredate").datepicker("option", "minDate", edate);
+        }
+    });
+
+    $("#meritresultdeclaredate").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
+        changeMonth: true,
+        changeYear: true,
+    });
+
+});
+
+// add
+$(document).on('click', '.btn-save', function() {
+    $('.error').text('');
+    $('.text-strong').text('');
+})
+$(document).on('click', '.btn-cancel', function() {
+    $('#meritround_form').trigger('reset');
+    $('.error').text('');
+    $('.text-strong').text('');
+})
+
+$('#meritround_form').validate({
+
+    rules: {
+        'start_date': {
+            required: true
+        },
+        'end_date': {
+            required: true
+        },
+        'merit_result_declare_date': {
+            required: true
+        },
+    },
+    messages: {
+        'start_date': {
+            required: 'The Merit Round Start Date is required'
+        },
+        'end_date': {
+            required: 'The Merit Round End Date is required'
+        },
+        'merit_result_declare_date': {
+            required: 'The Merit Round Declartion Date is required'
+        },
+    },
+    submitHandler: function(form) {
+        MeritRoundAdd(form);
+    },
+    highlight: function highlight(element, errorClass, validClass) {
+        $(element).parents("div.form-control").addClass(errorClass).removeClass(validClass);
+    },
+    unhighlight: function unhighlight(element, errorClass, validClass) {
+        $(element).parents(".error").removeClass(errorClass).addClass(validClass);
+    }
+
+
+});
+
+function MeritRoundAdd(form) {
+    $('.text-strong').html('');
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+        type: 'post',
+        url: '{{ route("admin.addmeritround") }}',
+        contentType: false,
+        processData: false,
+        data: new FormData(form),
+        success: function(res) {
+            if (res == 1) {
+                $('#admin-meritround-table').DataTable().ajax.reload();
+                toastr.success('Meritround Added Successfully');
+                $('#meritround_add_model').modal('hide');
+                $('#meritround_form').trigger('reset');
+            }
+        },
+        error: function(response) {
+
+            $.each(response.responseJSON.errors, function(field_name, error) {
+                $('[name=' + field_name + ']').after(
+                    '<span class="text-strong" style="color:red">' + error + '</span>')
+            })
+        }
+
+    })
+}
+
+//edit
+$(document).on('click', '.edit-btn', function() {
+    $('#meritround_edit_form').trigger('reset');
+    $('.error').text('');
+    $('.text-strong').text('');
+
+    var id = $(this).data('eid');
+    console.log(id);
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+        url: '{{ route("admin.editmeritround") }}',
+        type: 'post',
+        data: {
+            'id': id
+        },
+        success: function(res) {
+            if (res) {
+
+                $("#meritround_edit_model").find('#id').val(res.id);
+                $("#meritround_edit_model").find('#startdate').val(res.start_date);
+                $("#meritround_edit_model").find('#enddate').val(res.end_date);
+                $("#meritround_edit_model").find('#meritresultdeclaredate').val(res
+                    .merit_result_declare_date);
+            }
+
+        }
+    })
+});
+
+//update
+$('#meritround_edit_form').validate({
+
+    rules: {
+        'start_date': {
+            required: true
+        },
+        'end_date': {
+            required: true
+        },
+        'merit_result_declare_date': {
+            required: true
+        },
+    },
+    messages: {
+        'start_date': {
+            required: 'The Merit Round Start Date is required'
+        },
+        'end_date': {
+            required: 'The Merit Round End Date is required'
+        },
+        'merit_result_declare_date': {
+            required: 'The Merit Round Declartion Date is required'
+        },
+    },
+    submitHandler: function(form) {
+        updateMeritround(form);
+    },
+    highlight: function highlight(element, errorClass, validClass) {
+        $(element).parents("div.form-control").addClass(errorClass).removeClass(validClass);
+    },
+    unhighlight: function unhighlight(element, errorClass, validClass) {
+        $(element).parents(".error").removeClass(errorClass).addClass(validClass);
+    }
+
+
+});
+
+function updateMeritround(form) {
+    $('.text-strong').html('');
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+        type: 'post',
+        url: '{{ route("admin.updatemeritround") }}',
+        contentType: false,
+        processData: false,
+        data: new FormData(form),
+        success: function(res) {
+            if (res == 1) {
+                $('#admin-meritround-table').DataTable().ajax.reload();
+                toastr.success('Merit Round Update Successfully');
+                $('#meritround_edit_model').modal('hide');
+            }
+        },
+        error: function(response) {
+
+            $.each(response.responseJSON.errors, function(field_name, error) {
+                $('[name=' + field_name + ']').after(
+                    '<span class="text-strong" style="color:red">' + error + '</span>')
+            })
+        }
+
+    })
+}
+
+// delete
+$(document).on('click', '.delete-btn', function() {
+
+    if (confirm('are you want to sure Delete Merit Round!')) {
+
+        var id = $(this).data('did');
+        var element = this;
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },
+            url: '{{ route("admin.deletemeritround") }}',
+            type: 'post',
+            data: {
+                'id': id
+            },
+            success: function(res) {
+                if (res == 1) {
+                    toastr.error('Merit Round Delete Successfully');
+                    $('#admin-meritround-table').DataTable().ajax.reload();
+                }
+            }
+        })
+    }
+});
 </script>
 @endpush

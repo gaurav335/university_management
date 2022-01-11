@@ -112,9 +112,9 @@
     <script src="{{ asset('admins/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
 
     <!-- apexcharts -->
-    <script src="{{ asset('admins/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <!-- <script src="{{ asset('admins/libs/apexcharts/apexcharts.min.js') }}"></script> -->
 
-    <script src="{{ asset('admins/js/pages/dashboard.init.js') }}"></script>
+    <!-- <script src="{{ asset('admins/js/pages/dashboard.init.js') }}"></script> -->
 
     <script src="{{ asset('admins/js/app.js') }}"></script>
     <!-- selcter js -->

@@ -14,7 +14,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="workerLabel">Add Subject Merit</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close btn-cancel" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -44,7 +44,7 @@
                                                     Submit
                                                 </button>
                                                 <button type="button" data-dismiss="modal"
-                                                    class="btn  reset btn-secondary waves-effect m-l-5">
+                                                    class="btn btn-cancel reset btn-secondary waves-effect m-l-5">
                                                     Cancel
                                                 </button>
                                             </div>
@@ -62,7 +62,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="workerLabel">Edit Subject Merit</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close btn-cancel" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -83,7 +83,7 @@
                                                     Submit
                                                 </button>
                                                 <button type="button" data-dismiss="modal"
-                                                    class="btn  reset btn-secondary waves-effect m-l-5">
+                                                    class="btn btn-cancel reset btn-secondary waves-effect m-l-5">
                                                     Cancel
                                                 </button>
                                             </div>
@@ -121,6 +121,13 @@
 <script>
 $(document).ready(function() {
     $('.dt-buttons').html('');
+})
+
+$(document).on('click', '.btn-cancel', function() {
+    $('#subject_edit_form').trigger('reset');
+    $('#subject_add_form').trigger('reset');
+    $('.error').text('');
+    $('.text-strong').text('');
 })
 
 // add

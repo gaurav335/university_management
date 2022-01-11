@@ -21,6 +21,13 @@ class MeritRoundDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addColumn('action',function($data){
+                $result = "";
+                $result.='<button type="button" class="btn edit-btn btn-outline-info waves-effect waves-light" data-toggle="modal" data-target="#meritround_edit_model" data-eid="'.$data->id.'" title="Edit Merit Round"><i class="fa fa-edit" aria-hidden="true"></i></button>
+                <button type="button" class="btn delete-btn btn-outline-danger waves-effect waves-light" data-did="'.$data->id.'" title="Delete Merit Round"><i class="fa fa-trash" aria-hidden="true"></i></button>';
+                return $result;
+            })
+            ->rawColumns(['action'])
             ->addIndexColumn();    
     }
 
@@ -63,6 +70,11 @@ class MeritRoundDataTable extends DataTable
             Column::make('start_date')->title('Merit Round Start Date'),
             Column::make('end_date')->title('Merit Round End Date'),
             Column::make('merit_result_declare_date')->title('Merit Result Declare Date'),
+            Column::computed('action')
+            ->exportable(false)
+            ->printable(false)
+            ->width(60)
+            ->addClass('text-center'),
         ];
     }
 

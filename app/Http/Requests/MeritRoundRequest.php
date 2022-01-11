@@ -26,15 +26,17 @@ class MeritRoundRequest extends FormRequest
         $id = $this->id;
         if($this->id != Null){
             return [
-                'start_date'=>'required|unique:merit_rounds,start_date,'.$id.',id,deleted_at,NULL',
-                'end_date'=>'required|unique:merit_rounds,end_date,'.$id.',id,deleted_at,NULL',
-                'merit_result_declare_date'=>'required|unique:merit_rounds,merit_result_declare_date,'.$id.',id,deleted_at,NULL',
+                'start_date'=>'required',
+                'end_date'=>'required',
+                'merit_result_declare_date'=>'required',
             ];
         }else{
             return [
-                'start_date'=>'required|unique:merit_rounds,start_date,NULL,id,deleted_at,NULL',
-                'end_date'=>'required|unique:merit_rounds,end_date,NULL,id,deleted_at,NULL',
-                'merit_result_declare_date'=>'required|unique:merit_rounds,merit_result_declare_date,NULL,id,deleted_at,NULL',
+                'round_no'=>'required',
+                'course_id'=>'required',
+                'start_date'=>'required',
+                'end_date'=>'required',
+                'merit_result_declare_date'=>'required',
             ];
         }
     }

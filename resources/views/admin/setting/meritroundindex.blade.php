@@ -23,6 +23,20 @@
                                     <form method="POST" enctype="multipart/form-data" id="meritround_form">
                                         @csrf
                                         <div class="form-group">
+                                            <label>Merit Round No.</label>
+                                            <input type="number" name="round_no" id="round_no" class="form-control"
+                                                placeholder="Merit Round No..." />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Course Name</label>
+                                            <select name="course_id" id="course_id" class="form-control">
+                                                <option value="">-- Select Subject --</option>
+                                                @foreach($cours as $course)
+                                                <option value="{{ $course->id}}">{{$course->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Merit Round Start Date</label>
                                             <input type="text" name="start_date" id="start_date" class="form-control"
                                                 placeholder="Merit Round Start Date..." />

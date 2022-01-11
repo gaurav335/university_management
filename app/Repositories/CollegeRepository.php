@@ -24,7 +24,7 @@ class CollegeRepository implements CollegeInterface
             'status' => 1
         ]);
 
-        Mail::to($data->email)->send(new CollegeSendMail($addCollege));
+        // Mail::to($data->email)->send(new CollegeSendMail($addCollege));
 
 
         if($addCollege)

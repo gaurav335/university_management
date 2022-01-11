@@ -12,6 +12,8 @@ class MeritRound extends Model
     protected $table='merit_rounds';
     protected $fillable=[
         'id',
+        'round_no',
+        'course_id',
         'start_date',
         'end_date',
         'merit_result_declare_date'

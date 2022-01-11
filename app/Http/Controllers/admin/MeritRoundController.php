@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\DataTables\Admin\MeritRoundDataTable;
 use App\Interfaces\MeritRoundInterface;
 use App\Http\Requests\MeritRoundRequest;
+use App\Models\Course;
 
 class MeritRoundController extends Controller
 {
@@ -19,7 +20,8 @@ class MeritRoundController extends Controller
 
     public function MeritroundIndex(MeritRoundDataTable $meritRounddataTable)
     {
-        return $meritRounddataTable->render('admin.setting.meritroundindex');
+        $cours = Course::where('status',1)->get();
+        return $meritRounddataTable->render('admin.setting.meritroundindex',compact('cours'));
     }
 
     public function addMeritround(MeritRoundRequest $request)

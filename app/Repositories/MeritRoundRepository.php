@@ -11,6 +11,8 @@ class MeritRoundRepository implements MeritRoundInterface
     public function addMeritround($data)
     {
         $addmeritround=MeritRound::create([
+            'round_no'=>$data->round_no,
+            'course_id'=>$data->course_id,
             'start_date'=>$data->start_date,
             'end_date'=>$data->end_date,
             'merit_result_declare_date'=>$data->merit_result_declare_date,

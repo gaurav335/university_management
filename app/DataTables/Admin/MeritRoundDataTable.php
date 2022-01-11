@@ -3,6 +3,7 @@
 namespace App\DataTables\Admin;
 
 use App\Models\MeritRound;
+use App\Models\Course;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -27,7 +28,11 @@ class MeritRoundDataTable extends DataTable
                 <button type="button" class="btn delete-btn btn-outline-danger waves-effect waves-light" data-did="'.$data->id.'" title="Delete Merit Round"><i class="fa fa-trash" aria-hidden="true"></i></button>';
                 return $result;
             })
-            ->rawColumns(['action'])
+            ->editColumn('course_id', function ($data) {
+                $course =  Course::where('id', $data->course_id)->first();
+                return  $course->name;
+            })
+            ->rawColumns(['action','course_id'])
             ->addIndexColumn();    
     }
 
@@ -67,6 +72,8 @@ class MeritRoundDataTable extends DataTable
         return [
             Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
             Column::make('id')->hidden(true),
+            Column::make('round_no')->title('Round No.'),
+            Column::make('course_id')->title('Course Name'),
             Column::make('start_date')->title('Merit Round Start Date'),
             Column::make('end_date')->title('Merit Round End Date'),
             Column::make('merit_result_declare_date')->title('Merit Result Declare Date'),

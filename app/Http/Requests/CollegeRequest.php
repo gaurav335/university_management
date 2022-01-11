@@ -30,7 +30,6 @@ class CollegeRequest extends FormRequest
                 'email'=>'required|unique:colleges,email,'.$id.',id,deleted_at,NULL',
                 'contact_no' => 'required|max:10|unique:colleges,contact_no,'.$id.',id,deleted_at,NULL',
                 'address' => 'required',
-                'logo' => 'required',
             ];
         }else{
             return [

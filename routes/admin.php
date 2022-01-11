@@ -40,6 +40,11 @@ Route::group(['middleware'=>'auth:admin'],function(){
 
     //subject
     Route::get('Subject','SubjectController@subjectIndex')->name('subject');
+    Route::post('AddSubject','SubjectController@addSubject')->name('addsubject');
+    Route::post('EditSubject','SubjectController@editSubject')->name('editsubject');
+    Route::post('UpdateSubject','SubjectController@updateSubject')->name('updatesubject');
+    Route::post('DeleteSubject','SubjectController@deleteSubject')->name('deletesubject');
+
 
 
 });

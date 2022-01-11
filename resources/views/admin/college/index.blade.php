@@ -303,6 +303,7 @@ function collegeAdd(form) {
                 $('#admin-college-table').DataTable().ajax.reload();
                 toastr.success('College Added Successfully');
                 $('#college_add_model').modal('hide');
+                $('#college_form').trigger('reset');
             }
         },
         error: function(response) {

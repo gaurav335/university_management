@@ -62,10 +62,10 @@
                   <li>
                       <a href="javascript: void(0);" class="has-arrow waves-effect">
                           <i class="fas fa-shopping-cart"></i>
-                          <span>Common Setting</span>
+                          <span>Settings</span>
                       </a>
                       <ul class="sub-menu" aria-expanded="false">
-                          <li><a href="{{ route('admin.subject')}}">Subject</a></li>
+                          <li><a href="{{ route('admin.subject')}}">Subject Merit</a></li>
                       </ul>
                       <ul class="sub-menu" aria-expanded="false">
                           <li><a href="{{ route('admin.meritround')}}">Merit Round</a></li>

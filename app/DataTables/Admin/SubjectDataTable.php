@@ -2,6 +2,7 @@
 
 namespace App\DataTables\Admin;
 
+use App\Models\CommanSetting;
 use App\Models\Subject;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -21,16 +22,34 @@ class SubjectDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addColumn('action',function($data){
+                $result="";
+                    $result.='<button type="button" class="btn edit-btn btn-outline-info waves-effect waves-light" data-toggle="modal" data-target="#subject_edit_model" data-eid="'.$data->id.'" title="Edit Subject merit"><i class="fa fa-edit" aria-hidden="true"></i></button>
+                        <button type="button" class="btn delete-btn btn-outline-danger waves-effect waves-light" data-did="'.$data->id.'" title="Delete Subject merit"><i class="fa fa-trash" aria-hidden="true"></i></button>';
+                return $result;
+            })
+            ->addColumn('code', function ($data) {
+                $subcode =  Subject::where('id', $data->subject_id)->first();
+                return  $subcode->code;
+            })
+            ->editColumn('subject_id', function ($data) {
+                $sub =  Subject::where('id', $data->subject_id)->first();
+                return  $sub->name;
+            })
+            ->editColumn('marks', function ($data) {
+                return  $data->marks .' '.'%' ;
+            })
+            ->rawColumns(['action','marks','code','subject_id'])
             ->addIndexColumn();    
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Subject $model
+     * @param \App\Models\CommanSetting $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Subject $model)
+    public function query(CommanSetting $model)
     {
         return $model->newQuery();
     }
@@ -60,8 +79,14 @@ class SubjectDataTable extends DataTable
         return [
             Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
             Column::make('id')->hidden(true),
-            Column::make('name')->title('Subject Name'),
+            Column::make('subject_id')->title('Subject Name'),
             Column::make('code')->title('Subject Code'),
+            Column::make('marks')->title('Marks'),
+            Column::computed('action')
+            ->exportable(false)
+            ->printable(false)
+            ->width(60)
+            ->addClass('text-center'),
         ];
     }
 

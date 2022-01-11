@@ -162,6 +162,7 @@ function collegeAdd(form) {
                 $('#admin-course-table').DataTable().ajax.reload();
                 toastr.success('Course Added Successfully');
                 $('#course_add_model').modal('hide');
+                $('#course_form').trigger('reset');
             }
         },
         error: function(response) {

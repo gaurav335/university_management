@@ -58,7 +58,7 @@ class DashboardController extends Controller
                if($update)
                {
                    Auth::guard('admin')->logout();
-                   return redirect()->route('admin.login')->with('success','Password Update Successfully...');
+                   return redirect()->route('admin.logins')->with('success','Password Update Successfully...');
                }
            }
            else

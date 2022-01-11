@@ -56,7 +56,7 @@
                                 <a class="dropdown-item" href="{{ route('admin.adminprofile') }}"><i
                                         class="uil uil-user-circle font-size-18 align-middle text-muted mr-1"></i> <span
                                         class="align-middle">My Profile</span></a>
-                                <a class="dropdown-item" href="#"><i
+                                        <a class="dropdown-item" href="{{ route('admin.changepassword') }}"><i
                                         class="uil uil-lock-alt font-size-18 align-middle text-muted mr-1"></i> <span
                                         class="align-middle">Change Password</span></a>
                                 <a class="dropdown-item" href="{{ route('admin.logout') }}"

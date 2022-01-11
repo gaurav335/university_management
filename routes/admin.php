@@ -16,6 +16,11 @@ Route::group(['middleware'=>'auth:admin'],function(){
         Route::get('/',[DashboardController::class,'index'])->name('index');
     });
 
+    //change Password
+    Route::get('admin-changePassword','DashboardController@changePassword')->name('changepassword');
+    Route::post('admin-resetPassword','DashboardController@resetPassword')->name('resetpassword');
+
+
     //admin profile
     Route::get('AdminProfile', 'DashboardController@adminprofile')->name('adminprofile');
     Route::post('AdminProfileUpdate', 'DashboardController@adminprofileupdate')->name('adminprofileupdate');

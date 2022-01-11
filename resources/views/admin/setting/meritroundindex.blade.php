@@ -24,13 +24,13 @@
                                         @csrf
                                         <div class="form-group">
                                             <label>Merit Round No.</label>
-                                            <input type="number" name="round_no" id="round_no" class="form-control"
+                                            <input type="number" min="0" name="round_no" id="round_no" class="form-control"
                                                 placeholder="Merit Round No..." />
                                         </div>
                                         <div class="form-group">
                                             <label>Course Name</label>
                                             <select name="course_id" id="course_id" class="form-control">
-                                                <option value="">-- Select Subject --</option>
+                                                <option value="">-- Select Course --</option>
                                                 @foreach($cours as $course)
                                                 <option value="{{ $course->id}}">{{$course->name }}</option>
                                                 @endforeach

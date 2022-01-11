@@ -31,15 +31,15 @@
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title">Menu</li>
                             <li>
-                                <a href="#">
+                            <a href="{{ route('college.dashboard.index') }}">
                                     <i class="fas fa-tachometer-alt"></i>
                                     <span>Dashboard</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="waves-effect">
+                            <a href="{{ route('college.collegecourse') }}">
                                     <i class="fas fa-dice-d6"></i>
-                                    <span>Main Department</span>
+                                    <span>Course</span>
                                 </a>
                             </li>
                         </ul>

@@ -76,7 +76,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href=""><i
+                    <a class="dropdown-item" href="{{ route('college.profile') }}"><i
                             class="uil uil-user-circle font-size-18 align-middle text-muted mr-1"></i> <span
                             class="align-middle">Profile Change</span></a>
                     <a class="dropdown-item" href=""><i

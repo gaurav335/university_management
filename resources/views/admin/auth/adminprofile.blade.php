@@ -84,7 +84,7 @@ $(document).ready(function() {
             },
         },
         submitHandler: function(form) {
-            collegeAdd(form);
+            adminProfile(form);
         },
         highlight: function highlight(element, errorClass, validClass) {
             $(element).parents("div.form-control").addClass(errorClass).removeClass(validClass);
@@ -94,7 +94,7 @@ $(document).ready(function() {
         }
     });
 
-    function paymentsetting(form) {
+    function adminProfile(form) {
         $('.text-strong').html('');
 
         var urls = '{{ route("admin.adminprofileupdate") }}';
@@ -113,13 +113,13 @@ $(document).ready(function() {
                     toastr.success('Adminn Profile Update Successfully!');
                     location.reload();
                 }
-                if (res == 2) {
+                if (res == 0) {
                     toastr.error('Please Try Again!');
                 }
             },
             error: function(response) {
 
-                $.each(response.responseJSON.error, function(field_name, error) {
+                $.each(response.responseJSON.errors, function(field_name, error) {
 
                     $('[name=' + field_name + ']').after(
                         '<span class="text-strong" style="color:red">' + error +

@@ -155,7 +155,7 @@ $(".course_id").change(function() {
             if (res) {
                 var html = ' <option>-- Select Merit Round --</option>';
                 for (var i = res.length - 1; i >= 0; i--) {
-                    html += '<option value=' + res[i].id + '>'+'Round No'+''+ res[i].round_no + '</option>';
+                    html += '<option value=' + res[i].id + '>'+'Round No'+' '+ res[i].round_no + '</option>';
                 }
                 $(".merit_round_id").html(html);
             }

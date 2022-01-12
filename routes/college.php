@@ -19,6 +19,11 @@ Route::group(['middleware'=>'auth:college'],function(){
         Route::get('/',[DashboardController::class,'index'])->name('index');
     });
 
+    //update profile
+    Route::get('UpdateProfile',[DashboardController::class,'profileUpdate'])->name('profile');
+    Route::post('CollegeUpdateProfile',[DashboardController::class,'update'])->name('update');
+
+
     //college course
     Route::get('Collegecourse',[CollegeCourseController::class,'collegecourseIndex'])->name('collegecourse');
     Route::post('AddCollegecourse',[CollegeCourseController::class,'addCollegeCourse'])->name('addcollegecourse');

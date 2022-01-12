@@ -34,6 +34,7 @@ Route::group(['middleware'=>'auth:admin'],function(){
     Route::post('StatusCollege', 'CollegeController@statusCollege')->name('statuscollege');
     Route::post('CheckEmail', 'CollegeController@checkEmail')->name('checkemail');
     Route::post('CheckContactNo', 'CollegeController@checkContactNo')->name('checkcontactno');
+    Route::get('CollegeView/{id}','CollegeController@collegeView')->name('collegeview');
 
 
     //course

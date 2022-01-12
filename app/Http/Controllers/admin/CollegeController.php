@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\DataTables\Admin\CollegeDataTable;
 use App\Interfaces\CollegeInterface;
 use App\Http\Requests\CollegeRequest;
+use App\Models\College;
+use App\Models\CollegeCourse;
 
 class CollegeController extends Controller
 {
@@ -55,5 +57,13 @@ class CollegeController extends Controller
     public function checkContactNo(Request $request)
     {
         return $this->college->checkContactNo($request);
+    }
+
+    public function collegeView(Request $request)
+    {
+        $id = decryptString($request->id);
+        $college = College::where('id',$id)->first();
+        $collegecourse = CollegeCourse::where('college_id',$id)->get();
+        return view('admin.college.collegeview',compact('college','collegecourse'));
     }
 }

@@ -6,24 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CollegeCourse extends Model
+class Addmissions extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $table='college_courses';
+    protected $table='addmissions';
     protected $fillable=[
         'id',
+        'user_id',
         'college_id',
-        'course_id',
-        'seat_no',
-        'reserved_seat',
-        'merit_seat'
+        'addmission_date',
+        'addmission_code',
+        'status'
     ];
-
-    public function courseName()
-    {
-        return $this->belongsTo(Course::class,'course_id');
-
-    }
 
     protected $hidden=['deleted_at'];
 }

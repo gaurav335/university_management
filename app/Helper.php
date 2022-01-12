@@ -27,3 +27,27 @@ function statusChanges($data, $modalname)
         return response()->json(['status' => '0', 'mesage' => $data->status]);
     }
 }
+
+if (!function_exists('encryptString')) {
+    function encryptString($plaintext)
+    {
+        $ciphertext_raw =  openssl_encrypt(
+            $plaintext,
+            'AES-256-CBC',
+            config('app.SERVER_ENCRYPTION_KEY'),
+            $options = 0,
+            config('app.SERVER_ENCRYPTION_IV')
+        );
+        return base64_encode($ciphertext_raw);
+    }
+}
+
+if (!function_exists('decryptString')) {
+
+    function decryptString($plaintext)
+    {
+        $c = base64_decode($plaintext);
+        $original_plaintext = openssl_decrypt($c, 'AES-256-CBC', config('app.SERVER_ENCRYPTION_KEY'), $options = 0, config('app.SERVER_ENCRYPTION_IV'));
+        return $original_plaintext;
+    }
+}

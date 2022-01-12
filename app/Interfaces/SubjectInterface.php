@@ -8,4 +8,5 @@ interface SubjectInterface
     public function editSubject($data);
     public function updateSubject($data);
     public function deleteSubject($data);
+    public function adminSubjectStatus($data);
 }

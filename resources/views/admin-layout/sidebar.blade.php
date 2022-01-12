@@ -57,6 +57,13 @@
                           <span>Course</span>
                       </a>
                   </li>
+
+                  <li>
+                  <a href="{{ route('admin.adminsubjectindex')}}">
+                          <i class="fas fa-tachometer-alt"></i>
+                          <span>Subject</span>
+                      </a>
+                  </li>
                   
                   
                   <li>

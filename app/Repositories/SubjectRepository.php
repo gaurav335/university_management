@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\SubjectInterface;
 use App\Models\CommanSetting;
-
+use App\Models\Subject;
 
 class SubjectRepository implements SubjectInterface
 {
@@ -58,5 +58,10 @@ class SubjectRepository implements SubjectInterface
         {
             return response()->json('0');
         }
+    }
+
+    public function adminSubjectStatus($data)
+    {
+        return statusChanges($data,'Subject');
     }
 }

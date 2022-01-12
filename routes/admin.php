@@ -58,6 +58,8 @@ Route::group(['middleware'=>'auth:admin'],function(){
     Route::post('EditSubject','SubjectController@editSubject')->name('editsubject');
     Route::post('UpdateSubject','SubjectController@updateSubject')->name('updatesubject');
     Route::post('DeleteSubject','SubjectController@deleteSubject')->name('deletesubject');
+    Route::get('SubjectIndex','SubjectController@adminsubjectIndex')->name('adminsubjectindex');
+    Route::post('AdminSubject','SubjectController@adminSubjectStatus')->name('adminsubjectstatus');
 
 
 

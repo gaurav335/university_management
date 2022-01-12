@@ -287,6 +287,12 @@ function MeritRoundAdd(form) {
         processData: false,
         data: new FormData(form),
         success: function(res) {
+            if (res == 2) {
+                toastr.error('Meritround Already Exists!');
+            }
+            if (res == 3) {
+                toastr.error('Please Choose the Different Date!!');
+            }
             if (res == 1) {
                 $('#admin-meritround-table').DataTable().ajax.reload();
                 toastr.success('Meritround Added Successfully');

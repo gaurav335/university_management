@@ -9,6 +9,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Facades\Auth;
 
 class CollegeCourseDataTable extends DataTable
 {
@@ -44,7 +45,7 @@ class CollegeCourseDataTable extends DataTable
      */
     public function query(CollegeCourse $model)
     {
-        return $model->newQuery();
+        return $model->where('college_id',Auth::user()->id)->newQuery();
     }
 
     /**

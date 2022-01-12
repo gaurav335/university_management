@@ -10,6 +10,16 @@ class MeritRoundRepository implements MeritRoundInterface
 {
     public function addMeritround($data)
     {
+        $countdate=MeritRound::where(['course_id'=>$data->course_id,'start_date'=>$data->start_date])->count();
+        if($countdate>=1)
+        {
+            return response()->json('3');
+        }
+        $count=MeritRound::where(['round_no'=>$data->round_no,'course_id'=>$data->course_id])->count();
+        if($count>=1)
+        {
+            return response()->json('2');
+        }
         $addmeritround=MeritRound::create([
             'round_no'=>$data->round_no,
             'course_id'=>$data->course_id,

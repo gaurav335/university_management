@@ -48,10 +48,6 @@ return [
             'driver' => 'session',
             'provider' => 'colleges',
         ],
-        'student' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
     ],
 
     /*
@@ -83,10 +79,6 @@ return [
         'colleges' => [
             'driver' => 'eloquent',
             'model' => App\Models\College::class,
-        ],
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
         ],
 
         // 'users' => [

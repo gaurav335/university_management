@@ -30,7 +30,7 @@ class RedirectIfAuthenticated
                 if (Auth::guard($guard)->check()) {
                     return redirect(RouteServiceProvider::COLLEGE);
                 }
-            } else if ($guard == 'student') {
+            } else if ($guard == 'web') {
                 if (Auth::guard($guard)->check()) {
                     return redirect(RouteServiceProvider::STUDENT);
                 }

@@ -28,9 +28,9 @@
         <link href="http://kendo.cdn.telerik.com/2014.2.716/styles/kendo.common.min.css" rel="stylesheet" />
         <link href="http://kendo.cdn.telerik.com/2014.2.716/styles/kendo.default.min.css" rel="stylesheet" />
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('storage/chat/mailing-chat.css') }}">
+        <!-- <link rel="stylesheet" type="text/css" href="{{ asset('storage/chat/mailing-chat.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('storage/chat/custom.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('js/college/daterangepicker.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('js/college/daterangepicker.css') }}"> -->
     </head>
     <body>
 
@@ -78,9 +78,9 @@
         <script src="{{ asset('admins/libs/jquery.counterup/jquery.counterup.min.js')}}"></script>
 
         <!-- apexcharts -->
-        <script src="{{ asset('admins/libs/apexcharts/apexcharts.min.js')}}"></script>
+        <!-- <script src="{{ asset('admins/libs/apexcharts/apexcharts.min.js')}}"></script> -->
 
-        <script src="{{ asset('admins/js/pages/dashboard.init.js')}}"></script>
+        <!-- <script src="{{ asset('admins/js/pages/dashboard.init.js')}}"></script> -->
 
         <script src="{{ asset('admins/js/app.js')}}"></script>
         <script src="{{ asset('admins/datatables/jquery.dataTables.min.js') }}"></script>
@@ -91,8 +91,8 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
         <script src="http://kendo.cdn.telerik.com/2014.2.716/js/kendo.ui.core.min.js"></script>
 
-        <script  src="{{ asset('js/college/moment-with-locales.min.js') }}"></script>
-        <script src="{{ asset('js/college/daterangepicker.js') }}"></script>
+        <!-- <script  src="{{ asset('js/college/moment-with-locales.min.js') }}"></script> -->
+        <!-- <script src="{{ asset('js/college/daterangepicker.js') }}"></script> -->
 
         <!-- twitter-bootstrap-wizard js -->
         <script src="{{ asset('admins/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js')}}"></script>

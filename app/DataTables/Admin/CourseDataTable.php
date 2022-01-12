@@ -25,9 +25,9 @@ class CourseDataTable extends DataTable
                 $result="";
                 if($data->status==1)
                 {
-                    $result.='<button type="button" class="btn status btn-outline-danger waves-effect waves-light" title="lock" data-id="'.$data->id.'" data-status="2"><i class="fas fa-unlock"></i></button>';
+                    $result.='<button type="button" class="btn status btn-outline-danger waves-effect waves-light" title="lock" data-id="'.$data->id.'" data-status="0"><i class="fas fa-unlock"></i></button>';
                 }
-                if($data->status==2)
+                if($data->status==0)
                 {
                     $result.='<button type="button" data-id="'.$data->id.'" class="btn status btn-outline-success waves-effect waves-light" title="unlock" data-status="1" ><i class="fas fa-lock" ></i></button>';
                 }
@@ -37,7 +37,7 @@ class CourseDataTable extends DataTable
             })
             ->addColumn('status',function($data){
 
-                if ($data->status == 2) {
+                if ($data->status == 0) {
                     return '<span class="badge badge-soft-danger font-size-15" style="padding:10px;">Inactive</span>';
                 } else {
                     return '<span class="badge badge-soft-success font-size-15" style="padding:10px 18px;">Active</span>';

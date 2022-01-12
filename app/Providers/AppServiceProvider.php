@@ -8,12 +8,14 @@ use App\Interfaces\CourseInterface;
 use App\Interfaces\SubjectInterface;
 use App\Interfaces\MeritRoundInterface;
 use App\Interfaces\CollegeCourseInterface;
+use App\Interfaces\CollegeMeritInterface;
 
 use App\Repositories\CollegeRepository;
 use App\Repositories\CourseRepository;
 use App\Repositories\SubjectRepository;
 use App\Repositories\MeritRoundRepository;
 use App\Repositories\CollegeCourseRepository;
+use App\Repositories\CollegeMeritRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -30,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SubjectInterface::class, SubjectRepository::class);
         $this->app->bind(MeritRoundInterface::class, MeritRoundRepository::class);
         $this->app->bind(CollegeCourseInterface::class, CollegeCourseRepository::class);
+        $this->app->bind(CollegeMeritInterface::class, CollegeMeritRepository::class);
 
     }
 

@@ -36,12 +36,21 @@
                                     <span>Dashboard</span>
                                 </a>
                             </li>
+
                             <li>
                             <a href="{{ route('college.collegecourse') }}">
                                     <i class="fas fa-dice-d6"></i>
                                     <span>Course</span>
                                 </a>
                             </li>
+
+                            <li>
+                            <a href="{{ route('college.collegemerit') }}">
+                                    <i class="fas fa-dice-d6"></i>
+                                    <span>Merit</span>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>

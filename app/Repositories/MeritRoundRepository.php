@@ -74,4 +74,9 @@ class MeritRoundRepository implements MeritRoundInterface
             return response()->json('0');
         }
     }
+
+    public function statusMeritround($data)
+    {
+        return statusChanges($data,'MeritRound');
+    }
 }

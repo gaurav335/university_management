@@ -435,5 +435,34 @@ $(document).on('click', '.delete-btn', function() {
         })
     }
 });
+
+//status
+$(document).on('click', '.status', function() {
+
+var status = $(this).data('status');
+var id = $(this).data('id');
+
+$.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    },
+    url: '{{ route("admin.statusmeritround") }}',
+    type: 'post',
+    data: {
+        'status': status,
+        'id': id
+    },
+    success: function(res) {
+        if (res.mesage == 1) {
+            toastr.success('Merit Round Active Successfully');
+        }
+        if (res.mesage == 2) {
+            toastr.error('Merit Round InActive Successfully');
+
+        }
+        $('#admin-meritround-table').DataTable().ajax.reload();
+    }
+})
+});
 </script>
 @endpush

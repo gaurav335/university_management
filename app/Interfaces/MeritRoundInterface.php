@@ -8,6 +8,7 @@ interface MeritRoundInterface
     public function editMeritround($data);
     public function updateMeritround($data);
     public function deleteMeritround($data);
+    public function statusMeritround($data);
 }
 
 ?>

@@ -50,6 +50,7 @@ Route::group(['middleware'=>'auth:admin'],function(){
     Route::post('EditMeritRound','MeritRoundController@editMeritround')->name('editmeritround');
     Route::post('UpdateMeritRound','MeritRoundController@updateMeritround')->name('updatemeritround');
     Route::post('DeleteMeritRound','MeritRoundController@deleteMeritround')->name('deletemeritround');
+    Route::post('StatusMeritround','MeritRoundController@statusMeritround')->name('statusmeritround');
 
     //subject
     Route::get('Subject','SubjectController@subjectIndex')->name('subject');

@@ -24,15 +24,32 @@ class MeritRoundDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('action',function($data){
                 $result = "";
+                if($data->status==1)
+                {
+                    $result.='<button type="button" class="btn status btn-outline-danger waves-effect waves-light" title="lock" data-id="'.$data->id.'" data-status="2"><i class="fas fa-unlock"></i></button>';
+                }
+                if($data->status==2)
+                {
+                    $result.='<button type="button" data-id="'.$data->id.'" class="btn status btn-outline-success waves-effect waves-light" title="unlock" data-status="1" ><i class="fas fa-lock" ></i></button>';
+                }
                 $result.='<button type="button" class="btn edit-btn btn-outline-info waves-effect waves-light" data-toggle="modal" data-target="#meritround_edit_model" data-eid="'.$data->id.'" title="Edit Merit Round"><i class="fa fa-edit" aria-hidden="true"></i></button>
                 <button type="button" class="btn delete-btn btn-outline-danger waves-effect waves-light" data-did="'.$data->id.'" title="Delete Merit Round"><i class="fa fa-trash" aria-hidden="true"></i></button>';
                 return $result;
+            })
+            ->addColumn('status',function($data){
+
+                if ($data->status == 2) {
+                    return '<span class="badge badge-soft-danger font-size-15" style="padding:10px;">Inactive</span>';
+                } else {
+                    return '<span class="badge badge-soft-success font-size-15" style="padding:10px 18px;">Active</span>';
+                }
+
             })
             ->editColumn('course_id', function ($data) {
                 $course =  Course::where('id', $data->course_id)->first();
                 return  $course->name;
             })
-            ->rawColumns(['action','course_id'])
+            ->rawColumns(['action','status','course_id'])
             ->addIndexColumn();    
     }
 
@@ -77,6 +94,7 @@ class MeritRoundDataTable extends DataTable
             Column::make('start_date')->title('Merit Round Start Date'),
             Column::make('end_date')->title('Merit Round End Date'),
             Column::make('merit_result_declare_date')->title('Merit Result Declare Date'),
+            Column::make('status')->title('Status'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

@@ -44,4 +44,9 @@ class MeritRoundController extends Controller
         return $this->meritround->deleteMeritround($request);
     }
 
+    public function statusMeritround(Request $request)
+    {
+        return $this->meritround->statusMeritround($request);
+    }
+
 }

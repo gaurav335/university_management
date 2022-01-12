@@ -1,5 +1,5 @@
 @extends('college-layout.master')
-<title>College Dashboard</title>
+<title>College | Dashboard</title>
 @section('content')
 <div class="page-content">
     <div class="container-fluid">

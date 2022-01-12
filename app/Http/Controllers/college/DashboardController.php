@@ -50,6 +50,27 @@ class DashboardController extends Controller
         {
             return response()->json('0');
         }
+    }
 
+    public function changePassword()
+    {
+        return view('college.auth.changepassword');
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $collegeData = College::where('id', Auth::user()->id)->first();
+
+        if (Hash::check($request->oldpassword, $collegeData->password)) {
+            $new = bcrypt($request->newpassword);
+            $update = College::where('id', Auth::user()->id)->update(['password' => $new]);
+            if ($update) {
+                Auth::guard('college')->logout();
+
+                return redirect()->route('college.logins')->with('success', 'Password Update Successfully...');
+            }
+        } else {
+            return back()->with('danger', 'Old Password does not match');
+        }
     }
 }

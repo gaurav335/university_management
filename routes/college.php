@@ -19,6 +19,10 @@ Route::group(['middleware'=>'auth:college'],function(){
         Route::get('/',[DashboardController::class,'index'])->name('index');
     });
 
+    //change password
+    Route::get('ChangePassword', [DashboardController::class,'changePassword'])->name('changepassword');
+    Route::post('ResetPassword', [DashboardController::class,'resetPassword'])->name('resetpassword');
+
     //update profile
     Route::get('UpdateProfile',[DashboardController::class,'profileUpdate'])->name('profile');
     Route::post('CollegeUpdateProfile',[DashboardController::class,'update'])->name('update');

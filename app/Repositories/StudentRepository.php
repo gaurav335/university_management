@@ -5,7 +5,9 @@ namespace App\Repositories;
 use App\Interfaces\StudentInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\StudentMarks;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class StudentRepository implements StudentInterface
 {
@@ -43,6 +45,50 @@ class StudentRepository implements StudentInterface
         ]);
 
         if($studentrag)
+        {
+            return response()->json('1');
+        }
+        else
+        {
+            return response()->json('0');
+        }
+    }
+
+    public function addStudentMarks($data)
+    {
+        $sub=count($data['subject']);
+        $user=Auth::user()->id;
+        for($i=0;$i<$sub;$i++)
+        {
+            $addstudentmarks = StudentMarks::create([
+                'subject_id'=>$data['subject'][$i],
+                'user_id'=>$user,
+                'total_mark'=>'100',
+                'obtain_mark'=>$data['obtain_mark'][$i],
+            ]);
+        }
+                 
+        if($addstudentmarks)
+        {
+            return response()->json('1');
+        }
+        else
+        {
+            return response()->json('0');
+        }
+    }
+
+    public function updateStudentMarks($data)
+    {
+        $sub=count($data['id']);
+        for($i=0;$i<$sub;$i++)
+        {
+            $updatestudentmarks = StudentMarks::where('id',$data['id'][$i])->update([
+                'obtain_mark'=>$data['obtain_mark'][$i],
+            ]);
+        }
+                 
+        if($updatestudentmarks)
         {
             return response()->json('1');
         }

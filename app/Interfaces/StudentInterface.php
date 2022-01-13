@@ -8,4 +8,6 @@ interface StudentInterface
     public function checkStudentEmail($data);
     public function checkStudentContactNo($data);
 
+    public function addStudentMarks($data);
+    public function updateStudentMarks($data);
 }

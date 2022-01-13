@@ -38,19 +38,6 @@
                                 <li>
                                     <a class="login-btn-area" href="{{ route('logins')}}" id=""><i class="fa fa-lock"
                                             aria-hidden="true"></i> Login </a>
-                                    <!-- <div class="login-form" id="login-form" style="display: none;">
-                                        <div class="title-default-left-bold">Login</div>
-                                        <form id="loginform" method="post" action="{{ route('login')}}">
-                                            @csrf
-                                            <label>Email address *</label>
-                                            <input type="email" name="email" id="email" placeholder="Name or E-mail" />
-                                            <label>Password *</label>
-                                            <input type="password" name="password" id="password" placeholder="Password" />
-                                            <button class="default-big-btn" type="submit">Login</button>
-                                            <button class="default-big-btn form-cancel" type="submit"
-                                                value="">Cancel</button>
-                                        </form>
-                                    </div> -->
                                 </li>
                                 @endguest
                                 @auth('web')
@@ -81,10 +68,12 @@
                                 <li class="active"><a href="{{ route('home')}}">Home</a></li>
                                 <li><a href="#">Pages</a></li>
                                 <li><a href="#">Courses</a></li>
-                                <li><a href="#">Research</a></li>
                                 <li><a href="#">News</a></li>
                                 <li><a href="#">Gallery</a></li>
                                 <li><a href="#">Contact</a></li>
+                                @auth('web')
+                                <li><a href="{{route('marksheet')}}">MarkSheet</a></li>
+                                @endauth
                             </ul>
                         </nav>
                     </div>

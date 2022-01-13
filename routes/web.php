@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\web\IndexController;
 use App\Http\Controllers\web\RagistrtionController;
 use App\Http\Controllers\web\LoginController;
+use App\Http\Controllers\web\studentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,8 @@ Route::post('CheckEmail', [RagistrtionController::class, 'checkStudentEmail'])->
 Route::post('CheckPhone', [RagistrtionController::class, 'checkStudentContactNo'])->name('checkstudentphone');
 Route::post('StudentRagistration', [RagistrtionController::class, 'studentRag'])->name('studentrag');
 
+Route::group(['middleware' => 'auth:web'], function () {
+    Route::get('MarkSheet', [studentController::class, 'marksheet'])->name('marksheet');
+    Route::post('AddMarkSheet', [studentController::class, 'addStudentMarks'])->name('addstudentmarks');
+    Route::post('UpdateMarkSheet', [studentController::class, 'updateStudentMarks'])->name('updatestudentmarks');
+});

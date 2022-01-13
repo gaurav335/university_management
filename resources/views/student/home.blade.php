@@ -4,9 +4,9 @@
 <div class="slider1-area overlay-default">
             <div class="bend niceties preview-1">
                 <div id="ensign-nivoslider-3" class="slides">
-                    <img src="img/slider/2-1.jpg" alt="slider" title="#slider-direction-1" />
-                    <img src="img/slider/2-2.jpg" alt="slider" title="#slider-direction-2" />
-                    <img src="img/slider/1-2.jpg" alt="slider" title="#slider-direction-3" />
+                    <img src="{{ asset('student/img/slider/2-1.jpg')}}" alt="slider" title="#slider-direction-1" />
+                    <img src="{{ asset('student/img/slider/2-2.jpg')}}" alt="slider" title="#slider-direction-2" />
+                    <img src="{{ asset('student/img/slider/1-2.jpg')}}" alt="slider" title="#slider-direction-3" />
                 </div>
                 <div id="slider-direction-1" class="t-cn slider-direction">
                     <div class="slider-content s-tb slide-1">
@@ -87,7 +87,7 @@
         </div>
         <!-- About 2 Area End Here -->
         <!-- Featured Area Start Here -->
-        <div class="featured-area bg-common-style" style="background-image: url('img/featured/back.jpg');">
+        <div class="featured-area bg-common-style" style="background-image: url('student/img/featured/back.jpg');">
             <div class="container">
                 <h2 class="title-default-textPrimary-left">Featured Courses</h2>
             </div>
@@ -96,8 +96,8 @@
                     <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                         <div class="featured-box">
                             <div class="featured-img-holder hvr-bounce-to-right">
-                                <img src="img/featured/1.jpg" class="img-responsive" alt="featured">
-                                <a href="img/featured/1.jpg" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                <img src="{{ asset('student/img/featured/1.jpg')}}" class="img-responsive" alt="featured">
+                                <a href="{{ asset('student/img/featured/1.jpg')}}" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
                             </div>
                             <div class="featured-content-holder">
                                 <h3><a href="#">Basic Philosopphy</a></h3>
@@ -108,8 +108,8 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                         <div class="featured-box">
                             <div class="featured-img-holder hvr-bounce-to-right">
-                                <img src="img/featured/2.jpg" class="img-responsive" alt="featured">
-                                <a href="img/featured/2.jpg" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                <img src="{{ asset('student/img/featured/2.jpg')}}" class="img-responsive" alt="featured">
+                                <a href="{{ asset('student/img/featured/2.jpg')}}" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
                             </div>
                             <div class="featured-content-holder">
                                 <h3><a href="#">GMET</a></h3>
@@ -118,8 +118,8 @@
                         </div>
                         <div class="featured-box">
                             <div class="featured-img-holder hvr-bounce-to-right">
-                                <img src="img/featured/3.jpg" class="img-responsive" alt="featured">
-                                <a href="img/featured/3.jpg" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                <img src="{{ asset('student/img/featured/3.jpg')}}" class="img-responsive" alt="featured">
+                                <a href="{{ asset('student/img/featured/3.jpg')}}" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
                             </div>
                             <div class="featured-content-holder">
                                 <h3><a href="#">CSE Science</a></h3>
@@ -130,8 +130,8 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                         <div class="featured-box">
                             <div class="featured-img-holder hvr-bounce-to-right">
-                                <img src="img/featured/4.jpg" class="img-responsive" alt="featured">
-                                <a href="img/featured/4.jpg" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                <img src="{{ asset('student/img/featured/4.jpg')}}" class="img-responsive" alt="featured">
+                                <a href="{{ asset('student/img/featured/4.jpg')}}" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
                             </div>
                             <div class="featured-content-holder">
                                 <h3><a href="#">Regular MBA</a></h3>
@@ -140,8 +140,8 @@
                         </div>
                         <div class="featured-box">
                             <div class="featured-img-holder hvr-bounce-to-right">
-                                <img src="img/featured/5.jpg" class="img-responsive" alt="featured">
-                                <a href="img/featured/5.jpg" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                <img src="{{ asset('student/img/featured/5.jpg')}}" class="img-responsive" alt="featured">
+                                <a href="{{ asset('student/img/featured/5.jpg')}}" class="zoom"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
                             </div>
                             <div class="featured-content-holder">
                                 <h3><a href="#">Graphic Design</a></h3>
@@ -168,7 +168,7 @@
                     <div class="single-item">
                         <div class="lecturers1-item-wrapper">
                             <div class="lecturers-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/team/1.jpg" alt="team"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/team/1.jpg')}}" alt="team"></a>
                             </div>
                             <div class="lecturers-content-wrapper">
                                 <h3 class="item-title"><a href="#">Rosy Janner</a></h3>
@@ -185,7 +185,7 @@
                     <div class="single-item">
                         <div class="lecturers1-item-wrapper">
                             <div class="lecturers-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/team/2.jpg" alt="team"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/team/2.jpg')}}" alt="team"></a>
                             </div>
                             <div class="lecturers-content-wrapper">
                                 <h3 class="item-title"><a href="#">Mike Hussy</a></h3>
@@ -202,7 +202,7 @@
                     <div class="single-item">
                         <div class="lecturers1-item-wrapper">
                             <div class="lecturers-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/team/3.jpg" alt="team"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/team/3.jpg')}}" alt="team"></a>
                             </div>
                             <div class="lecturers-content-wrapper">
                                 <h3 class="item-title"><a href="#">Daziy Millar</a></h3>
@@ -219,7 +219,7 @@
                     <div class="single-item">
                         <div class="lecturers1-item-wrapper">
                             <div class="lecturers-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/team/4.jpg" alt="team"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/team/4.jpg')}}" alt="team"></a>
                             </div>
                             <div class="lecturers-content-wrapper">
                                 <h3 class="item-title"><a href="#">Kazi Fahim</a></h3>
@@ -236,7 +236,7 @@
                     <div class="single-item">
                         <div class="lecturers1-item-wrapper">
                             <div class="lecturers-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/team/1.jpg" alt="team"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/team/1.jpg')}}" alt="team"></a>
                             </div>
                             <div class="lecturers-content-wrapper">
                                 <h3 class="item-title"><a href="#">Rosy Janner</a></h3>
@@ -253,7 +253,7 @@
                     <div class="single-item">
                         <div class="lecturers1-item-wrapper">
                             <div class="lecturers-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/team/2.jpg" alt="team"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/team/2.jpg')}}" alt="team"></a>
                             </div>
                             <div class="lecturers-content-wrapper">
                                 <h3 class="item-title"><a href="#">Mike Hussy</a></h3>
@@ -272,7 +272,7 @@
         </div>
         <!-- Lecturers Area End Here -->
         <!-- Video Area Start Here -->
-        <div class="video-area overlay-video bg-common-style" style="background-image: url('img/banner/1.jpg');">
+        <div class="video-area overlay-video bg-common-style" style="background-image: url('{{ asset('student/img/banner/1.jpg')}}');">
             <div class="container">
                 <div class="video-content">
                     <h2 class="video-title">Watch Campus Life Video Tour</h2>
@@ -292,7 +292,7 @@
                         <ul class="news-wrapper">
                             <li>
                                 <div class="news-img-holder">
-                                    <a href="#"><img src="img/news/1.jpg" class="img-responsive" alt="news"></a>
+                                    <a href="#"><img src="{{ asset('student/img/news/1.jpg')}}" class="img-responsive" alt="news"></a>
                                 </div>
                                 <div class="news-content-holder">
                                     <h3><a href="single-news.html">Summer Course Start From 1st June</a></h3>
@@ -302,7 +302,7 @@
                             </li>
                             <li>
                                 <div class="news-img-holder">
-                                    <a href="#"><img src="img/news/2.jpg" class="img-responsive" alt="news"></a>
+                                    <a href="#"><img src="{{ asset('student/img/news/2.jpg')}}" class="img-responsive" alt="news"></a>
                                 </div>
                                 <div class="news-content-holder">
                                     <h3><a href="single-news.html">Guest Interview will Occur Soon</a></h3>
@@ -312,7 +312,7 @@
                             </li>
                             <li>
                                 <div class="news-img-holder">
-                                    <a href="#"><img src="img/news/3.jpg" class="img-responsive" alt="news"></a>
+                                    <a href="#"><img src="{{ asset('student/img/news/3.jpg')}}" class="img-responsive" alt="news"></a>
                                 </div>
                                 <div class="news-content-holder">
                                     <h3><a href="single-news.html">Easy English Learning Way</a></h3>
@@ -372,7 +372,7 @@
         </div>
         <!-- News and Event Area End Here -->
         <!-- Counter Area Start Here -->
-        <div class="counter-area bg-primary-deep" style="background-image: url('img/banner/4.jpg');">
+        <div class="counter-area bg-primary-deep" style="background-image: url('student/img/banner/4.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".20s">
@@ -407,7 +407,7 @@
                     <div class="single-item">
                         <div class="single-item-wrapper">
                             <div class="publications-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/product/1.jpg" alt="product"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/product/1.jpg')}}" alt="product"></a>
                             </div>
                             <div class="publications-content-wrapper">
                                 <h3 class="item-title"><a href="#">Robert - Philosophy</a></h3>
@@ -421,7 +421,7 @@
                     <div class="single-item">
                         <div class="single-item-wrapper">
                             <div class="publications-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/product/2.jpg" alt="product"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/product/2.jpg')}}" alt="product"></a>
                             </div>
                             <div class="publications-content-wrapper">
                                 <h3 class="item-title"><a href="#">GMAT</a></h3>
@@ -435,7 +435,7 @@
                     <div class="single-item">
                         <div class="single-item-wrapper">
                             <div class="publications-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/product/3.jpg" alt="product"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/product/3.jpg')}}" alt="product"></a>
                             </div>
                             <div class="publications-content-wrapper">
                                 <h3 class="item-title"><a href="#">Money Book - Finance</a></h3>
@@ -449,7 +449,7 @@
                     <div class="single-item">
                         <div class="single-item-wrapper">
                             <div class="publications-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/product/4.jpg" alt="product"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/product/4.jpg')}}" alt="product"></a>
                             </div>
                             <div class="publications-content-wrapper">
                                 <h3 class="item-title"><a href="#">Service Marketing</a></h3>
@@ -463,7 +463,7 @@
                     <div class="single-item">
                         <div class="single-item-wrapper">
                             <div class="publications-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/product/1.jpg" alt="product"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/product/1.jpg')}}" alt="product"></a>
                             </div>
                             <div class="publications-content-wrapper">
                                 <h3 class="item-title"><a href="#">Money Book - Finance</a></h3>
@@ -477,7 +477,7 @@
                     <div class="single-item">
                         <div class="single-item-wrapper">
                             <div class="publications-img-wrapper">
-                                <a href="#"><img class="img-responsive" src="img/product/3.jpg" alt="product"></a>
+                                <a href="#"><img class="img-responsive" src="{{ asset('student/img/product/3.jpg')}}" alt="product"></a>
                             </div>
                             <div class="publications-content-wrapper">
                                 <h3 class="item-title"><a href="#">Service Marketing</a></h3>
@@ -500,100 +500,100 @@
                         <div id="ri-grid" class="author-banner-bg ri-grid header text-center">
                             <ul class="ri-grid-list">
                                 <li>
-                                    <a href="#"><img src="img/students/student1.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student1.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student2.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student2.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student3.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student3.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student4.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student4.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student5.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student5.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student6.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student6.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student7.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student7.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student8.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student8.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student1.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student1.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student2.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student2.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student3.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student3.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student4.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student4.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student5.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student5.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student6.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student6.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student7.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student7.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student8.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student8.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student1.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student1.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student2.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student2.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student3.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student3.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student4.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student4.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student5.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student5.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student6.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student6.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student7.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student7.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student8.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student8.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student1.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student1.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student2.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student2.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student3.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student3.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student4.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student4.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student5.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student5.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student6.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student6.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student7.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student7.jpg')}}" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="img/students/student8.jpg" alt=""></a>
+                                    <a href="#"><img src="{{ asset('student/img/students/student8.jpg')}}" alt=""></a>
                                 </li>
                             </ul>
                         </div>
@@ -615,28 +615,28 @@
                     data-r-x-small-dots="false" data-r-x-medium="3" data-r-x-medium-nav="false" data-r-x-medium-dots="false" data-r-small="4" data-r-small-nav="false" data-r-small-dots="false" data-r-medium="4" data-r-medium-nav="false" data-r-medium-dots="false"
                     data-r-large="4" data-r-large-nav="false" data-r-large-dots="false">
                     <div class="brand-area-box">
-                        <a href="#"><img src="img/brand/1.jpg" alt="brand"></a>
+                        <a href="#"><img src="{{ asset('student/img/brand/1.jpg')}}" alt="brand"></a>
                     </div>
                     <div class="brand-area-box">
-                        <a href="#"><img src="img/brand/2.jpg" alt="brand"></a>
+                        <a href="#"><img src="{{ asset('student/img/brand/2.jpg')}}" alt="brand"></a>
                     </div>
                     <div class="brand-area-box">
-                        <a href="#"><img src="img/brand/3.jpg" alt="brand"></a>
+                        <a href="#"><img src="{{ asset('student/img/brand/3.jpg')}}" alt="brand"></a>
                     </div>
                     <div class="brand-area-box">
-                        <a href="#"><img src="img/brand/4.jpg" alt="brand"></a>
+                        <a href="#"><img src="{{ asset('student/img/brand/4.jpg')}}" alt="brand"></a>
                     </div>
                     <div class="brand-area-box">
-                        <a href="#"><img src="img/brand/1.jpg" alt="brand"></a>
+                        <a href="#"><img src="{{ asset('student/img/brand/1.jpg')}}" alt="brand"></a>
                     </div>
                     <div class="brand-area-box">
-                        <a href="#"><img src="img/brand/2.jpg" alt="brand"></a>
+                        <a href="#"><img src="{{ asset('student/img/brand/2.jpg')}}" alt="brand"></a>
                     </div>
                     <div class="brand-area-box">
-                        <a href="#"><img src="img/brand/3.jpg" alt="brand"></a>
+                        <a href="#"><img src="{{ asset('student/img/brand/3.jpg')}}" alt="brand"></a>
                     </div>
                     <div class="brand-area-box">
-                        <a href="#"><img src="img/brand/4.jpg" alt="brand"></a>
+                        <a href="#"><img src="{{ asset('student/img/brand/4.jpg')}}" alt="brand"></a>
                     </div>
                 </div>
             </div>

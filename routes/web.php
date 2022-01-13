@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\web\IndexController;
+use App\Http\Controllers\web\RagistrtionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,8 @@ use App\Http\Controllers\web\IndexController;
 */
 
 Route::get('/', [IndexController::class, 'home'])->name('home');
+Route::get('Ragistration', [RagistrtionController::class, 'ragistration'])->name('ragistration');
+Route::post('CheckEmail', [RagistrtionController::class, 'checkStudentEmail'])->name('checkstudentemail');
+Route::post('CheckPhone', [RagistrtionController::class, 'checkStudentContactNo'])->name('checkstudentphone');
+Route::post('StudentRagistration', [RagistrtionController::class, 'studentRag'])->name('studentrag');
 

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Academics | Home 2</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -37,8 +38,10 @@
     <!-- ReImageGrid CSS -->
     <link rel="stylesheet" href="{{ asset('student/css/reImageGrid.css')}}">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('student/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('student/css/style.css')}}">
     <!-- Modernizr Js -->
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     <script src="{{ asset('student/js/modernizr-2.8.3.min.js')}}"></script>
 </head>
 
@@ -47,7 +50,10 @@
     <div id="preloader"></div>
     <div id="wrapper">
         @include('student-layout.header')
+        <div class="main-content">
+
         @yield('content')
+</div>
         @include('student-layout.footer')
 
     </div>
@@ -81,6 +87,11 @@
     <script src="{{ asset('student/js/jquery.gridrotator.js')}}" type="text/javascript"></script>
     <!-- Custom Js -->
     <script src="{{ asset('student/js/main.js')}}" type="text/javascript"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+
+
     @stack('student-script')
 </body>
 

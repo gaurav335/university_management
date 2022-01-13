@@ -4,7 +4,7 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                             <div class="footer-box">
-                                <a href="index.html"><img class="img-responsive" src="img/logo-footer.png" alt="logo"></a>
+                                <a href="index.html"><img class="img-responsive" src="{{ asset('student/img/logo-footer.png')}}" alt="logo"></a>
                                 <div class="footer-about">
                                     <p>Praesent vel rutrum purus. Nam vel dui eu sus duis dignissim dignissim. Suspenetey disse at ros tecongueconsequat.Fusce sit amet rna feugiat.</p>
                                 </div>
@@ -66,22 +66,22 @@
                                 <h3>Flickr Photos</h3>
                                 <ul class="flickr-photos">
                                     <li>
-                                        <a href="#"><img class="img-responsive" src="img/footer/1.jpg" alt="flickr"></a>
+                                        <a href="#"><img class="img-responsive" src="{{ asset('student/img/footer/1.jpg')}}" alt="flickr"></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img class="img-responsive" src="img/footer/2.jpg" alt="flickr"></a>
+                                        <a href="#"><img class="img-responsive" src="{{ asset('student/img/footer/2.jpg')}}" alt="flickr"></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img class="img-responsive" src="img/footer/3.jpg" alt="flickr"></a>
+                                        <a href="#"><img class="img-responsive" src="{{ asset('student/img/footer/3.jpg')}}" alt="flickr"></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img class="img-responsive" src="img/footer/4.jpg" alt="flickr"></a>
+                                        <a href="#"><img class="img-responsive" src="{{ asset('student/img/footer/4.jpg')}}" alt="flickr"></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img class="img-responsive" src="img/footer/5.jpg" alt="flickr"></a>
+                                        <a href="#"><img class="img-responsive" src="{{ asset('student/img/footer/5.jpg')}}" alt="flickr"></a>
                                     </li>
                                     <li>
-                                        <a href="#"><img class="img-responsive" src="img/footer/6.jpg" alt="flickr"></a>
+                                        <a href="#"><img class="img-responsive" src="{{ asset('student/img/footer/6.jpg')}}" alt="flickr"></a>
                                     </li>
                                 </ul>
                             </div>
@@ -98,16 +98,16 @@
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                             <ul class="payment-method">
                                 <li>
-                                    <a href="#"><img alt="payment-method" src="img/payment-method1.jpg"></a>
+                                    <a href="#"><img alt="payment-method" src="{{ asset('student/img/payment-method1.jpg')}}"></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img alt="payment-method" src="img/payment-method2.jpg"></a>
+                                    <a href="#"><img alt="payment-method" src="{{ asset('student/img/payment-method2.jpg')}}"></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img alt="payment-method" src="img/payment-method3.jpg"></a>
+                                    <a href="#"><img alt="payment-method" src="{{ asset('student/img/payment-method3.jpg')}}"></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img alt="payment-method" src="img/payment-method4.jpg"></a>
+                                    <a href="#"><img alt="payment-method" src="{{ asset('student/img/payment-method4.jpg')}}"></a>
                                 </li>
                             </ul>
                         </div>

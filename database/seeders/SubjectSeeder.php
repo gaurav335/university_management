@@ -19,6 +19,9 @@ class SubjectSeeder extends Seeder
             ['name' => 'Science', 'code' => '086', 'status' => '1'],
             ['name' => 'Biology', 'code' => '044', 'status' => '1'],
             ['name' => 'English', 'code' => '184', 'status' => '1'],
+            ['name' => 'Chemistry', 'code' => '001', 'status' => '1'],
+            ['name' => 'Physics', 'code' => '002', 'status' => '1'],
+            ['name' => 'Computer', 'code' => '003', 'status' => '1'],
         ];
 
         Subject::insert($subject);

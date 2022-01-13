@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\web\IndexController;
 use App\Http\Controllers\web\RagistrtionController;
+use App\Http\Controllers\web\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ use App\Http\Controllers\web\RagistrtionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['namespace'=>'auth'],function(){
+    Route::get('/Login',[LoginController::class,'loginPage'])->name('logins');
+    Route::post('login',[LoginController::class,'login'])->name('login');
+    Route::post('logout',[LoginController::class,'logout'])->name('logout');
+});
 
 Route::get('/', [IndexController::class, 'home'])->name('home');
 Route::get('Ragistration', [RagistrtionController::class, 'ragistration'])->name('ragistration');

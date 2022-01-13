@@ -40,6 +40,10 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('student/css/style.css')}}">
     <!-- Modernizr Js -->
+
+
+    <link rel="stylesheet" href="{{ asset('student/css/custom.css')}}">
+    
     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <script src="{{ asset('student/js/modernizr-2.8.3.min.js')}}"></script>
@@ -52,8 +56,8 @@
         @include('student-layout.header')
         <div class="main-content">
 
-        @yield('content')
-</div>
+            @yield('content')
+        </div>
         @include('student-layout.footer')
 
     </div>
@@ -88,10 +92,8 @@
     <!-- Custom Js -->
     <script src="{{ asset('student/js/main.js')}}" type="text/javascript"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
     @stack('student-script')
 </body>
 

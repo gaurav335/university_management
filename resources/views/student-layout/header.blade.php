@@ -16,33 +16,50 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                         <div class="header-top-right">
                             <ul>
+                                @guest('web')                  
                                 <li>
                                     <a class="login-btn-area" href="{{ route('ragistration')}}" id=""><i class="fa fa-lock"
                                             aria-hidden="true"></i> Ragistration </a>
                                 </li>
+                                @endguest
+                                @auth('web')
                                 <li>
-                                    <a class="login-btn-area" href="#" id="login-button"><i class="fa fa-lock"
-                                            aria-hidden="true"></i> Login</a>
-                                    <div class="login-form" id="login-form" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
+                                    @csrf
+                                </form>
+
+                                    <a class="login-btn-area" href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-lock"
+                                            aria-hidden="true"></i> Logout </a>
+                                </li>
+                                @endauth
+                                @guest('web')                  
+                                <li>
+                                <li>
+                                    <a class="login-btn-area" href="{{ route('logins')}}" id=""><i class="fa fa-lock"
+                                            aria-hidden="true"></i> Login </a>
+                                    <!-- <div class="login-form" id="login-form" style="display: none;">
                                         <div class="title-default-left-bold">Login</div>
-                                        <form>
-                                            <label>Username or email address *</label>
-                                            <input type="text" placeholder="Name or E-mail" />
+                                        <form id="loginform" method="post" action="{{ route('login')}}">
+                                            @csrf
+                                            <label>Email address *</label>
+                                            <input type="email" name="email" id="email" placeholder="Name or E-mail" />
                                             <label>Password *</label>
-                                            <input type="password" placeholder="Password" />
-                                            <label class="check">Lost your password?</label>
-                                            <span><input type="checkbox" name="remember" />Remember Me</span>
-                                            <button class="default-big-btn" type="submit" value="Login">Login</button>
+                                            <input type="password" name="password" id="password" placeholder="Password" />
+                                            <button class="default-big-btn" type="submit">Login</button>
                                             <button class="default-big-btn form-cancel" type="submit"
                                                 value="">Cancel</button>
                                         </form>
-                                    </div>
+                                    </div> -->
                                 </li>
+                                @endguest
+                                @auth('web')
                                 <li>
                                     <div class="apply-btn-area">
-                                        <a href="#" class="apply-now-btn">Apply Now</a>
+                                        <a href="#" class="apply-now-btn">Admission Apply Now</a>
                                     </div>
                                 </li>
+                                @endauth
                             </ul>
                         </div>
                     </div>

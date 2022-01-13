@@ -10014,7 +10014,7 @@ ul.course-feature2 li:before {
 }
 .registration-page-area .registration-details-area label {
   letter-spacing: 1px;
-  color: #333333;
+  /* color: #333333; */
   font-weight: 400;
   margin-bottom: 10px;
 }

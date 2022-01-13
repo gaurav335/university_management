@@ -47,7 +47,7 @@
                                                             {{$sub->subjectid->name}}
                                                         </th>
                                                         <td>100</td>
-                                                        <td><input type="number" onKeyPress="if(this.value.length==3) return false;" min="0" max="100" name="obtain_mark[]"
+                                                        <td><input type="number" class="form-control" onKeyPress="if(this.value.length==3) return false;" min="0" max="100" name="obtain_mark[]" placeholder="0"
                                                                 value="{{$sub->obtain_mark}}"></td>
                                                     </tr>
                                                     @endforeach
@@ -93,7 +93,7 @@
                                                             {{$sub->name}}
                                                         </th>
                                                         <td>100</td>
-                                                        <td><input type="number" onKeyPress="if(this.value.length==3) return false;" min="0" max="100" name="obtain_mark[]">
+                                                        <td><input type="number" class="form-control" onKeyPress="if(this.value.length==3) return false;" min="0" max="100" name="obtain_mark[]" placeholder="0">
                                                         </td>
                                                     </tr>
                                                     @endforeach
@@ -124,6 +124,18 @@
 $(document).ready(function() {
     //addmarks
     $('#addmarks').validate({
+        rules: {
+            'obtain_mark[]': {
+                required: true,
+                maxlength: 3,
+            },
+        },
+        messages: {
+            'obtain_mark[]': {
+                required: 'The Obtain Mark is required',
+                maxlength: 'Please Enter Your Right Marks',
+            },
+        },
         submitHandler: function(form) {
             addMarksForm(form);
         },
@@ -175,11 +187,13 @@ $(document).ready(function() {
         rules: {
             'obtain_mark[]': {
                 required: true,
+                maxlength: 3,
             },
         },
         messages: {
             'obtain_mark[]': {
-                required: 'The Address is required',
+                required: 'The Obtain Mark is required',
+                maxlength: 'Please Enter Your Right Marks',
             },
         },
         submitHandler: function(form) {

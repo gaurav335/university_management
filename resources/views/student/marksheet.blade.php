@@ -47,7 +47,7 @@
                                                             {{$sub->subjectid->name}}
                                                         </th>
                                                         <td>100</td>
-                                                        <td><input type="number" min="0" max="100" name="obtain_mark[]"
+                                                        <td><input type="number" onKeyPress="if(this.value.length==3) return false;" min="0" max="100" name="obtain_mark[]"
                                                                 value="{{$sub->obtain_mark}}"></td>
                                                     </tr>
                                                     @endforeach
@@ -64,7 +64,7 @@
                             <button class="view-all-accent-btn disabled col-md-9" type="submit">Submit</button>
                         </div>
                     </div>
-                </form> 
+                </form>
                 @else
                 <form class="" id="addmarks" method="POST">
                     <div class="profile-details tab-content">
@@ -85,6 +85,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    
                                                     @foreach($subject as $sub)
                                                     <tr>
                                                         <th>
@@ -92,7 +93,8 @@
                                                             {{$sub->name}}
                                                         </th>
                                                         <td>100</td>
-                                                        <td><input type="number" min="0" max="100" name="obtain_mark[]"></td>
+                                                        <td><input type="number" onKeyPress="if(this.value.length==3) return false;" min="0" max="100" name="obtain_mark[]">
+                                                        </td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
@@ -170,6 +172,16 @@ $(document).ready(function() {
 
     //updatemarks
     $('#updatemarks').validate({
+        rules: {
+            'obtain_mark[]': {
+                required: true,
+            },
+        },
+        messages: {
+            'obtain_mark[]': {
+                required: 'The Address is required',
+            },
+        },
         submitHandler: function(form) {
             updateMarksForm(form);
         },

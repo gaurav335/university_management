@@ -5371,6 +5371,7 @@ ul.course-feature2 li:before {
   opacity: 0;
   text-align: center;
   position: absolute;
+  padding:15px;
   top: 50%;
   z-index: 3;
   height: 50px;

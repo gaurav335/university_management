@@ -97,4 +97,9 @@ class StudentRepository implements StudentInterface
             return response()->json('0');
         }
     }
+
+    public function addAdminssionForm($data)
+    {
+
+    }
 }

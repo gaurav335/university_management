@@ -22,8 +22,11 @@ class CollegeCourse extends Model
     public function courseName()
     {
         return $this->belongsTo(Course::class,'course_id');
-
     }
 
+    public function collegeName()
+    {
+        return $this->belongsTo(College::class,'college_id');
+    }
     protected $hidden=['deleted_at'];
 }

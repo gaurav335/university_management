@@ -67,7 +67,7 @@
                             <ul>
                                 <li class="active"><a href="{{ route('home')}}">Home</a></li>
                                 <li><a href="#">Pages</a></li>
-                                <li><a href="#">Courses</a></li>
+                                <li><a href="{{ route('course')}}">Courses</a></li>
                                 <li><a href="#">News</a></li>
                                 <li><a href="#">Gallery</a></li>
                                 <li><a href="#">Contact</a></li>

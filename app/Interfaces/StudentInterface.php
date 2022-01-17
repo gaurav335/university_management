@@ -10,4 +10,7 @@ interface StudentInterface
 
     public function addStudentMarks($data);
     public function updateStudentMarks($data);
+
+    public function addAdminssionForm($data);
+
 }

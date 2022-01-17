@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Interfaces\StudentInterface;
 use App\Models\Subject;
+use App\Models\Course;
+use App\Models\CollegeCourse;
 use App\Models\StudentMarks;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,5 +36,22 @@ class studentController extends Controller
     public function updateStudentMarks(Request $request)
     {
         return $this->student->updateStudentMarks($request);
+    }
+
+    public function course(Request $request)
+    {
+        $course = Course::where('status',1)->get();
+        return view("student.course",compact('course'));
+    }
+
+    public function admissionform(Request $request)
+    {
+        $college = CollegeCourse::with('collegeName')->where('course_id',$request->id)->get();
+        return view("student.admissionform",compact('college'));
+    }
+
+    public function addAdminssionForm(Request $request)
+    {
+        return $this->student->addAdminssionForm($request);
     }
 }

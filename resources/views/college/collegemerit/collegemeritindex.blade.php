@@ -42,7 +42,7 @@
 
                                         <div class="form-group">
                                             <label>Merit</label>
-                                            <input type="number" min="0" name="merit" id="merit" class="form-control"
+                                            <input type="number" min="0" max="100" onKeyPress="if(this.value.length==3) return false;" name="merit" id="merit" class="form-control"
                                                 placeholder="Subject Merit" />
                                             <small>Ex. Merit Add in %</small>
                                         </div>
@@ -90,7 +90,7 @@
                                         <input type="hidden" id="id" name="id">
                                         <div class="form-group">
                                             <label>Merit</label>
-                                            <input type="number" min="0" name="merit" id="merit" class="form-control"
+                                            <input type="number" min="0" max="100" onKeyPress="if(this.value.length==3) return false;" name="merit" id="merit" class="form-control"
                                                 placeholder="Subject Merit" />
                                             <small>Ex. Merit Add in %</small>
                                         </div>

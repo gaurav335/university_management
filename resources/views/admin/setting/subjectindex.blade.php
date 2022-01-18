@@ -33,7 +33,7 @@
 
                                         <div class="form-group">
                                             <label>Subject Merit</label>
-                                            <input type="number" name="marks" id="marks" class="form-control"
+                                            <input type="number" min="0" max="100" onKeyPress="if(this.value.length==3) return false;" name="marks" id="marks" class="form-control"
                                                 placeholder="Subject Merit" />
                                             <small>Ex. Subject Merit Add in %</small>
                                         </div>
@@ -72,7 +72,7 @@
                                         <input type="hidden" id="id" name="id">
                                         <div class="form-group">
                                             <label>Subject Merit</label>
-                                            <input type="number" name="marks" id="marks" class="form-control"
+                                            <input type="number" min="0" max="100" onKeyPress="if(this.value.length==3) return false;" name="marks" id="marks" class="form-control"
                                                 placeholder="Subject Merit" />
                                             <small>Ex. Subject Merit Add in %</small>
                                         </div>

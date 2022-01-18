@@ -133,7 +133,7 @@ class StudentRepository implements StudentInterface
             'course_id'=>$data->id,
             'addmission_date'=>$date->format('Y-m-d'),
             'addmission_code'=>$admisionCode,
-            'status'=>1,
+            'status'=>2,
         ]);
         if($admissionForm)
         {

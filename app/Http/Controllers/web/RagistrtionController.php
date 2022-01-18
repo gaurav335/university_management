@@ -5,6 +5,10 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Interfaces\StudentInterface;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UserProfileRequest;
+use App\Http\Requests\UserRequest;
 
 class RagistrtionController extends Controller
 {
@@ -21,7 +25,7 @@ class RagistrtionController extends Controller
         return view("student.ragistration");
     }
 
-    public function studentRag(Request $request)
+    public function studentRag(UserRequest $request)
     {
         return $this->student->studentRag($request);
     }
@@ -34,5 +38,33 @@ class RagistrtionController extends Controller
     public function checkStudentContactNo(Request $request)
     {
         return $this->student->checkStudentContactNo($request);
+    }
+
+    public function profileUpdate()
+    {
+        $user= User::where('id',Auth::user()->id)->first();
+        return view('student.userprofile',compact('user'));
+    }
+
+    public function update(UserProfileRequest $request)
+    {
+        $update=User::where('id',Auth::user()->id)->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'contact_no'=>$request->contact_no,
+            'dob'=>$request->dob,
+            'adhaar_card_no'=>$request->adhaar_card_no,
+            'gender'=>$request->gender,
+            'address'=>$request->address,
+        ]);
+
+        if($update)
+        {
+            return response()->json('1');
+        }
+        else
+        {
+            return response()->json('0');
+        }
     }
 }

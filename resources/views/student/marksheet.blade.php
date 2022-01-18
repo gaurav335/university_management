@@ -47,12 +47,20 @@
                                                             {{$sub->subjectid->name}}
                                                         </th>
                                                         <td>100</td>
-                                                        <td><input type="number" class="form-control" onKeyPress="if(this.value.length==3) return false;" min="0" max="100" name="obtain_mark[]" placeholder="0"
+                                                        <td><input type="number" class="form-control"
+                                                                onKeyPress="if(this.value.length==3) return false;"
+                                                                min="0" max="100" name="obtain_mark[]" placeholder="0"
                                                                 value="{{$sub->obtain_mark}}" readonly></td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="email">My Merit</label>
+                                                    <input type="text" value="{{$userMerit->merit}}" class="form-control" readonly>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +93,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    
+
                                                     @foreach($subject as $sub)
                                                     <tr>
                                                         <th>
@@ -93,7 +101,9 @@
                                                             {{$sub->name}}
                                                         </th>
                                                         <td>100</td>
-                                                        <td><input type="number" class="form-control" onKeyPress="if(this.value.length==3) return false;" min="0" max="100" name="obtain_mark[]" placeholder="0">
+                                                        <td><input type="number" class="form-control"
+                                                                onKeyPress="if(this.value.length==3) return false;"
+                                                                min="0" max="100" name="obtain_mark[]" placeholder="0">
                                                         </td>
                                                     </tr>
                                                     @endforeach
@@ -107,7 +117,9 @@
                     </div>
                     <div class="form-group row mb-none">
                         <div class="offset-md-3 col-md-9">
-                            <button class="view-all-accent-btn disabled col-md-9" type="submit">Submit</button>
+                            <button class="view-all-accent-btn disabled col-md-9" id="submit"
+                                type="submit">Submit&nbsp;<i class="fa fa-spinner fa-spin loader"
+                                    style="font-size:18px; display:none;"></i></button>
                         </div>
                     </div>
                 </form>
@@ -160,6 +172,10 @@ $(document).ready(function() {
             contentType: false,
             processData: false,
             data: new FormData(form),
+            beforeSend: function(msg) {
+                $(document).find('.loader').show();
+                $('#admission_btn').attr('disabled', true);
+            },
             success: function(res) {
                 if (res == 1) {
                     var $toast = toastr.success("Your Marks Added Successfully");

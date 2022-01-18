@@ -22,6 +22,12 @@
                                             aria-hidden="true"></i> Ragistration </a>
                                 </li>
                                 @endguest
+                                @auth('web')                  
+                                <li>
+                                    <a class="login-btn-area" href="{{route('profile')}}" id=""><i class="fa fa-user"
+                                            aria-hidden="true"></i> User Profile </a>
+                                </li>
+                                @endauth
                                 @auth('web')
                                 <li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"

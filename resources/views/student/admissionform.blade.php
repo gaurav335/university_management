@@ -52,7 +52,7 @@
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                     <div class="pLace-order mt-30">
                                         <button class="view-all-accent-btn" id="admission_btn"
-                                            type="submit">Submit</button>
+                                            type="submit">Submit&nbsp;<i class="fa fa-spinner fa-spin loader" style="font-size:18px; display:none;"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -109,6 +109,7 @@ $(document).ready(function() {
             processData: false,
             data: new FormData(form),
             beforeSend:function(msg){
+                $(document).find('.loader').show();
                 $('#admission_btn').attr('disabled', true);
             },
             success: function(res) {

@@ -33,6 +33,10 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::post('AddMarkSheet', [studentController::class, 'addStudentMarks'])->name('addstudentmarks');
     Route::post('UpdateMarkSheet', [studentController::class, 'updateStudentMarks'])->name('updatestudentmarks');
 
+    Route::get('UpdateProfile',[RagistrtionController::class,'profileUpdate'])->name('profile');
+Route::post('UpdateProfile',[RagistrtionController::class,'update'])->name('updateprofile');
+
+
     Route::get('Course', [studentController::class, 'course'])->name('course');
     Route::post('AdmissionForm', [studentController::class, 'admissionform'])->name('admissionform');
     Route::post('AddAdmissionForm', [studentController::class, 'addAdminssionForm'])->name('addadmissionform');

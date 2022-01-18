@@ -26,7 +26,8 @@ class studentController extends Controller
         $subject = Subject::where('status',1)->get();
         $subjectmarks = StudentMarks::with('subjectid')->where('user_id',Auth::user()->id)->get();
         $userid = StudentMarks::where('user_id',Auth::user()->id)->first();
-        return view("student.marksheet",compact('subject','subjectmarks','userid'));
+        $userMerit = Addmissions::where('user_id',$userid->id)->first();
+        return view("student.marksheet",compact('subject','subjectmarks','userid','userMerit'));
     }
 
     public function addStudentMarks(Request $request)

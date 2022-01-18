@@ -160,7 +160,7 @@ $(document).ready(function() {
     $("#start_date").datepicker({
         dateFormat: "yy-mm-dd",
         numberOfMonths: 1,
-        minDate: +1,
+        minDate: '0d',
         changeMonth: true,
         changeYear: true,
         onSelect: function(selected) {

@@ -14,10 +14,17 @@ class Addmissions extends Model
         'id',
         'user_id',
         'college_id',
+        'course_id',
+        'merit',
         'addmission_date',
         'addmission_code',
         'status'
     ];
 
     protected $hidden=['deleted_at'];
+
+    protected $casts = [
+        'college_id' => 'array',
+    ];
+
 }

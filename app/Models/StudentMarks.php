@@ -22,6 +22,10 @@ class StudentMarks extends Model
     public function subjectid()
     {
         return $this->belongsTo(Subject::class,'subject_id');
+    }
 
+    public function comman_seting_data()
+    {
+        return $this->hasOne(CommanSetting::class,'subject_id','subject_id');
     }
 }

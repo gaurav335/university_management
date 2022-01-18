@@ -4,10 +4,13 @@ namespace App\Repositories;
 
 use App\Interfaces\StudentInterface;
 use App\Models\User;
+use App\Models\Addmissions;
 use Illuminate\Support\Facades\Hash;
 use App\Models\StudentMarks;
+use App\Models\CommanSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use DateTime;   
 
 class StudentRepository implements StudentInterface
 {
@@ -100,6 +103,45 @@ class StudentRepository implements StudentInterface
 
     public function addAdminssionForm($data)
     {
-
+        $userid = StudentMarks::where('user_id',Auth::user()->id)->first();
+        if($userid == null){
+            return response()->json('3');
+        }else{
+            $studentmark = StudentMarks::with('comman_seting_data')->where('user_id', Auth::user()->id)->get();
+            $merit = 0;
+            $comtotal = 0;
+            foreach ($studentmark as $marks) {
+                if ($marks->obtain_mark != null) {
+                    if (isset($marks->comman_seting_data['marks'])) {
+                        $total = ($marks->obtain_mark * $marks->comman_seting_data['marks'] ?? 0) / 100;
+                        $merit = $merit + $total;
+                        $comtotal = $comtotal + $marks->comman_seting_data['marks'];
+                    }
+                } else {
+                    return response()->json('3');
+                }
+            }
+        }
+        $firstmerit = round($merit / $comtotal * 100, 2);
+        $admisionCode = generateStudentCode($data->id,strtoupper(substr($data->name,0,3)));
+        $date = new DateTime();
+        $colllege = (array)$data->college_id;
+        $admissionForm=Addmissions::create([
+            'user_id'=>Auth::user()->id,
+            'merit'=>$firstmerit,
+            'college_id'=>$colllege,
+            'course_id'=>$data->id,
+            'addmission_date'=>$date->format('Y-m-d'),
+            'addmission_code'=>$admisionCode,
+            'status'=>1,
+        ]);
+        if($admissionForm)
+        {
+            return response()->json('1');
+        }
+        else
+        {
+            return response()->json('0');
+        }
     }
 }

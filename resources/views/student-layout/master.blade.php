@@ -40,6 +40,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('student/css/style.css')}}">
     <!-- Modernizr Js -->
+        <!-- selecttor css -->
+    <link href="{{ asset('student/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 
 
     <link rel="stylesheet" href="{{ asset('student/css/custom.css')}}">
@@ -91,6 +93,8 @@
     <script src="{{ asset('student/js/jquery.gridrotator.js')}}" type="text/javascript"></script>
     <!-- Custom Js -->
     <script src="{{ asset('student/js/main.js')}}" type="text/javascript"></script>
+    <!-- selcter js -->
+    <script src="{{ asset('student/js/select2.min.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>

@@ -51,3 +51,8 @@ if (!function_exists('decryptString')) {
         return $original_plaintext;
     }
 }
+
+function generateStudentCode($id, $string)
+{
+    return strtoupper($string) . $id . rand(10000, 99999);
+}

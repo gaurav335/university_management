@@ -8,6 +8,7 @@ use App\Interfaces\StudentInterface;
 use App\Models\Subject;
 use App\Models\Course;
 use App\Models\CollegeCourse;
+use App\Models\Addmissions;
 use App\Models\StudentMarks;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,7 +48,9 @@ class studentController extends Controller
     public function admissionform(Request $request)
     {
         $college = CollegeCourse::with('collegeName')->where('course_id',$request->id)->get();
-        return view("student.admissionform",compact('college'));
+        $course = Course::where('id',$request->id)->first();
+        $userid = Addmissions::where('user_id',Auth::user()->id)->first();
+        return view("student.admissionform",compact('college','course','userid'));
     }
 
     public function addAdminssionForm(Request $request)

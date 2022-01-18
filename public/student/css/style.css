@@ -817,7 +817,7 @@ h2.sidebar-title:before {
   text-align: center;
   color: #002147 !important;
   padding: 8px 0;
-  width: 104px;
+  width: 140px;
   background: #fdc800;
   text-transform: uppercase;
   font-size: 12px;
@@ -10035,7 +10035,7 @@ ul.course-feature2 li:before {
   background: #f9f9f9;
 }
 .registration-page-area .registration-details-area span {
-  color: #333333;
+  color: white;
   text-transform: capitalize;
   letter-spacing: 1px;
 }

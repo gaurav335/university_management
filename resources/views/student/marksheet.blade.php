@@ -48,7 +48,7 @@
                                                         </th>
                                                         <td>100</td>
                                                         <td><input type="number" class="form-control" onKeyPress="if(this.value.length==3) return false;" min="0" max="100" name="obtain_mark[]" placeholder="0"
-                                                                value="{{$sub->obtain_mark}}"></td>
+                                                                value="{{$sub->obtain_mark}}" readonly></td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
@@ -59,11 +59,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row mb-none">
+                    <!-- <div class="form-group row mb-none">
                         <div class="offset-md-3 col-md-9">
                             <button class="view-all-accent-btn disabled col-md-9" type="submit">Submit</button>
                         </div>
-                    </div>
+                    </div> -->
                 </form>
                 @else
                 <form class="" id="addmarks" method="POST">

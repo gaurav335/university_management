@@ -24,6 +24,12 @@
                                 @endguest
                                 @auth('web')                  
                                 <li>
+                                    <a class="login-btn-area" href="{{route('changepassword')}}" id=""><i class="fa fa-unlock"
+                                            aria-hidden="true"></i> Change Password </a>
+                                </li>
+                                @endauth
+                                @auth('web')                  
+                                <li>
                                     <a class="login-btn-area" href="{{route('profile')}}" id=""><i class="fa fa-user"
                                             aria-hidden="true"></i> User Profile </a>
                                 </li>
@@ -34,7 +40,6 @@
                                     class="d-none">
                                     @csrf
                                 </form>
-
                                     <a class="login-btn-area" href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-lock"
                                             aria-hidden="true"></i> Logout </a>
                                 </li>

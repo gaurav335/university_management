@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('UpdateProfile',[RagistrtionController::class,'profileUpdate'])->name('profile');
 Route::post('UpdateProfile',[RagistrtionController::class,'update'])->name('updateprofile');
 
+    Route::get('ChangePassword', [RagistrtionController::class,'changePassword'])->name('changepassword');
+    Route::post('ResetPassword', [RagistrtionController::class,'resetPassword'])->name('resetpassword');
 
     Route::get('Course', [studentController::class, 'course'])->name('course');
     Route::post('AdmissionForm', [studentController::class, 'admissionform'])->name('admissionform');

@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserProfileRequest;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
 
 class RagistrtionController extends Controller
 {
@@ -65,6 +66,28 @@ class RagistrtionController extends Controller
         else
         {
             return response()->json('0');
+        }
+    }
+
+    public function changePassword()
+    {
+        return view('student.changepassword');
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $userData = User::where('id', Auth::user()->id)->first();
+
+        if (Hash::check($request->oldpassword, $userData->password)) {
+            $new = bcrypt($request->newpassword);
+            $update = User::where('id', Auth::user()->id)->update(['password' => $new]);
+            if ($update) {
+                Auth::guard('web')->logout();
+
+                return redirect()->route('logins')->with('success', 'Password Update Successfully...');
+            }
+        } else {
+            return back()->with('danger', 'Old Password does not match');
         }
     }
 }

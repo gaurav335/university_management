@@ -53,7 +53,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label class="control-label" for="first-name">Password *</label>
-                            <input type="password" name="password" class="form-control">
+                            <input type="password" name="password" id="password" class="form-control">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -102,6 +102,15 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+    //show password
+$('#check').click(function() {
+    if (document.getElementById('check').checked) {
+        $('#password').get(0).type = 'text';
+    } else {
+        $('#password').get(0).type = 'password';
+    }
+});
+
 //strong Password
 $.validator.addMethod("pwcheck", function(value, element) {
     return this.optional(element) || /^(?=.*\d)(?=.*[A-Z])(?=.*\W).*$/i.test(value);

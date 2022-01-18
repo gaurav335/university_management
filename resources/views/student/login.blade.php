@@ -12,7 +12,11 @@
         </div>
     </div>
 </div>
-
+@if($mess=Session::get('success'))
+            <div class="alert alert-success">
+                {{ $mess }}
+            </div>
+        @endif
 <div class="section-space accent-bg">
     <div class="container">
         <div class="row">

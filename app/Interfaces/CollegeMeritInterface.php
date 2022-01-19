@@ -9,5 +9,7 @@ interface CollegeMeritInterface
     public function editMeritRound($data);
     public function updateMeritRound($data);
     public function deleteMeritRound($data);
+
+    public function roundDeclare($data);
 }
 ?>

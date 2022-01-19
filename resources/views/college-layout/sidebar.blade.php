@@ -50,6 +50,12 @@
                                     <span>Merit</span>
                                 </a>
                             </li>
+                            <li>
+                            <a href="{{ route('college.studentindex') }}">
+                                    <i class="fas fa-dice-d6"></i>
+                                    <span>Student</span>
+                                </a>
+                            </li>
 
                         </ul>
                     </div>

@@ -55,12 +55,21 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            @if(isset($userMerit->merit))
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                 <div class="form-group">
                                                     <label class="control-label" for="email">My Merit</label>
                                                     <input type="text" value="{{$userMerit->merit}}" class="form-control" readonly>
                                                 </div>
                                             </div>
+                                            @else
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="email">My Merit</label>
+                                                    <input type="text" value="0" class="form-control" readonly>
+                                                </div>
+                                            </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

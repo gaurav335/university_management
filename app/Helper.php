@@ -60,35 +60,3 @@ function generateStudentCode($id, $string)
 {
     return strtoupper($string) . $id . rand(10000, 99999);
 }
-
-function studenAdmission()
-{
-    $dt = new DateTime();
-    $today = $dt->format('yy-mm-dd');
-    $MeritRound = MeritRound::where('status', '1')->get();
-    foreach ($MeritRound as $round) {
-        if ($round->merit_result_declare_date <= $today) {
-            $addmission = Addmissions::where('merit_round_id',$round->id)->where("status",'1')->get();
-                foreach($addmission as $add){
-                    foreach($add->college_id as $co_id){
-                        $CollegeMerit = CollegeMerit::where('college_id',$co_id)->where('merit_round_id',$round->id)->where('course_id',$add->course_id)->first();
-                        if($CollegeMerit){
-                            if($CollegeMerit->merit <= $add->merit){
-                            $AddmissionConfimation = AddmissionConfimation::where('addmission_id',$add->id)->where('confirm_round_id',$round->id)->first();
-                               if(empty($AddmissionConfimation)){
-                                AddmissionConfimation::create([
-                                'addmission_id' => $add->id,
-                                'confirm_college_id' => $co_id,
-                                'confirm_round_id' => $round->id,
-                                'confirm_merit' => round($add->merit,2),
-                                'confirmation_type' => "M"
-                            ]);
-                       }
-                    }
-                }
-            }
-        }
-        $CollegeMerit = CollegeMerit::where('merit_round_id',$round->id)->get();
-        }
-    }
-}

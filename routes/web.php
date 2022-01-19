@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::post('AddAdmissionForm', [studentController::class, 'addAdminssionForm'])->name('addadmissionform');
 
     Route::get('MyAddmission',[studentController::class,'myAddmission'])->name('myaddmission');
+    Route::post('confirmaddmission',[studentController::class,'confirmAddmission'])->name('confirmaddmission');
 
 
 });

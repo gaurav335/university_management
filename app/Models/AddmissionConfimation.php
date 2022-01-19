@@ -29,4 +29,9 @@ class AddmissionConfimation extends Model
     {
         return $this->belongsTo(College::class,'confirm_college_id');
     }
+
+    public function roundDeclarationDate()
+    {
+        return $this->belongsTo(MeritRound::class,'confirm_round_id');
+    }
 }

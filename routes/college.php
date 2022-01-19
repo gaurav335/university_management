@@ -5,6 +5,7 @@ use App\Http\Controllers\college\auth\LoginController;
 use App\Http\Controllers\college\DashboardController;
 use App\Http\Controllers\college\CollegeCourseController;
 use App\Http\Controllers\college\CollegeMeritController;
+use App\Http\Controllers\college\StudentController;
 
 Route::group(['namespace' => 'shop'], function () {
     Route::get('/', [LoginController::class, 'loginPage'])->name('logins');
@@ -42,5 +43,9 @@ Route::group(['middleware'=>'auth:college'],function(){
     Route::post('EditMeritRound',[CollegeMeritController::class,'editMeritRound'])->name('editmeritround');
     Route::post('UpdateMeritRound',[CollegeMeritController::class,'updateMeritRound'])->name('updatemeritround');
     Route::post('DeleteMeritRound',[CollegeMeritController::class,'deleteMeritRound'])->name('deletemeritround');
+
+    //student
+    Route::get('studentindex',[StudentController::class,'studentIndex'])->name('studentindex');
+    Route::post('RoundDeclare',[StudentController::class,'roundDeclare'])->name('rounddeclare');
 
 });

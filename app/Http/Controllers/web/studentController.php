@@ -27,7 +27,7 @@ class studentController extends Controller
         $subject = Subject::where('status',1)->get();
         $subjectmarks = StudentMarks::with('subjectid')->where('user_id',Auth::user()->id)->get();
         $userid = StudentMarks::where('user_id',Auth::user()->id)->first();
-        $userMerit = Addmissions::where('user_id',$userid->id)->first();
+        $userMerit = Addmissions::where('user_id',Auth::user()->id)->first();
         return view("student.marksheet",compact('subject','subjectmarks','userid','userMerit'));
     }
 
@@ -68,12 +68,25 @@ class studentController extends Controller
         $addmissionconfirmation = [];
         foreach($userid as $user)
         {
-            $addmission= AddmissionConfimation::with('admissionData','collegeName')->where('addmission_id',$user->id)->get();
+            $addmission= AddmissionConfimation::with('roundDeclarationDate','admissionData','collegeName')->where('addmission_id',$user->id)->get();
             if($addmission)
             {
                 $addmissionconfirmation[]=$addmission;
             }
         }
         return view("student.myadddmissiob",compact('addmissionconfirmation'));
+    }
+
+    public function confirmAddmission(Request $request)
+    {
+        $add = Addmissions::where('id',$request->id)->update(['status' => $request->status]);
+        $addInfo = Addmissions::where('id',$request->id)->first();
+
+        if($addInfo->status == "0")
+        {
+            return response()->json('0');
+        } else {
+            return response()->json('1');
+        }
     }
 }

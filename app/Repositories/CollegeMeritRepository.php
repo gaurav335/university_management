@@ -6,6 +6,9 @@ use App\Interfaces\CollegeMeritInterface;
 use App\Models\CollegeMerit;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MeritRound;
+use App\Models\Addmissions;
+use App\Models\AddmissionConfimation;
+
 
 class CollegeMeritRepository implements CollegeMeritInterface
 {
@@ -71,5 +74,25 @@ class CollegeMeritRepository implements CollegeMeritInterface
         {
             return response()->json('0');
         }
+    }
+
+    public function roundDeclare($data)
+    {
+        $idArray = explode(',', $data->id);
+        if($data->id == null)
+        {
+            return response()->json('2');
+        }
+        foreach ($idArray as $admissions) {
+            $admission = Addmissions::where('id',$admissions)->first();
+            AddmissionConfimation::create([
+                'addmission_id' => $admission->id,
+                'confirm_college_id' =>Auth::user()->id,
+                'confirm_round_id' => $data->did,
+                'confirm_merit' => $admission->merit,
+            ]);
+        }
+       
+            return response()->json('1');
     }
 }

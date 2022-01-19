@@ -50,8 +50,9 @@ class studentController extends Controller
     {
         $college = CollegeCourse::with('collegeName')->where('course_id',$request->id)->get();
         $course = Course::where('id',$request->id)->first();
-        $userid = Addmissions::where('user_id',Auth::user()->id)->first();
-        return view("student.admissionform",compact('college','course','userid'));
+        $userid = Addmissions::where('user_id',Auth::user()->id)->get();
+        $usercheckcourse = Addmissions::where('user_id',Auth::user()->id)->where('course_id',$request->id)->first();
+        return view("student.admissionform",compact('college','course','userid','usercheckcourse'));
     }
 
     public function addAdminssionForm(Request $request)

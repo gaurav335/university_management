@@ -20,7 +20,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="form-group">
                     <label class="control-label">Select College</label>
-                    @if(isset($userid->user_id))
+                    @if(isset($usercheckcourse->user_id))
                     <form method="post">
                         <input type="hidden" name="id" value="{{$course->id}}">
                         <input type="hidden" name="name" value="{{$course->name}}">
@@ -29,10 +29,18 @@
                                 <select name="college_id[]" id="college_id"
                                     class="form-control js-example-basic-single abc" multiple="multiple">
                                     @foreach($college as $col)
-                                    <option value="{{$col->collegeName->id}}" @if (in_array($col->collegeName->id,$userid->college_id)) selected @endif >{{$col->collegeName->name}}</option>
+                                    <option value="{{$col->collegeName->id}}" @if (in_array($col->collegeName->id,$usercheckcourse->college_id)) selected @endif >{{$col->collegeName->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            <!-- <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="pLace-order mt-30">
+                                        <button class="view-all-accent-btn" id="admission_btn"
+                                            type="submit">Submit&nbsp;<i class="fa fa-spinner fa-spin loader" style="font-size:18px; display:none;"></i></button>
+                                    </div>
+                                </div>
+                            </div> -->
                         </div>
                     </form>
                     @else

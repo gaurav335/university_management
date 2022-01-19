@@ -51,11 +51,10 @@
                                             aria-hidden="true"></i> Login </a>
                                 </li>
                                 @endguest
-                                @auth('web')
+                                @auth('web')                  
                                 <li>
-                                    <div class="apply-btn-area">
-                                        <a href="#" class="apply-now-btn">Admission Apply Now</a>
-                                    </div>
+                                    <a class="login-btn-area" href="{{route('myaddmission')}}" id=""><i class="fa fa-book"
+                                            aria-hidden="true"></i> My Addmission </a>
                                 </li>
                                 @endauth
                             </ul>

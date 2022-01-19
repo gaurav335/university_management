@@ -27,4 +27,9 @@ class Addmissions extends Model
         'college_id' => 'array',
     ];
 
+    public function courseName()
+    {
+        return $this->belongsTo(Course::class,'course_id');
+    }
+
 }

@@ -10,6 +10,7 @@ use App\Models\Course;
 use App\Models\CollegeCourse;
 use App\Models\Addmissions;
 use App\Models\StudentMarks;
+use App\Models\AddmissionConfimation;
 use Illuminate\Support\Facades\Auth;
 
 class studentController extends Controller
@@ -58,5 +59,21 @@ class studentController extends Controller
     public function addAdminssionForm(Request $request)
     {
         return $this->student->addAdminssionForm($request);
+    }
+
+    public function myAddmission(Request $request)
+    {
+        
+        $userid = Addmissions::where('user_id',Auth::user()->id)->where('status','!=',1)->get();
+        $addmissionconfirmation = [];
+        foreach($userid as $user)
+        {
+            $addmission= AddmissionConfimation::with('admissionData','collegeName')->where('addmission_id',$user->id)->get();
+            if($addmission)
+            {
+                $addmissionconfirmation[]=$addmission;
+            }
+        }
+        return view("student.myadddmissiob",compact('addmissionconfirmation'));
     }
 }

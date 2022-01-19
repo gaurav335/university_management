@@ -16,7 +16,7 @@ class CollegeMeritRepository implements CollegeMeritInterface
 
     public function addMeritRound($data)
     {
-        $count=CollegeMerit::where(['course_id'=>$data->course_id,'merit_round_id'=>$data->merit_round_id])->count();
+        $count=CollegeMerit::where(['course_id'=>$data->course_id,'merit_round_id'=>$data->merit_round_id,'college_id'=>Auth::user()->id])->count();
         if($count>=1)
         {
             return response()->json('2');

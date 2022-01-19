@@ -20,4 +20,13 @@ class AddmissionConfimation extends Model
     ];
     protected $hidden=['deleted_at'];
 
+    public function admissionData()
+    {
+        return $this->belongsTo(Addmissions::class,'addmission_id');
+    }
+
+    public function collegeName()
+    {
+        return $this->belongsTo(College::class,'confirm_college_id');
+    }
 }

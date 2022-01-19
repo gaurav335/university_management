@@ -63,7 +63,7 @@ class studentController extends Controller
 
     public function myAddmission(Request $request)
     {
-        
+    
         $userid = Addmissions::where('user_id',Auth::user()->id)->where('status','!=',1)->get();
         $addmissionconfirmation = [];
         foreach($userid as $user)

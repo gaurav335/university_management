@@ -3,8 +3,9 @@
 namespace App\DataTables\college;
 
 use App\Models\Addmissions;
-use App\Models\User;
 use App\Models\Course;
+use App\Models\AddmissionConfimation;
+use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -12,7 +13,7 @@ use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Facades\Auth;
 
-class StudentDataTable extends DataTable
+class AdmissionConfirmDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -24,16 +25,22 @@ class StudentDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->editColumn('user_id', function ($data) {
-                $course =  User::where('id', $data->user_id)->first();
+            ->addColumn('user_id', function ($data) {
+                $user =  Addmissions::where('id', $data->addmission_id)->first();
+                $username =  User::where('id', $user->user_id)->first();
+                return  $username->name;
+            })
+            ->addColumn('course_id', function ($data) {
+                $user =  Addmissions::where('id', $data->addmission_id)->first();
+                $course =  Course::where('id', $user->course_id)->first();
                 return  $course->name;
             })
-            ->editColumn('course_id', function ($data) {
-                $course =  Course::where('id', $data->course_id)->first();
-                return  $course->name;
-            })
-            ->editColumn('checkbox', function ($data) {
-                return '<input type="checkbox" class="singlecheck" value="'.$data->id.'" >';
+            ->editColumn('confirmation_type', function ($data) {
+                if($data->confirmation_type == "M"){
+                    return 'Merit Base';
+                }elseif($data->confirmation_type == 2){
+                    return 'Reserved Base';
+                }
             })
             ->editColumn('status', function ($data) {
                 if($data->status == 1){
@@ -46,20 +53,19 @@ class StudentDataTable extends DataTable
                     return 'Admission';
                 }
             })
-            ->rawColumns(['course_id','status','checkbox','user_id'])
-            ->addIndexColumn();    
-    }
+            ->rawColumns(['confirmation_type','course_id','user_id','status'])
+            ->addIndexColumn();
+        }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Addmissions $model
+     * @param \App\Models\AddmissionConfimation $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Addmissions $model)
+    public function query(AddmissionConfimation $model)
     {
-
-        return $model->where('college_id','like',"%".Auth::user()->id."%")->newQuery();
+        return $model->where('confirm_college_id',Auth::user()->id)->where('status',1)->newQuery();
     }
 
     /**
@@ -70,16 +76,8 @@ class StudentDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('college-student-table')
-                    ->columns($this->getColumns(),[
-                        'checkbox' => [
-                            'orderable' => false,
-                            'searchable' => false,
-                            'printable' => false,
-                            'exportable' => false,
-                            'class'=>'check',
-                        ]
-                    ])
+                    ->setTableId('college-admissionconfirm-table')
+                    ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Bflrtip')
                     ->orderBy(1)
@@ -100,12 +98,11 @@ class StudentDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('checkbox')->addClass('check')->searchable(false)->orderable(false),
             Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
             Column::make('id')->hidden(true),
             Column::make('user_id')->title('User Name'),
-            Column::make('course_id')->title('Course Round'),
-            Column::make('merit')->title('Merit'),
+            Column::make('course_id')->title('Course Name'),
+            Column::make('confirmation_type')->title('Confirmation Type'),
             Column::make('status')->title('Admission Status'),
         ];
     }
@@ -117,6 +114,6 @@ class StudentDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'college/Student_' . date('YmdHis');
+        return 'college/AdmissionConfirm_' . date('YmdHis');
     }
 }

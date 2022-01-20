@@ -47,5 +47,7 @@ Route::group(['middleware'=>'auth:college'],function(){
     //student
     Route::get('studentindex',[StudentController::class,'studentIndex'])->name('studentindex');
     Route::post('RoundDeclare',[StudentController::class,'roundDeclare'])->name('rounddeclare');
+    Route::get('ConfirmAdmission',[StudentController::class,'confirmAddmissionIndex'])->name('confirmaddmissionindex');
+    Route::get('RejectedAdmission',[StudentController::class,'rejectedAddmissionIndex'])->name('rejectedaddmissionindex');
 
 });

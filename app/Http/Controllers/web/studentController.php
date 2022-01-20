@@ -84,7 +84,7 @@ class studentController extends Controller
     public function confirmAddmission(Request $request)
     {
         $add = Addmissions::where('id',$request->id)->update(['status' => $request->status]);
-        $add = AddmissionConfimation::where('id',$request->acid)->update(['status' => $request->status]);
+        $add = AddmissionConfimation::where('id',$request->acid)->update(['status' => $request->status,'confirmation_type'=>'M']);
         $addInfo = Addmissions::where('id',$request->id)->first();
 
         if($addInfo->status == "0")

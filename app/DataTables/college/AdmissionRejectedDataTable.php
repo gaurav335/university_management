@@ -3,8 +3,8 @@
 namespace App\DataTables\college;
 
 use App\Models\Addmissions;
-use App\Models\User;
 use App\Models\Course;
+use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Facades\Auth;
 
-class StudentDataTable extends DataTable
+class AdmissionRejectedDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -32,9 +32,6 @@ class StudentDataTable extends DataTable
                 $course =  Course::where('id', $data->course_id)->first();
                 return  $course->name;
             })
-            ->editColumn('checkbox', function ($data) {
-                return '<input type="checkbox" class="singlecheck" value="'.$data->id.'" >';
-            })
             ->editColumn('status', function ($data) {
                 if($data->status == 1){
                     return 'Confirm';
@@ -47,7 +44,7 @@ class StudentDataTable extends DataTable
                 }
             })
             ->rawColumns(['course_id','status','checkbox','user_id'])
-            ->addIndexColumn();    
+            ->addIndexColumn();
     }
 
     /**
@@ -58,8 +55,7 @@ class StudentDataTable extends DataTable
      */
     public function query(Addmissions $model)
     {
-
-        return $model->where('college_id','like',"%".Auth::user()->id."%")->newQuery();
+        return $model->where('college_id','like',"%".Auth::user()->id."%")->where('status','!=',1)->newQuery();
     }
 
     /**
@@ -70,16 +66,8 @@ class StudentDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('college-student-table')
-                    ->columns($this->getColumns(),[
-                        'checkbox' => [
-                            'orderable' => false,
-                            'searchable' => false,
-                            'printable' => false,
-                            'exportable' => false,
-                            'class'=>'check',
-                        ]
-                    ])
+                    ->setTableId('college-admissionrejected-table')
+                    ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Bflrtip')
                     ->orderBy(1)
@@ -100,7 +88,6 @@ class StudentDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('checkbox')->addClass('check')->searchable(false)->orderable(false),
             Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
             Column::make('id')->hidden(true),
             Column::make('user_id')->title('User Name'),
@@ -117,6 +104,6 @@ class StudentDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'college/Student_' . date('YmdHis');
+        return 'college/AdmissionRejected_' . date('YmdHis');
     }
 }

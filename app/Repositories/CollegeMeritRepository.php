@@ -90,10 +90,11 @@ class CollegeMeritRepository implements CollegeMeritInterface
                 'confirm_college_id' =>Auth::user()->id,
                 'confirm_round_id' => $data->did,
                 'confirm_merit' => $admission->merit,
-                'status'=>2
+                'status'=>2,
+                'confirmation_type'=>'P'
             ]);
         }
        
-            return response()->json('1');
+        return response()->json('1');
     }
 }

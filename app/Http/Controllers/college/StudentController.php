@@ -8,6 +8,8 @@ use App\Models\MeritRound;
 use DateTime;
 use App\Interfaces\CollegeMeritInterface;
 use App\DataTables\college\StudentDataTable;
+use App\DataTables\college\AdmissionRejectedDataTable;
+use App\DataTables\college\AdmissionConfirmDataTable;
 
 class StudentController extends Controller
 {
@@ -29,5 +31,15 @@ class StudentController extends Controller
     public function roundDeclare(Request $request)
     {
         return $this->student->roundDeclare($request);
+    }
+
+    public function confirmAddmissionIndex(AdmissionConfirmDataTable $confirmDatatable)
+    {
+        return $confirmDatatable->render('college.addmission.confirmaddmission');
+    }
+
+    public function rejectedAddmissionIndex(AdmissionRejectedDataTable $rejctedDatatable)
+    {
+        return $rejctedDatatable->render('college.addmission.rejectedaddmission');
     }
 }

@@ -56,6 +56,13 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label>Admission Confirmation Date</label>
+                                            <input type="text" name="admission_confirm_date"
+                                                id="admission_confirm_date" class="form-control"
+                                                placeholder="Admission Confirm Date..." />
+                                        </div>
+
+                                        <div class="form-group">
                                             <div>
                                                 <button type="submit" class="btn btn-primary waves-effect waves-light">
                                                     Submit
@@ -105,6 +112,13 @@
                                             <input type="text" name="merit_result_declare_date"
                                                 id="meritresultdeclaredate" class="form-control"
                                                 placeholder="Merit Result Declare Date..." />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Admission Confirmation Date</label>
+                                            <input type="text" name="admission_confirm_date"
+                                                id="admissionconfirmdate" class="form-control"
+                                                placeholder="Admission Confirm Date..." />
                                         </div>
 
                                         <div class="form-group">
@@ -185,6 +199,19 @@ $(document).ready(function() {
     $("#merit_result_declare_date").datepicker({
         dateFormat: "yy-mm-dd",
         numberOfMonths: 1,
+        minDate: new Date(),
+        changeMonth: true,
+        changeYear: true,
+        onSelect: function(selected) {
+            var edate = new Date(selected);
+            edate.setDate(edate.getDate() + 1);
+            $("#admission_confirm_date").datepicker("option", "minDate", edate);
+        }
+    });
+
+    $("#admission_confirm_date").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
         changeMonth: true,
         changeYear: true,
     });
@@ -195,7 +222,7 @@ $(document).ready(function() {
     $("#startdate").datepicker({
         dateFormat: "yy-mm-dd",
         numberOfMonths: 1,
-        minDate: +1,
+        minDate: '0d',
         changeMonth: true,
         changeYear: true,
         onSelect: function(selected) {
@@ -218,6 +245,19 @@ $(document).ready(function() {
     });
 
     $("#meritresultdeclaredate").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
+        minDate: new Date(),
+        changeMonth: true,
+        changeYear: true,
+        onSelect: function(selected) {
+            var edate = new Date(selected);
+            edate.setDate(edate.getDate() + 1);
+            $("#admissionconfirmdate").datepicker("option", "minDate", edate);
+        }
+    });
+
+    $("#admissionconfirmdate").datepicker({
         dateFormat: "yy-mm-dd",
         numberOfMonths: 1,
         changeMonth: true,
@@ -334,8 +374,8 @@ $(document).on('click', '.edit-btn', function() {
                 $("#meritround_edit_model").find('#id').val(res.id);
                 $("#meritround_edit_model").find('#startdate').val(res.start_date);
                 $("#meritround_edit_model").find('#enddate').val(res.end_date);
-                $("#meritround_edit_model").find('#meritresultdeclaredate').val(res
-                    .merit_result_declare_date);
+                $("#meritround_edit_model").find('#meritresultdeclaredate').val(res.merit_result_declare_date);
+                $("#meritround_edit_model").find('#admissionconfirmdate').val(res.admission_confirm_date);
             }
 
         }

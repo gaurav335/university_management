@@ -16,7 +16,8 @@ class AddmissionConfimation extends Model
         'confirm_college_id',
         'confirm_round_id',
         'confirm_merit',
-        'confirmation_type'
+        'confirmation_type',
+        'status'
     ];
     protected $hidden=['deleted_at'];
 

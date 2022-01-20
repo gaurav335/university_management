@@ -26,6 +26,7 @@ class MeritRoundRepository implements MeritRoundInterface
             'start_date'=>$data->start_date,
             'end_date'=>$data->end_date,
             'merit_result_declare_date'=>$data->merit_result_declare_date,
+            'admission_confirm_date'=>$data->admission_confirm_date,
         ]);
 
         if($addmeritround)
@@ -49,7 +50,8 @@ class MeritRoundRepository implements MeritRoundInterface
         $update=MeritRound::where('id',$data->id)->update([
             'start_date'=>$data->start_date,
             'end_date'=>$data->end_date,
-            'merit_result_declare_date'=>$data->merit_result_declare_date
+            'merit_result_declare_date'=>$data->merit_result_declare_date,
+            'admission_confirm_date'=>$data->admission_confirm_date,
         ]);
 
         if($update)

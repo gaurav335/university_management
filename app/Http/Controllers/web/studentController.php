@@ -12,6 +12,7 @@ use App\Models\Addmissions;
 use App\Models\StudentMarks;
 use App\Models\AddmissionConfimation;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
 
 class studentController extends Controller
 {
@@ -64,7 +65,9 @@ class studentController extends Controller
     public function myAddmission(Request $request)
     {
     
-        $userid = Addmissions::where('user_id',Auth::user()->id)->where('status','!=',1)->get();
+        $date = new DateTime();
+        $today = $date->format('Y-m-d');
+        $userid = Addmissions::where('user_id',Auth::user()->id)->get();
         $addmissionconfirmation = [];
         foreach($userid as $user)
         {
@@ -73,13 +76,15 @@ class studentController extends Controller
             {
                 $addmissionconfirmation[]=$addmission;
             }
+            $userAddmissionConfirom= AddmissionConfimation::with('roundDeclarationDate','admissionData','collegeName')->where('status',1)->where('addmission_id',$user->id)->first();
         }
-        return view("student.myadddmissiob",compact('addmissionconfirmation'));
+        return view("student.myadddmissiob",compact('addmissionconfirmation','today','userAddmissionConfirom'));
     }
 
     public function confirmAddmission(Request $request)
     {
         $add = Addmissions::where('id',$request->id)->update(['status' => $request->status]);
+        $add = AddmissionConfimation::where('id',$request->acid)->update(['status' => $request->status]);
         $addInfo = Addmissions::where('id',$request->id)->first();
 
         if($addInfo->status == "0")

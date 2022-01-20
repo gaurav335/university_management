@@ -94,6 +94,7 @@ class MeritRoundDataTable extends DataTable
             Column::make('start_date')->title('Merit Round Start Date'),
             Column::make('end_date')->title('Merit Round End Date'),
             Column::make('merit_result_declare_date')->title('Merit Result Declare Date'),
+            Column::make('admission_confirm_date')->title('Admission Confirmation Date'),
             Column::make('status')->title('Status'),
             Column::computed('action')
             ->exportable(false)

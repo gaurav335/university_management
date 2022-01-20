@@ -16,7 +16,8 @@ class MeritRound extends Model
         'course_id',
         'start_date',
         'end_date',
-        'merit_result_declare_date'
+        'merit_result_declare_date',
+        'admission_confirm_date'
     ];
     protected $hidden=['deleted_at'];
 

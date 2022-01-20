@@ -59,7 +59,7 @@
                                                 4)
                                                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                                                     <div class="pLace-order mt-30">
-                                                        <button class="view-all-accent-btn disabled status"
+                                                        <button class="view-all-accent-btn disabled status" data-cid="{{$con->admissionData->course_id}}"
                                                             data-status="0" data-acid="{{$con->id}}" data-sid="{{$con->admissionData->id}}"
                                                             type="submit">Next</button>
                                                     </div>
@@ -69,7 +69,7 @@
                                                 $con->roundDeclarationDate->admission_confirm_date <= $today) <div
                                                     class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                                                     <div class="pLace-order mt-30">
-                                                        <button class="view-all-accent-btn disabled status"
+                                                        <button class="view-all-accent-btn disabled status" data-clgid="{{$con->collegeName->id}}" data-cid="{{$con->admissionData->course_id}}"
                                                             data-status="1" data-acid="{{$con->id}}" data-sid="{{$con->admissionData->id}}"
                                                             type="submit">Confirm</button>
                                                     </div>
@@ -100,6 +100,9 @@ $(document).on('click', '.status', function() {
     var status = $(this).data('status');
     var id = $(this).data('sid');
     var acid = $(this).data('acid');
+    var cid = $(this).data('cid');
+    var clgid = $(this).data('clgid');
+
     console.log(status);
     if (status == 0) {
         var statues = confirm('are you want to sure Next Round!')
@@ -119,7 +122,10 @@ $(document).on('click', '.status', function() {
             data: {
                 'status': status,
                 'id': id,
-                'acid':acid
+                'acid':acid,
+                'cid':cid,
+                'clgid':clgid,
+                
             },
             success: function(res) {
                 if (res == 0) {
@@ -131,6 +137,13 @@ $(document).on('click', '.status', function() {
                 }
                 if (res == 1) {
                     var $toast = toastr.success("Your Addmission is Confirm");
+                    setTimeout(function() {
+                        $toast.fadeOut(4000);
+                        location.reload();
+                    }, 3000)
+                }
+                if (res == 2) {
+                    var $toast = toastr.error("Addmission Seat is Full For This College");
                     setTimeout(function() {
                         $toast.fadeOut(4000);
                         location.reload();

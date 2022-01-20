@@ -13,6 +13,8 @@ use App\Models\StudentMarks;
 use App\Models\AddmissionConfimation;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
+use Illuminate\Support\Facades\DB;
+
 
 class studentController extends Controller
 {
@@ -83,9 +85,24 @@ class studentController extends Controller
 
     public function confirmAddmission(Request $request)
     {
-        $add = Addmissions::where('id',$request->id)->update(['status' => $request->status]);
-        $add = AddmissionConfimation::where('id',$request->acid)->update(['status' => $request->status,'confirmation_type'=>'M']);
-        $addInfo = Addmissions::where('id',$request->id)->first();
+    //    $admissionConfirmationMerit = AddmissionConfimation::where('id',$request->acid)->where('confirmation_type',"M")->where('status',1)->count();
+        $admissionCon = DB::table('addmission_confirmations')
+        ->join('addmissions','addmission_confirmations.addmission_id','=','addmissions.id')
+        ->where("addmission_confirmations.confirmation_type","M")
+        ->where("addmission_confirmations.status","1")
+        ->where("addmissions.course_id",$request->cid)
+        ->count();
+
+        $mertiSeat = CollegeCourse::where('college_id',$request->clgid)->where('course_id',$request->cid)->first();
+        if($admissionCon < $mertiSeat->merit_seat)
+        {
+            $add = Addmissions::where('id',$request->id)->update(['status' => $request->status]);
+            $add = AddmissionConfimation::where('id',$request->acid)->update(['status' => $request->status,'confirmation_type'=>'M']);
+            $addInfo = Addmissions::where('id',$request->id)->first();
+        }
+        else{
+            return response()->json('2');
+        }
 
         if($addInfo->status == "0")
         {

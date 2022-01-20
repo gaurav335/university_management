@@ -102,6 +102,7 @@ class AdmissionConfirmDataTable extends DataTable
             Column::make('id')->hidden(true),
             Column::make('user_id')->title('User Name'),
             Column::make('course_id')->title('Course Name'),
+            Column::make('confirm_merit')->title('Student Merit'),
             Column::make('confirmation_type')->title('Confirmation Type'),
             Column::make('status')->title('Admission Status'),
         ];

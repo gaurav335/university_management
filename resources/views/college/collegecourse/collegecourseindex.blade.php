@@ -87,15 +87,6 @@
                                     <form method="POST" enctype="multipart/form-data" id="collegecourse_edit_form">
                                         @csrf
                                         <input type="hidden" id="id" name="id">
-                                        <div class="form-group">
-                                            <label>Course Name</label>
-                                            <select name="course_id" id="course_id" class="form-control">
-                                                <option value="">-- Select Course --</option>
-                                                @foreach($cours as $course)
-                                                <option value="{{ $course->id}}">{{$course->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
 
                                         <div class="form-group">
                                             <label>Reserved Seat</label>
@@ -254,7 +245,6 @@ $(document).on('click', '.edit-btn', function() {
             if (res) {
 
                 $("#collegecourse_edit_modal").find('#id').val(res.id);
-                $("#collegecourse_edit_modal").find('#course_id').val(res.course_id);
                 $("#collegecourse_edit_modal").find('#reserved_seat').val(res.reserved_seat);
                 $("#collegecourse_edit_modal").find('#merit_seat').val(res.merit_seat);
             }

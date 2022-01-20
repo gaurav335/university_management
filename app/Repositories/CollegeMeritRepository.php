@@ -7,6 +7,7 @@ use App\Models\CollegeMerit;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MeritRound;
 use App\Models\Addmissions;
+use App\Models\CollegeCourse;
 use App\Models\AddmissionConfimation;
 
 
@@ -78,21 +79,29 @@ class CollegeMeritRepository implements CollegeMeritInterface
 
     public function roundDeclare($data)
     {
+        $admissionConfirmationMerit = AddmissionConfimation::where('confirm_college_id',Auth::user()->id)->where('confirmation_type',"M")->where('status',1)->count();
+        $admissionConfirmationReseverd = AddmissionConfimation::where('confirm_college_id',Auth::user()->id)->where('confirmation_type',"R")->where('status',1)->count();
         $idArray = explode(',', $data->id);
         if($data->id == null)
         {
             return response()->json('2');
         }
+        
         foreach ($idArray as $admissions) {
             $admission = Addmissions::where('id',$admissions)->first();
-            AddmissionConfimation::create([
-                'addmission_id' => $admission->id,
-                'confirm_college_id' =>Auth::user()->id,
-                'confirm_round_id' => $data->did,
-                'confirm_merit' => $admission->merit,
-                'status'=>2,
-                'confirmation_type'=>'P'
-            ]);
+            $collegecourse = CollegeCourse::where('college_id',Auth::user()->id)->where('course_id',$admission->course_id)->first();
+            // $a = $collegecourse->merit_seat - $admissionConfirmationMerit;
+            // if($admissionConfirmationMerit <= $collegecourse->merit_seat)
+            // {
+                AddmissionConfimation::create([
+                    'addmission_id' => $admission->id,
+                    'confirm_college_id' =>Auth::user()->id,
+                    'confirm_round_id' => $data->did,
+                    'confirm_merit' => $admission->merit,
+                    'status'=>2,
+                    'confirmation_type'=>'P'
+                ]);
+            // }
         }
        
         return response()->json('1');

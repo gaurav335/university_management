@@ -26,7 +26,6 @@ class CollegeCourseRequest extends FormRequest
         $id = $this->id;
         if($this->id != Null){
             return [
-                'course_id' => 'required|unique:college_courses,course_id,'.$id.',id,deleted_at,NULL',
                 'reserved_seat' => 'required',
                 'merit_seat' => 'required',
             ];

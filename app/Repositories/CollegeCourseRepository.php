@@ -37,7 +37,6 @@ class CollegeCourseRepository implements CollegeCourseInterface
     public function updateCollegeCourse($data)
     {
         $update=CollegeCourse::where('id',$data->id)->update([
-            'course_id'=>$data->course_id,
             'reserved_seat'=>$data->reserved_seat,
             'merit_seat'=>$data->merit_seat,
             'seat_no'=>$data->reserved_seat + $data->merit_seat,

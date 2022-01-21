@@ -38,7 +38,7 @@ class AdmissionConfirmDataTable extends DataTable
             ->editColumn('confirmation_type', function ($data) {
                 if($data->confirmation_type == "M"){
                     return 'Merit Base';
-                }elseif($data->confirmation_type == 2){
+                }elseif($data->confirmation_type == "R"){
                     return 'Reserved Base';
                 }
             })

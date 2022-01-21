@@ -42,4 +42,9 @@ class StudentController extends Controller
     {
         return $rejctedDatatable->render('college.addmission.rejectedaddmission');
     }
+
+    public function rejctedConfirmation(Request $request)
+    {
+        return $this->student->rejctedConfirmation($request);
+    }
 }

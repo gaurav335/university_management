@@ -11,5 +11,6 @@ interface CollegeMeritInterface
     public function deleteMeritRound($data);
 
     public function roundDeclare($data);
+    public function rejctedConfirmation($data);
 }
 ?>

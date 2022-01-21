@@ -3,6 +3,7 @@
 namespace App\DataTables\college;
 
 use App\Models\Addmissions;
+use App\Models\AddmissionConfimation;
 use App\Models\Course;
 use App\Models\User;
 use Yajra\DataTables\Html\Button;
@@ -24,6 +25,13 @@ class AdmissionRejectedDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addColumn('action',function($data){
+                $result="";
+                $addmissionConfirm =  AddmissionConfimation::where('addmission_id', $data->id)->first();
+                $admissioCourse =  Addmissions::where('id', $data->id)->first();
+                $result.='<button type="button" data-clgid="'.$addmissionConfirm->confirm_college_id.'" data-cid="'.$data->course_id.'" data-acid="'.$addmissionConfirm->id.'" data-id="'.$data->id.'" class="btn confirm btn-outline-success waves-effect waves-light" title="Confirmation" data-status="1" ><i class="fas fa-book" ></i></button>';
+                return $result;
+            })
             ->editColumn('user_id', function ($data) {
                 $course =  User::where('id', $data->user_id)->first();
                 return  $course->name;
@@ -43,7 +51,7 @@ class AdmissionRejectedDataTable extends DataTable
                     return 'Admission';
                 }
             })
-            ->rawColumns(['course_id','status','checkbox','user_id'])
+            ->rawColumns(['course_id','action','status','checkbox','user_id'])
             ->addIndexColumn();
     }
 
@@ -94,6 +102,11 @@ class AdmissionRejectedDataTable extends DataTable
             Column::make('course_id')->title('Course Name'),
             Column::make('merit')->title('Merit'),
             Column::make('status')->title('Admission Status'),
+            Column::computed('action')
+            ->exportable(false)
+            ->printable(false)
+            ->width(60)
+            ->addClass('text-center'),
         ];
     }
 

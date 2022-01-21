@@ -9,6 +9,7 @@ use App\Models\MeritRound;
 use App\Models\Addmissions;
 use App\Models\CollegeCourse;
 use App\Models\AddmissionConfimation;
+use Illuminate\Support\Facades\DB;
 
 
 class CollegeMeritRepository implements CollegeMeritInterface
@@ -105,5 +106,28 @@ class CollegeMeritRepository implements CollegeMeritInterface
         }
        
         return response()->json('1');
+    }
+
+    public function rejctedConfirmation($data)
+    {
+        $admissionCon = DB::table('addmission_confirmations')
+        ->join('addmissions','addmission_confirmations.addmission_id','=','addmissions.id')
+        ->where("addmission_confirmations.confirmation_type","R")
+        ->where("addmission_confirmations.status","1")
+        ->where("addmissions.course_id",$data->cid)
+        ->count();
+
+        $mertiSeat = CollegeCourse::where('college_id',$data->clgid)->where('course_id',$data->cid)->first();
+        if($admissionCon < $mertiSeat->merit_seat)
+        {
+            $add = Addmissions::where('id',$data->id)->update(['status' => $data->status]);
+            $add = AddmissionConfimation::where('id',$data->acid)->update(['status' => $data->status,'confirmation_type'=>'R']);
+            $addInfo = Addmissions::where('id',$data->id)->first();
+        }
+        else{
+            return response()->json('2');
+        }
+
+            return response()->json('1');
     }
 }

@@ -85,7 +85,6 @@ class studentController extends Controller
 
     public function confirmAddmission(Request $request)
     {
-    //    $admissionConfirmationMerit = AddmissionConfimation::where('id',$request->acid)->where('confirmation_type',"M")->where('status',1)->count();
         $admissionCon = DB::table('addmission_confirmations')
         ->join('addmissions','addmission_confirmations.addmission_id','=','addmissions.id')
         ->where("addmission_confirmations.confirmation_type","M")

@@ -16,7 +16,7 @@ class CollegeCourse extends Model
         'course_id',
         'seat_no',
         'reserved_seat',
-        '   '
+        'merit_seat'
     ];
 
     public function courseName()

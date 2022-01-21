@@ -80,6 +80,10 @@ $(document).on('click', '#declare_round', function() {
                 toastr.error('Please Select The User!');
                 $('#college-student-table').DataTable().ajax.reload();
             }
+            if (res.type == 3) {
+                toastr.error('Addmission Merit Seat is Full in '+res.course+' Course!');
+                $('#college-student-table').DataTable().ajax.reload();
+            }
         }
     })
 });

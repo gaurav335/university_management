@@ -59,7 +59,7 @@ class StudentDataTable extends DataTable
     public function query(Addmissions $model)
     {
 
-        return $model->where('college_id','like',"%".Auth::user()->id."%")->newQuery();
+        return $model->where('college_id','like',"%".Auth::user()->id."%")->where('status','!=',1)->newQuery();
     }
 
     /**

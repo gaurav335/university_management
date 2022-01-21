@@ -80,8 +80,6 @@ class CollegeMeritRepository implements CollegeMeritInterface
 
     public function roundDeclare($data)
     {
-        $admissionConfirmationMerit = AddmissionConfimation::where('confirm_college_id',Auth::user()->id)->where('confirmation_type',"M")->where('status',1)->count();
-        $admissionConfirmationReseverd = AddmissionConfimation::where('confirm_college_id',Auth::user()->id)->where('confirmation_type',"R")->where('status',1)->count();
         $idArray = explode(',', $data->id);
         if($data->id == null)
         {
@@ -90,10 +88,18 @@ class CollegeMeritRepository implements CollegeMeritInterface
         
         foreach ($idArray as $admissions) {
             $admission = Addmissions::where('id',$admissions)->first();
+            
+            $admissionCon = DB::table('addmission_confirmations')
+            ->join('addmissions','addmission_confirmations.addmission_id','=','addmissions.id')
+            ->where("addmission_confirmations.confirmation_type","M")
+            ->where("addmission_confirmations.confirm_college_id",Auth::user()->id)
+            ->where("addmission_confirmations.status","1")
+            ->where("addmissions.course_id",$admission->course_id)
+            ->count();
+
             $collegecourse = CollegeCourse::where('college_id',Auth::user()->id)->where('course_id',$admission->course_id)->first();
-            // $a = $collegecourse->merit_seat - $admissionConfirmationMerit;
-            // if($admissionConfirmationMerit <= $collegecourse->merit_seat)
-            // {
+            if($admissionCon < $collegecourse->merit_seat)
+            {
                 AddmissionConfimation::create([
                     'addmission_id' => $admission->id,
                     'confirm_college_id' =>Auth::user()->id,
@@ -102,7 +108,13 @@ class CollegeMeritRepository implements CollegeMeritInterface
                     'status'=>2,
                     'confirmation_type'=>'P'
                 ]);
-            // }
+            }else{
+                $data = [
+                    'course' => $collegecourse->courseName->name,
+                    'type' => 3
+                ];
+                return response()->json($data);
+            }
         }
        
         return response()->json('1');

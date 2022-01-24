@@ -2,7 +2,10 @@
 
 namespace App\DataTables\Admin;
 
-use App\Models\Admin/SudentView;
+use App\Models\Addmissions;
+use App\Models\Course;
+use App\Models\AddmissionConfimation;
+use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -21,18 +24,47 @@ class SudentViewDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'admin/sudentview.action');
+            ->addColumn('user_id', function ($data) {
+                $user =  Addmissions::where('id', $data->addmission_id)->first();
+                $username =  User::where('id', $user->user_id)->first();
+                return  $username->name;
+            })
+            ->addColumn('course_id', function ($data) {
+                $user =  Addmissions::where('id', $data->addmission_id)->first();
+                $course =  Course::where('id', $user->course_id)->first();
+                return  $course->name;
+            })
+            ->editColumn('confirmation_type', function ($data) {
+                if($data->confirmation_type == "M"){
+                    return 'Merit Base';
+                }elseif($data->confirmation_type == "R"){
+                    return 'Reserved Base';
+                }
+            })
+            ->editColumn('status', function ($data) {
+                if($data->status == 1){
+                    return 'Confirm';
+                }elseif($data->status == 2){
+                    return 'Reject';
+                }elseif($data->status == 3){
+                    return 'Pending';
+                }elseif($data->status == 4){
+                    return 'Admission';
+                }
+            })
+            ->rawColumns(['confirmation_type','course_id','user_id','status'])
+            ->addIndexColumn();
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Admin/SudentView $model
+     * @param \App\Models\AddmissionConfimation $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Admin/SudentView $model)
+    public function query(AddmissionConfimation $model)
     {
-        return $model->newQuery();
+        return $model->where('confirm_college_id',$this->college_id)->where('status',1)->newQuery();
     }
 
     /**
@@ -43,18 +75,11 @@ class SudentViewDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('admin/sudentview-table')
+                    ->setTableId('admin-sudentview-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+                    ->dom('Bflrtip')
+                    ->orderBy(1);
     }
 
     /**
@@ -65,15 +90,13 @@ class SudentViewDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
+            Column::make('id')->hidden(true),
+            Column::make('user_id')->title('User Name'),
+            Column::make('course_id')->title('Course Name'),
+            Column::make('confirm_merit')->title('Student Merit'),
+            Column::make('confirmation_type')->title('Confirmation Type'),
+            Column::make('status')->title('Admission Status'),
         ];
     }
 

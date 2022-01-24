@@ -88,8 +88,8 @@
                         </div>
 
                         <div class="row">
-                        @foreach($collegecourse as $clgcourse)
-                            <div class="col-md-4 col-xl-2">
+                            @foreach($collegecourse as $clgcourse)
+                            <div class="col-md-4 col-xl-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <div>
@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-xl-2">
+                            <div class="col-md-4 col-xl-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <div>
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-xl-2">
+                            <div class="col-md-4 col-xl-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <div>
@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-xl-2">
+                            <div class="col-md-4 col-xl-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <div>
@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-xl-2">
+                            <!-- <div class="col-md-4 col-xl-2">
                                 <div class="card">
                                     <div class="card-body">
                                         <div>
@@ -148,8 +148,16 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5>College Student List</h5>
+                        <div class="table-responsive table-hover">
+                            {!! $dataTable->table(['class' => 'table table-bordered dt-responsive nowrap']) !!}
                         </div>
                     </div>
                 </div>
@@ -157,5 +165,12 @@
         </div>
     </div>
 </div>
-</div>
 @endsection
+@push('admin-script')
+{!! $dataTable->scripts() !!}
+<script>
+$(document).ready(function() {
+    $('.dt-buttons').html('');
+})
+</script>
+@endpush

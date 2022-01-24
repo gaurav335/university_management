@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\DataTables\Admin\CollegeDataTable;
+use App\DataTables\Admin\SudentViewDataTable;
 use App\Interfaces\CollegeInterface;
 use App\Http\Requests\CollegeRequest;
 use App\Models\College;
@@ -59,11 +60,11 @@ class CollegeController extends Controller
         return $this->college->checkContactNo($request);
     }
 
-    public function collegeView(Request $request)
+    public function collegeView(SudentViewDataTable $sudentviewdataTable,Request $request)
     {
         $id = decryptString($request->id);
         $college = College::where('id',$id)->first();
         $collegecourse = CollegeCourse::where('college_id',$id)->get();
-        return view('admin.college.collegeview',compact('college','collegecourse'));
+        return $sudentviewdataTable->with('college_id',$id)->render('admin.college.collegeview',compact('college','collegecourse'));
     }
 }

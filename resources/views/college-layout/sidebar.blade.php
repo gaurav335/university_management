@@ -39,27 +39,27 @@
 
                   <li>
                       <a href="{{ route('college.collegecourse') }}">
-                          <i class="fas fa-dice-d6"></i>
+                          <i class="fas fa-book-reader"></i>
                           <span>Course</span>
                       </a>
                   </li>
 
                   <li>
                       <a href="{{ route('college.collegemerit') }}">
-                          <i class="fas fa-dice-d6"></i>
+                          <i class="fas fa-marker"></i>
                           <span>Merit</span>
                       </a>
                   </li>
                   <li>
                       <a href="{{ route('college.studentindex') }}">
-                          <i class="fas fa-dice-d6"></i>
+                          <i class="fas fa-users"></i>
                           <span>Student</span>
                       </a>
                   </li>
 
                   <li>
                       <a href="javascript: void(0);" class="has-arrow waves-effect">
-                          <i class="fas fa-shopping-cart"></i>
+                          <i class="fas fa-box-tissue"></i>
                           <span>Addmission</span>
                       </a>
                       <ul class="sub-menu" aria-expanded="false">

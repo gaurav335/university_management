@@ -5,6 +5,9 @@ namespace App\Http\Controllers\college;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\College;
+use App\Models\AddmissionConfimation;
+use App\Models\CollegeCourse;
+use App\Models\Subject;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +18,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('college.index');
+        $collegeMerit = AddmissionConfimation::where('confirm_college_id',Auth::user()->id)->where('confirmation_type',"M")->where('status',1)->count();
+        $collegeRevserd = AddmissionConfimation::where('confirm_college_id',Auth::user()->id)->where('confirmation_type',"R")->where('status',1)->count();
+        $totleAdmission = $collegeMerit + $collegeRevserd;
+        $course = CollegeCourse::where('college_id',Auth::user()->id)->count();
+        return view('college.index',compact('collegeMerit','collegeRevserd','course','totleAdmission'));
     }
 
     public function profileUpdate()

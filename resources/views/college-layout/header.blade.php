@@ -45,27 +45,6 @@
             </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon waves-effect"
-                    id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <i class="uil-bell"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
-                    aria-labelledby="page-header-notifications-dropdown">
-                    <div class="p-3">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h5 class="m-0 font-size-16"> Notifications </h5>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div data-simplebar style="max-height: 230px;" id="orderNotificationList">
-                    </div>
-                </div>
-            </div>
-
-            <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="{{ Auth::user()->logo }}"

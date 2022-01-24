@@ -5,6 +5,10 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Universitie;
+use App\Models\College;
+use App\Models\User;
+use App\Models\Course;
+use App\Models\Subject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,7 +17,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $college = College::count();
+        $user = User::count();
+        $course = Course::count();
+        $subject = Subject::count();
+        return view('admin.index',compact('college','user','subject','course'));
     }
 
     public function adminprofile()

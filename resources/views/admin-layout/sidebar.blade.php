@@ -46,42 +46,42 @@
 
                   <li>
                       <a href="{{ route('admin.college')}}">
-                          <i class="fas fa-tachometer-alt"></i>
+                          <i class="fas fa-university"></i>
                           <span>College</span>
                       </a>
                   </li>
 
                   <li>
                       <a href="{{ route('admin.course')}}">
-                          <i class="fas fa-tachometer-alt"></i>
+                          <i class="fas fa-book-reader"></i>
                           <span>Course</span>
                       </a>
                   </li>
 
                   <li>
                       <a href="{{ route('admin.adminsubjectindex')}}">
-                          <i class="fas fa-tachometer-alt"></i>
+                          <i class="fas fa-book"></i>
                           <span>Subject</span>
                       </a>
                   </li>
 
                   <li>
                       <a href="{{ route('admin.student')}}">
-                          <i class="fas fa-tachometer-alt"></i>
+                          <i class="fas fa-users"></i>
                           <span>Student</span>
                       </a>
                   </li>
 
                   <li>
                       <a href="{{ route('admin.addmission')}}">
-                          <i class="fas fa-tachometer-alt"></i>
+                          <i class="fas fa-box-tissue"></i>
                           <span>Addmission</span>
                       </a>
                   </li>
 
                   <li>
                       <a href="javascript: void(0);" class="has-arrow waves-effect">
-                          <i class="fas fa-shopping-cart"></i>
+                          <i class="fas fa-users-cog"></i>
                           <span>Settings</span>
                       </a>
                       <ul class="sub-menu" aria-expanded="false">

@@ -41,14 +41,12 @@ class AdmissionRejectedDataTable extends DataTable
                 return  $course->name;
             })
             ->editColumn('status', function ($data) {
-                if($data->status == 1){
+                if($data->status == 0){
+                    return 'Next Round';
+                }elseif($data->status == 1){
                     return 'Confirm';
                 }elseif($data->status == 2){
-                    return 'Reject';
-                }elseif($data->status == 3){
                     return 'Pending';
-                }elseif($data->status == 4){
-                    return 'Admission';
                 }
             })
             ->rawColumns(['course_id','action','status','checkbox','user_id'])

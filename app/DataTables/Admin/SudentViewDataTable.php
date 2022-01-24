@@ -45,11 +45,7 @@ class SudentViewDataTable extends DataTable
                 if($data->status == 1){
                     return 'Confirm';
                 }elseif($data->status == 2){
-                    return 'Reject';
-                }elseif($data->status == 3){
                     return 'Pending';
-                }elseif($data->status == 4){
-                    return 'Admission';
                 }
             })
             ->rawColumns(['confirmation_type','course_id','user_id','status'])

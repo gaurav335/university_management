@@ -38,34 +38,40 @@
                   <!-- <li class="menu-title">Menu</li> -->
 
                   <li>
-                  <a href="{{ route('admin.dashboard.index') }}">
+                      <a href="{{ route('admin.dashboard.index') }}">
                           <i class="fas fa-tachometer-alt"></i>
                           <span>Dashboard</span>
                       </a>
                   </li>
 
                   <li>
-                  <a href="{{ route('admin.college')}}">
+                      <a href="{{ route('admin.college')}}">
                           <i class="fas fa-tachometer-alt"></i>
                           <span>College</span>
                       </a>
                   </li>
 
                   <li>
-                  <a href="{{ route('admin.course')}}">
+                      <a href="{{ route('admin.course')}}">
                           <i class="fas fa-tachometer-alt"></i>
                           <span>Course</span>
                       </a>
                   </li>
 
                   <li>
-                  <a href="{{ route('admin.adminsubjectindex')}}">
+                      <a href="{{ route('admin.adminsubjectindex')}}">
                           <i class="fas fa-tachometer-alt"></i>
                           <span>Subject</span>
                       </a>
                   </li>
-                  
-                  
+
+                  <li>
+                      <a href="{{ route('admin.student')}}">
+                          <i class="fas fa-tachometer-alt"></i>
+                          <span>Student</span>
+                      </a>
+                  </li>
+
                   <li>
                       <a href="javascript: void(0);" class="has-arrow waves-effect">
                           <i class="fas fa-shopping-cart"></i>
@@ -79,7 +85,7 @@
                       </ul>
                   </li>
 
-                
+
 
               </ul>
           </div>

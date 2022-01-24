@@ -62,6 +62,7 @@ Route::group(['middleware'=>'auth:admin'],function(){
     Route::get('SubjectIndex','SubjectController@adminsubjectIndex')->name('adminsubjectindex');
     Route::post('AdminSubject','SubjectController@adminSubjectStatus')->name('adminsubjectstatus');
 
-
+    //Student
+    Route::get('Student','StudentController@studentIndex')->name('student');
 
 });

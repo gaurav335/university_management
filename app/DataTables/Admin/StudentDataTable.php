@@ -1,16 +1,16 @@
 <?php
 
-namespace App\DataTables\college;
+namespace App\DataTables\Admin;
 
 use App\Models\Addmissions;
 use App\Models\User;
 use App\Models\Course;
+use App\Models\College;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
-use Illuminate\Support\Facades\Auth;
 
 class StudentDataTable extends DataTable
 {
@@ -32,8 +32,9 @@ class StudentDataTable extends DataTable
                 $course =  Course::where('id', $data->course_id)->first();
                 return  $course->name;
             })
-            ->editColumn('checkbox', function ($data) {
-                return '<input type="checkbox" class="singlecheck" value="'.$data->id.'" >';
+            ->editColumn('college_id', function ($data) {
+                $college = College::whereIn('id',$data->college_id)->pluck('name')->toArray();
+                return implode(',',$college);
             })
             ->editColumn('status', function ($data) {
                 if($data->status == 0){
@@ -44,8 +45,9 @@ class StudentDataTable extends DataTable
                     return 'Pending';
                 }
             })
-            ->rawColumns(['course_id','status','checkbox','user_id'])
-            ->addIndexColumn();    
+            ->rawColumns(['course_id','status','college_id','user_id'])
+
+            ->addIndexColumn();
     }
 
     /**
@@ -56,8 +58,7 @@ class StudentDataTable extends DataTable
      */
     public function query(Addmissions $model)
     {
-
-        return $model->where('college_id','like',"%".Auth::user()->id."%")->where('status','!=',1)->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -68,26 +69,11 @@ class StudentDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('college-student-table')
-                    ->columns($this->getColumns(),[
-                        'checkbox' => [
-                            'orderable' => false,
-                            'searchable' => false,
-                            'printable' => false,
-                            'exportable' => false,
-                            'class'=>'check',
-                        ]
-                    ])
+                    ->setTableId('admin-student-table')
+                    ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bflrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+                    ->dom('Bfrtip')
+                    ->orderBy(1);
     }
 
     /**
@@ -98,12 +84,12 @@ class StudentDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('checkbox')->addClass('check')->searchable(false)->orderable(false),
             Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
             Column::make('id')->hidden(true),
             Column::make('user_id')->title('User Name'),
             Column::make('course_id')->title('Course Name'),
             Column::make('merit')->title('Merit'),
+            Column::make('college_id')->title('Colleges'),
             Column::make('status')->title('Admission Status'),
         ];
     }
@@ -115,6 +101,6 @@ class StudentDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'college/Student_' . date('YmdHis');
+        return 'Admin/Student_' . date('YmdHis');
     }
 }

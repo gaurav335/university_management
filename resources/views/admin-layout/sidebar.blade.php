@@ -4,23 +4,23 @@
       <div class="navbar-brand-box">
           <a href="#" class="logo logo-dark">
               <span class="logo-sm">
-                  <!-- <img src="{{ asset('admins/images/logo-sm.png') }}" alt="" height="40"
-                      style="margin-top:20px; margin-left:-15px;"> -->
+                  <img src="{{ asset('admins/images/logo-sm.jpg') }}" alt="" height="40"
+                      style="margin-top:15px; margin-left:-8px;">
               </span>
               <span class="logo-lg">
-                  <!-- <img src="{{ asset('admins/images/logo.png') }}" alt="" height="40"
-                      style="margin-top: 15px; margin-left:20px;"> -->
+                  <img src="{{ asset('admins/images/logo.jpg') }}" alt="" height="50"
+                      style="margin-top: 20px; margin-left:20px;">
               </span>
           </a>
 
           <a href="#" class="logo logo-light">
               <span class="logo-sm">
-                  <!-- <img src="{{ asset('admins/images/logo-sm.png') }}" alt="" height="40"
-                      style="margin-top:20px; margin-left:-15px;"> -->
+                  <img src="{{ asset('admins/images/logo-sm.jpg') }}" alt="" height="40"
+                      style="margin-top:15px; margin-left:-8px;">
               </span>
               <span class="logo-lg">
-                  <!-- <img src="{{ asset('admins/images/logo.png') }}" alt="" height="40"
-                      style="margin-top: 15px; margin-left:20px;"> -->
+                  <img src="{{ asset('admins/images/logo.jpg') }}" alt="" height="50"
+                      style="margin-top: 20px; margin-left:20px;">
               </span>
           </a>
       </div>

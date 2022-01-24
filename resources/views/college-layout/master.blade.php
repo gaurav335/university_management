@@ -35,7 +35,18 @@
     <body>
 
     <!-- <body data-layout="horizontal" data-topbar="colored"> -->
-
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="spinner-grow text-primary m-1" role="status">
+                </div>
+                <div class="spinner-grow text-danger m-1" role="status">
+                </div>
+                <div class="spinner-grow text-success m-1" role="status">
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- Begin page -->
         <div id="layout-wrapper">
 

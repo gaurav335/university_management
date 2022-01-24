@@ -9,22 +9,22 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <!-- <img src="{{ asset('front/images/logo-sm.png') }}" alt="" height="40"
-                            style="margin-top:20px; margin-left:-10px;"> -->
+                        <img src="{{ Auth::user()->logo }}" alt="" height="40"
+                            style="margin-top:15px; margin-left:5px;">
                     </span>
                     <span class="logo-lg">
-                        <!-- <img src="{{ asset('front/images/logo.png') }}" alt="" height="40"
-                            style="margin-top: 15px; margin-left:20px;"> -->
+                        <img src="{{ Auth::user()->logo }}" alt="" height="50"
+                            style="margin-top: 20px; margin-left:30px;">
                     </span>
                 </a>
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <!-- <img src="{{ asset('front/images/logo-sm.png') }}" alt="" height="40"
-                            style="margin-top:20px; margin-left:-10px;"> -->
+                        <img src="{{ Auth::user()->logo }}" alt="" height="40"
+                            style="margin-top:15px; margin-left:5px;">
                     </span>
                     <span class="logo-lg">
-                        <!-- <img src="{{ asset('front/images/logo.png') }}" alt="" height="40"
-                            style="margin-top: 15px; margin-left:20px;"> -->
+                        <img src="{{ Auth::user()->logo }}" alt="" height="50"
+                            style="margin-top: 20px; margin-left:30px;">
                     </span>
                 </a>
             </div>

@@ -34,7 +34,7 @@ class CollegeDataTable extends DataTable
                 }
                     $result.='<button type="button" class="btn edit-btn btn-outline-info waves-effect waves-light" data-toggle="modal" data-target="#college_edit_modal" data-eid="'.$data->id.'" title="Edit College"><i class="fa fa-edit" aria-hidden="true"></i></button>
                 <button type="button" class="btn delete-btn btn-outline-danger waves-effect waves-light" data-did="'.$data->id.'" title="Delete college"><i class="fa fa-trash" aria-hidden="true"></i></button>';
-                $result.='<a href="'.route("admin.collegeview",$id).'" class="btn  btn-outline-dark waves-effect waves-light" title="Customer view"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+                $result.='<a href="'.route("admin.collegeview",$id).'" class="btn  btn-outline-dark waves-effect waves-light" title="College view"><i class="fa fa-eye" aria-hidden="true"></i></a>';
                 return $result;
             })
             ->addColumn('status',function($data){

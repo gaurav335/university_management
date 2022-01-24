@@ -2,10 +2,7 @@
 
 namespace App\DataTables\Admin;
 
-use App\Models\Addmissions;
 use App\Models\User;
-use App\Models\Course;
-use App\Models\College;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -24,39 +21,23 @@ class StudentDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->editColumn('user_id', function ($data) {
-                $course =  User::where('id', $data->user_id)->first();
-                return  $course->name;
+            ->addColumn('action',function($data){
+                $id = encryptString($data->id);
+                $result="";
+                $result.='<a href="'.route("admin.studentview",$id).'" class="btn  btn-outline-dark waves-effect waves-light" title="Student view"><i class="fa fa-eye" aria-hidden="true"></i></a>';
+                return $result;
             })
-            ->editColumn('course_id', function ($data) {
-                $course =  Course::where('id', $data->course_id)->first();
-                return  $course->name;
-            })
-            ->editColumn('college_id', function ($data) {
-                $college = College::whereIn('id',$data->college_id)->pluck('name')->toArray();
-                return implode(',',$college);
-            })
-            ->editColumn('status', function ($data) {
-                if($data->status == 0){
-                    return 'Next Round';
-                }elseif($data->status == 1){
-                    return 'Confirm';
-                }elseif($data->status == 2){
-                    return 'Pending';
-                }
-            })
-            ->rawColumns(['course_id','status','college_id','user_id'])
-
+            ->rawColumns(['action'])
             ->addIndexColumn();
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Addmissions $model
+     * @param \App\Models\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Addmissions $model)
+    public function query(User $model)
     {
         return $model->newQuery();
     }
@@ -72,7 +53,7 @@ class StudentDataTable extends DataTable
                     ->setTableId('admin-student-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
+                    ->dom('Bflrtip')
                     ->orderBy(1);
     }
 
@@ -86,11 +67,15 @@ class StudentDataTable extends DataTable
         return [
             Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
             Column::make('id')->hidden(true),
-            Column::make('user_id')->title('User Name'),
-            Column::make('course_id')->title('Course Name'),
-            Column::make('merit')->title('Merit'),
-            Column::make('college_id')->title('Colleges'),
-            Column::make('status')->title('Admission Status'),
+            Column::make('name')->title('User Name'),
+            Column::make('email')->title('User Email'),
+            Column::make('contact_no')->title('User Contact No.'),
+            Column::make('dob')->title('Date Of Birth'),
+            Column::computed('action')
+            ->exportable(false)
+            ->printable(false)
+            ->width(60)
+            ->addClass('text-center'),
         ];
     }
 

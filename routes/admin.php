@@ -64,5 +64,6 @@ Route::group(['middleware'=>'auth:admin'],function(){
 
     //Student
     Route::get('Student','StudentController@studentIndex')->name('student');
+    Route::get('Student/{id}','StudentController@studentView')->name('studentview');
 
 });

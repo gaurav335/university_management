@@ -96,6 +96,7 @@ class AdmissionRejectedDataTable extends DataTable
         return [
             Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
             Column::make('id')->hidden(true),
+            Column::make('addmission_code')->title('Addmission Code'),
             Column::make('user_id')->title('User Name'),
             Column::make('course_id')->title('Course Name'),
             Column::make('merit')->title('Merit'),

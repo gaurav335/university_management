@@ -30,6 +30,10 @@ class AdmissionConfirmDataTable extends DataTable
                 $username =  User::where('id', $user->user_id)->first();
                 return  $username->name;
             })
+            ->addColumn('addmission_code', function ($data) {
+                $user =  Addmissions::where('id', $data->addmission_id)->first();
+                return  $user->addmission_code;
+            })
             ->addColumn('course_id', function ($data) {
                 $user =  Addmissions::where('id', $data->addmission_id)->first();
                 $course =  Course::where('id', $user->course_id)->first();
@@ -49,7 +53,7 @@ class AdmissionConfirmDataTable extends DataTable
                     return 'Pending';
                 }
             })
-            ->rawColumns(['confirmation_type','course_id','user_id','status'])
+            ->rawColumns(['confirmation_type','addmission_code','course_id','user_id','status'])
             ->addIndexColumn();
         }
 
@@ -96,6 +100,7 @@ class AdmissionConfirmDataTable extends DataTable
         return [
             Column::make('no')->data('DT_RowIndex')->searchable(false)->orderable(false),
             Column::make('id')->hidden(true),
+            Column::make('addmission_code')->title('Addmission Code'),
             Column::make('user_id')->title('User Name'),
             Column::make('course_id')->title('Course Name'),
             Column::make('confirm_merit')->title('Student Merit'),

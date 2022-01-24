@@ -7,6 +7,7 @@ use App\Models\AddmissionConfimation;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\College;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -66,9 +67,24 @@ class AddmissionDataTable extends DataTable
      * @param \App\Models\Addmissions $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Addmissions $model)
+    public function query(Addmissions $model,Request $request)
     {
+        if($request->merit)
+        {
+            $merit=explode('-',$request->merit);
+            $model =  $model->where('merit','>=',(int)$merit[0])->where('merit','<=',(int)$merit[1]);
+        }
+
+        if($request->status == null)
+        {
+            $model= $model;
+        }
+        elseif($request->status == 0 || $request->status == 1 || $request->status == 2)
+        {
+            $model = $model->where('status',$request->status);
+        }
         return $model->newQuery();
+
     }
 
     /**
@@ -82,7 +98,7 @@ class AddmissionDataTable extends DataTable
                     ->setTableId('admin-addmission-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
+                    ->dom('Bflrtip')
                     ->orderBy(1);
     }
 

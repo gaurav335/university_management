@@ -12,6 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class AdmissionRejectedDataTable extends DataTable
 {
@@ -59,9 +60,15 @@ class AdmissionRejectedDataTable extends DataTable
      * @param \App\Models\Addmissions $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Addmissions $model)
+    public function query(Addmissions $model,Request $request)
     {
-        return $model->where('college_id','like',"%".Auth::user()->id."%")->where('status','!=',1)->newQuery();
+        if($request->merit)
+        {
+            $merit=explode('-',$request->merit);
+            $model =  $model->where('merit','>=',(int)$merit[0])->where('merit','<=',(int)$merit[1]);
+        }
+        $model =  $model->where('college_id','like',"%".Auth::user()->id."%")->where('status','!=',1);
+        return $model->newQuery();
     }
 
     /**

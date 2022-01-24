@@ -12,6 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class AdmissionConfirmDataTable extends DataTable
 {
@@ -63,9 +64,15 @@ class AdmissionConfirmDataTable extends DataTable
      * @param \App\Models\AddmissionConfimation $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(AddmissionConfimation $model)
+    public function query(AddmissionConfimation $model,Request $request)
     {
-        return $model->where('confirm_college_id',Auth::user()->id)->where('status',1)->newQuery();
+        if($request->merit)
+        {
+            $merit=explode('-',$request->merit);
+            $model =  $model->where('confirm_merit','>=',(int)$merit[0])->where('confirm_merit','<=',(int)$merit[1]);
+        }
+        $model =  $model->where('confirm_college_id',Auth::user()->id)->where('status',1);
+        return $model->newQuery();
     }
 
     /**

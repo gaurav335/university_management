@@ -73,6 +73,13 @@
                   </li>
 
                   <li>
+                      <a href="{{ route('admin.addmission')}}">
+                          <i class="fas fa-tachometer-alt"></i>
+                          <span>Addmission</span>
+                      </a>
+                  </li>
+
+                  <li>
                       <a href="javascript: void(0);" class="has-arrow waves-effect">
                           <i class="fas fa-shopping-cart"></i>
                           <span>Settings</span>

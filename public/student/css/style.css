@@ -9816,7 +9816,7 @@ ul.course-feature2 li:before {
 .footer-area-top .featured-links > li ul li:before {
   content: "\f105";
   position: absolute;
-  left: 0;
+  left: 9;
   font-family: FontAwesome;
   color: #fdc800;
   top: 0;

@@ -24,8 +24,11 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $length = strlen($this->adhaar_card_no);
-
-        $rules = [
+        if ($length != 12 && $length != 16)
+        {
+            return $rules['adhaar_card_no'] = 'size:12';
+        }
+        return $rules = [
             'name' => 'required',
             'email'=>'required|unique:users,email,id,deleted_at,NULL',
             'contact_no' => 'required|min:10|max:15|unique:users,contact_no,id,deleted_at,NULL',
@@ -34,17 +37,11 @@ class UserRequest extends FormRequest
             'password'=>'required',
             'address' => 'required',
         ];
-
-        if ($length != 12 && $length != 16)
-        {
-            $rules['adhaar_card_no'] = 'size:12';
-        }
-        return $rules;
     }
 
     public function messages(){
         return [
             "adhaar_card_no.size" => "Please Valid Your Adhaar Card Number",
-    ];
+        ];
     }
 }

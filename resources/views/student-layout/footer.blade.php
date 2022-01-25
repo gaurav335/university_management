@@ -28,6 +28,7 @@
                                         <li><a href="{{ route('about')}}">About Us</a></li>
                                         <li><a href="{{ route('store')}}">Book Store</a></li>
                                         <li><a href="{{ route('faq')}}">FAQs</a></li>
+                                        <li><a href="{{ route('lecturers')}}">Lecturers</a></li>
                                         </ul>
                                     </li>
                                 

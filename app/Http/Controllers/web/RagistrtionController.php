@@ -26,7 +26,7 @@ class RagistrtionController extends Controller
         return view("student.ragistration");
     }
 
-    public function studentRag(UserRequest $request)
+    public function studentRag(Request $request)
     {
         return $this->student->studentRag($request);
     }

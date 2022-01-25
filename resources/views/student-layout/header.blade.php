@@ -76,7 +76,6 @@
                         <nav id="desktop-nav">
                             <ul>
                                 <li><a href="{{ route('home')}}">Home</a></li>
-                                <li><a href="{{ route('lecturers')}}">Lecturers</a></li>
                                 <li><a href="{{ route('course')}}">Courses</a></li>
                                 <li><a href="#">Research</a>
                                     <ul>

@@ -11,6 +11,10 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('admins/images/favicon.png') }}">
 
+    <!-- Sweet Alert-->
+    <link href="{{ asset('admins/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+
+
     <link href="{{ asset('admins/css/bootstrap-dark.min.css') }}" id="bootstrap-style" rel="stylesheet"
         type="text/css" />
     <link href="{{ asset('admins/css/custom.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -110,6 +114,9 @@
     <script src="{{ asset('admins/libs/node-waves/waves.min.js') }}"></script>
     <script src="{{ asset('admins/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('admins/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset ('admins/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
     <!-- apexcharts -->
     <!-- <script src="{{ asset('admins/libs/apexcharts/apexcharts.min.js') }}"></script> -->

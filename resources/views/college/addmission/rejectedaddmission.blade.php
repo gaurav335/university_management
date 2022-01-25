@@ -76,38 +76,54 @@ $(document).on('change', '.merit', function(e) {
 
 //status
 $(document).on('click', '.confirm', function() {
-    if (confirm('are you want to sure Addmission Confirmation!')) {
+    var status = $(this).data('status');
+    var id = $(this).data('id');
+    var acid = $(this).data('acid');
+    var cid = $(this).data('cid');
+    var clgid = $(this).data('clgid');
 
-        var status = $(this).data('status');
-        var id = $(this).data('id');
-        var acid = $(this).data('acid');
-        var cid = $(this).data('cid');
-        var clgid = $(this).data('clgid');
-
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url: '{{ route("college.rejctedconfirmation") }}',
-            type: 'post',
-            data: {
-                'status': status,
-                'id': id,
-                'acid': acid,
-                'cid': cid,
-                'clgid': clgid,
-            },
-            success: function(res) {
-                if (res == 1) {
-                    toastr.success('Addmission Confirmation is Successfully');
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Addmission Confirmation!!",
+        icon: "warning",
+        showCancelButton: !0,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        confirmButtonClass: "btn btn-success mt-2",
+        cancelButtonClass: "btn btn-danger ml-2 mt-2",
+        buttonsStyling: !1,
+    }).then(function(result) {
+        if (result.isConfirmed == true) {
+            var element = this;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: '{{ route("college.rejctedconfirmation") }}',
+                type: 'post',
+                data: {
+                    'status': status,
+                    'id': id,
+                    'acid': acid,
+                    'cid': cid,
+                    'clgid': clgid,
+                },
+                success: function(res) {
+                    if (res == 1) {
+                        $('#college-admissionrejected-table').DataTable().ajax.reload();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Addmission Confirmation",
+                            icon: "success",
+                        });
+                    }
+                    if (res == 2) {
+                        toastr.error('Addmission Seat is Full Your College!');
+                    }
                 }
-                if (res == 2) {
-                    toastr.error('Addmission Seat is Full Your College!');
-                }
-                $('#college-admissionrejected-table').DataTable().ajax.reload();
-            }
-        })
-    }
+            })
+        }
+    })
 });
 </script>
 @endpush

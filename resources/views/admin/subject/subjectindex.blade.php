@@ -42,10 +42,11 @@ $.ajax({
         'id': id
     },
     success: function(res) {
+        console.log(res);
         if (res.mesage == 1) {
             toastr.success('Subject Active Successfully');
         }
-        if (res.mesage == 2) {
+        if (res.mesage == 0) {
             toastr.error('Subject InActive Successfully');
 
         }

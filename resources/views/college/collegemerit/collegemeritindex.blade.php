@@ -333,28 +333,48 @@ function updateCollegeMerit(form) {
 
 // delete
 $(document).on('click', '.delete-btn', function() {
-
-    if (confirm('are you want to sure Delete College Merit!')) {
-
-        var id = $(this).data('did');
-        var element = this;
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url: '{{ route("college.deletemeritround") }}',
-            type: 'post',
-            data: {
-                'id': id
-            },
-            success: function(res) {
-                if (res == 1) {
-                    toastr.error('College Merit Delete Successfully');
-                    $('#college-collegemerit-table').DataTable().ajax.reload();
+    var id = $(this).data('did');
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Delete This College Merit!",
+        icon: "warning",
+        showCancelButton: !0,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        confirmButtonClass: "btn btn-success mt-2",
+        cancelButtonClass: "btn btn-danger ml-2 mt-2",
+        buttonsStyling: !1,
+    }).then(function(result) {
+        if (result.isConfirmed == true) {
+            var element = this;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: '{{ route("college.deletemeritround") }}',
+                type: 'post',
+                data: {
+                    'id': id
+                },
+                success: function(res) {
+                    if (res == 1) {
+                        $('#college-collegemerit-table').DataTable().ajax.reload();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your College Merit has been deleted.",
+                            icon: "success",
+                        });
+                    }
                 }
-            }
-        })
-    }
+            })
+        } else {
+            Swal.fire({
+                title: "Cancelled",
+                text: "Your Merit is safe :)",
+                icon: "error",
+            });
+        }
+    })
 });
 </script>
 @endpush

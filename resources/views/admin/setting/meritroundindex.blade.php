@@ -24,8 +24,8 @@
                                         @csrf
                                         <div class="form-group">
                                             <label>Merit Round No.</label>
-                                            <input type="number" min="0" name="round_no" id="round_no" class="form-control"
-                                                placeholder="Merit Round No..." />
+                                            <input type="number" min="0" name="round_no" id="round_no"
+                                                class="form-control" placeholder="Merit Round No..." />
                                         </div>
                                         <div class="form-group">
                                             <label>Course Name</label>
@@ -57,9 +57,8 @@
 
                                         <div class="form-group">
                                             <label>Admission Confirmation Date</label>
-                                            <input type="text" name="admission_confirm_date"
-                                                id="admission_confirm_date" class="form-control"
-                                                placeholder="Admission Confirm Date..." />
+                                            <input type="text" name="admission_confirm_date" id="admission_confirm_date"
+                                                class="form-control" placeholder="Admission Confirm Date..." />
                                         </div>
 
                                         <div class="form-group">
@@ -116,9 +115,8 @@
 
                                         <div class="form-group">
                                             <label>Admission Confirmation Date</label>
-                                            <input type="text" name="admission_confirm_date"
-                                                id="admissionconfirmdate" class="form-control"
-                                                placeholder="Admission Confirm Date..." />
+                                            <input type="text" name="admission_confirm_date" id="admissionconfirmdate"
+                                                class="form-control" placeholder="Admission Confirm Date..." />
                                         </div>
 
                                         <div class="form-group">
@@ -374,8 +372,10 @@ $(document).on('click', '.edit-btn', function() {
                 $("#meritround_edit_model").find('#id').val(res.id);
                 $("#meritround_edit_model").find('#startdate').val(res.start_date);
                 $("#meritround_edit_model").find('#enddate').val(res.end_date);
-                $("#meritround_edit_model").find('#meritresultdeclaredate').val(res.merit_result_declare_date);
-                $("#meritround_edit_model").find('#admissionconfirmdate').val(res.admission_confirm_date);
+                $("#meritround_edit_model").find('#meritresultdeclaredate').val(res
+                    .merit_result_declare_date);
+                $("#meritround_edit_model").find('#admissionconfirmdate').val(res
+                    .admission_confirm_date);
             }
 
         }
@@ -452,57 +452,77 @@ function updateMeritround(form) {
 
 // delete
 $(document).on('click', '.delete-btn', function() {
-
-    if (confirm('are you want to sure Delete Merit Round!')) {
-
-        var id = $(this).data('did');
-        var element = this;
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url: '{{ route("admin.deletemeritround") }}',
-            type: 'post',
-            data: {
-                'id': id
-            },
-            success: function(res) {
-                if (res == 1) {
-                    toastr.error('Merit Round Delete Successfully');
-                    $('#admin-meritround-table').DataTable().ajax.reload();
+    var id = $(this).data('did');
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Delete This Merit Round!",
+        icon: "warning",
+        showCancelButton: !0,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        confirmButtonClass: "btn btn-success mt-2",
+        cancelButtonClass: "btn btn-danger ml-2 mt-2",
+        buttonsStyling: !1,
+    }).then(function(result) {
+        if (result.isConfirmed == true) {
+            var element = this;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: '{{ route("admin.deletemeritround") }}',
+                type: 'post',
+                data: {
+                    'id': id
+                },
+                success: function(res) {
+                    if (res == 1) {
+                        $('#admin-meritround-table').DataTable().ajax.reload();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your Merit Round has been deleted.",
+                            icon: "success",
+                        });
+                    }
                 }
-            }
-        })
-    }
+            })
+        } else {
+            Swal.fire({
+                title: "Cancelled",
+                text: "Your Merit Round is safe :)",
+                icon: "error",
+            });
+        }
+    })
 });
 
 //status
 $(document).on('click', '.status', function() {
 
-var status = $(this).data('status');
-var id = $(this).data('id');
+    var status = $(this).data('status');
+    var id = $(this).data('id');
 
-$.ajax({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    },
-    url: '{{ route("admin.statusmeritround") }}',
-    type: 'post',
-    data: {
-        'status': status,
-        'id': id
-    },
-    success: function(res) {
-        if (res.mesage == 1) {
-            toastr.success('Merit Round Active Successfully');
-        }
-        if (res.mesage == 2) {
-            toastr.error('Merit Round InActive Successfully');
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+        url: '{{ route("admin.statusmeritround") }}',
+        type: 'post',
+        data: {
+            'status': status,
+            'id': id
+        },
+        success: function(res) {
+            if (res.mesage == 1) {
+                toastr.success('Merit Round Active Successfully');
+            }
+            if (res.mesage == 0) {
+                toastr.error('Merit Round InActive Successfully');
 
+            }
+            $('#admin-meritround-table').DataTable().ajax.reload();
         }
-        $('#admin-meritround-table').DataTable().ajax.reload();
-    }
-})
+    })
 });
 </script>
 @endpush

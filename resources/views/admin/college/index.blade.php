@@ -14,7 +14,8 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="workerLabel">Add College</h5>
-                                    <button type="button" class="close btn-cancel" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close btn-cancel" data-dismiss="modal"
+                                        aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -94,7 +95,8 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="workerLabel">Edit College</h5>
-                                    <button type="button" class="close btn-cancel" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close btn-cancel" data-dismiss="modal"
+                                        aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -430,31 +432,50 @@ function updateCollege(form) {
     })
 }
 
-
 // delete
 $(document).on('click', '.delete-btn', function() {
-
-    if (confirm('are you want to sure Delete College!')) {
-
-        var id = $(this).data('did');
-        var element = this;
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url: '{{ route("admin.deletecollege") }}',
-            type: 'post',
-            data: {
-                'id': id
-            },
-            success: function(res) {
-                if (res == 1) {
-                    toastr.error('College Delete Successfully');
-                    $('#admin-college-table').DataTable().ajax.reload();
+    var id = $(this).data('did');
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Delete This College!",
+        icon: "warning",
+        showCancelButton: !0,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        confirmButtonClass: "btn btn-success mt-2",
+        cancelButtonClass: "btn btn-danger ml-2 mt-2",
+        buttonsStyling: !1,
+    }).then(function(result) {
+        if (result.isConfirmed == true) {
+            var element = this;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: '{{ route("admin.deletecollege") }}',
+                type: 'post',
+                data: {
+                    'id': id
+                },
+                success: function(res) {
+                    if (res == 1) {
+                        $('#admin-college-table').DataTable().ajax.reload();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your College has been deleted.",
+                            icon: "success",
+                        });
+                    }
                 }
-            }
-        })
-    }
+            })
+        } else {
+            Swal.fire({
+                title: "Cancelled",
+                text: "Your College is safe :)",
+                icon: "error",
+            });
+        }
+    })
 });
 
 //status
@@ -477,7 +498,7 @@ $(document).on('click', '.status', function() {
             if (res.mesage == 1) {
                 toastr.success('College Active Successfully');
             }
-            if (res.mesage == 2) {
+            if (res.mesage == 0) {
                 toastr.error('College InActive Successfully');
 
             }

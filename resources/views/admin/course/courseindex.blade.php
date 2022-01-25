@@ -266,30 +266,50 @@ function updateCourse(form) {
 
 // delete
 $(document).on('click', '.delete-btn', function() {
-
-    if (confirm('are you want to sure Delete Course!')) {
-
-        var id = $(this).data('did');
-        var element = this;
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url: '{{ route("admin.deletecourse") }}',
-            type: 'post',
-            data: {
-                'id': id
-            },
-            success: function(res) {
-                if (res == 1) {
-                    toastr.error('Course Delete Successfully');
-                    $('#admin-course-table').DataTable().ajax.reload();
+    var id = $(this).data('did');
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Delete This Course!",
+        icon: "warning",
+        showCancelButton: !0,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        confirmButtonClass: "btn btn-success mt-2",
+        cancelButtonClass: "btn btn-danger ml-2 mt-2",
+        buttonsStyling: !1,
+    }).then(function(result) {
+        if (result.isConfirmed == true) {
+            var element = this;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: '{{ route("admin.deletecourse") }}',
+                type: 'post',
+                data: {
+                    'id': id
+                },
+                success: function(res) {
+                    if (res == 1) {
+                        $('#admin-course-table').DataTable().ajax.reload();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Course has been deleted.",
+                            icon: "success",
+                        });
+                    }
                 }
-            }
-        })
-    }
-});
+            })
+        } else {
+            Swal.fire({
+                title: "Cancelled",
+                text: "Your Course is safe :)",
+                icon: "error",
+            });
+        }
 
+    })
+});
 //status
 $(document).on('click', '.status', function() {
 
@@ -310,7 +330,7 @@ $(document).on('click', '.status', function() {
             if (res.mesage == 1) {
                 toastr.success('Course Active Successfully');
             }
-            if (res.mesage == 2) {
+            if (res.mesage == 0) {
                 toastr.error('Course InActive Successfully');
 
             }

@@ -327,28 +327,48 @@ function updateCollege(form) {
 
 // delete
 $(document).on('click', '.delete-btn', function() {
-
-    if (confirm('are you want to sure Delete College Course!')) {
-
-        var id = $(this).data('did');
-        var element = this;
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url: '{{ route("college.deletecollegecourse") }}',
-            type: 'post',
-            data: {
-                'id': id
-            },
-            success: function(res) {
-                if (res == 1) {
-                    toastr.error('College Course Delete Successfully');
-                    $('#college-collegecourse-table').DataTable().ajax.reload();
+    var id = $(this).data('did');
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Delete This College Course!",
+        icon: "warning",
+        showCancelButton: !0,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        confirmButtonClass: "btn btn-success mt-2",
+        cancelButtonClass: "btn btn-danger ml-2 mt-2",
+        buttonsStyling: !1,
+    }).then(function(result) {
+        if (result.isConfirmed == true) {
+            var element = this;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: '{{ route("college.deletecollegecourse") }}',
+                type: 'post',
+                data: {
+                    'id': id
+                },
+                success: function(res) {
+                    if (res == 1) {
+                        $('#college-collegecourse-table').DataTable().ajax.reload();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your College Course has been deleted.",
+                            icon: "success",
+                        });
+                    }
                 }
-            }
-        })
-    }
+            })
+        } else {
+            Swal.fire({
+                title: "Cancelled",
+                text: "Your Course is safe :)",
+                icon: "error",
+            });
+        }
+    })
 });
 </script>
 @endpush

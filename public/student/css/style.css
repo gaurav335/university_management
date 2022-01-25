@@ -4175,6 +4175,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
 .featured-box .featured-img-holder a i {
   color: #fdc800;
   font-size: 20px;
+  margin:14px;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -ms-transition: all 0.3s ease-out;
@@ -7428,6 +7429,7 @@ ul.course-feature2 li:before {
 }
 .gallery-box .gallery-content a i {
   color: #FFFFFF;
+  margin:17px;
   font-size: 18px;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -9100,7 +9102,7 @@ ul.course-feature2 li:before {
   color: #fdc800;
 }
 .sidebar-best-seller-area ul li .related-content .rating {
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
 }
 .sidebar-best-seller-area ul li .related-content .rating li {
   display: inline;
@@ -9795,6 +9797,7 @@ ul.course-feature2 li:before {
 }
 .footer-area-top .featured-links {
   margin-bottom: 50px;
+  margin: 40px;
 }
 .footer-area-top .featured-links > li {
   display: inline-block;
@@ -9816,7 +9819,7 @@ ul.course-feature2 li:before {
 .footer-area-top .featured-links > li ul li:before {
   content: "\f105";
   position: absolute;
-  left: 9;
+  left: 1;
   font-family: FontAwesome;
   color: #fdc800;
   top: 0;

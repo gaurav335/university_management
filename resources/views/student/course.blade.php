@@ -25,8 +25,10 @@
                         <div class="single-item-wrapper">
                             <div class="courses-img-wrapper hvr-bounce-to-bottom">
                                 <img class="img-responsive" src="{{ asset('student/img/course/7.jpg')}}" alt="courses">
-                                <button type="submit"><a href="#"><i class="fa fa-link" aria-hidden="true"></i></a></button>
-                            </div>
+                                    @auth('web')                  
+                                    <button type="submit"><a href="#"><i class="fa fa-link" aria-hidden="true"></i></a></button>
+                                    @endauth
+                                </div>
                             <div class="courses-content-wrapper">
                                 <h3 class="item-title">{{$cou->name}}</h3>
                             </div>

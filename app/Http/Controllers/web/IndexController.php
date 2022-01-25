@@ -56,4 +56,64 @@ class IndexController extends Controller
         // }
         return view("student.home");
     }
+
+    public function about()
+    {
+        return view("student.about");
+    }
+
+    public function lecturers()
+    {
+        return view("student.lecturers");
+    }
+
+    public function news()
+    {
+        return view("student.news");
+    }
+
+    public function newsDetails()
+    {
+        return view("student.newsdetails");
+    }
+
+    public function event()
+    {
+        return view("student.event");
+    }
+
+    public function eventDetails()
+    {
+        return view("student.eventdetails");
+    }
+
+    public function gallery()
+    {
+        return view("student.gallery");
+    }
+
+    public function contact()
+    {
+        return view("student.contact");
+    }
+
+    public function reserech()
+    {
+        return view("student.reserech");
+    }
+
+    public function reserechDetails()
+    {
+        return view("student.reserechdetails");
+    }
+
+    public function faq()
+    {
+        return view("student.faq");
+    }
+
+    public function store()
+    {
+        return view("student.store");
+    }
 }

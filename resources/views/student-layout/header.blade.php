@@ -16,19 +16,19 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                         <div class="header-top-right">
                             <ul>
-                                @guest('web')                  
+                                @guest('web')
                                 <li>
-                                    <a class="login-btn-area" href="{{ route('ragistration')}}" id=""><i class="fa fa-lock"
-                                            aria-hidden="true"></i> Ragistration </a>
+                                    <a class="login-btn-area" href="{{ route('ragistration')}}" id=""><i
+                                            class="fa fa-lock" aria-hidden="true"></i> Ragistration </a>
                                 </li>
                                 @endguest
-                                @auth('web')                  
+                                @auth('web')
                                 <li>
-                                    <a class="login-btn-area" href="{{route('changepassword')}}" id=""><i class="fa fa-unlock"
-                                            aria-hidden="true"></i> Change Password </a>
+                                    <a class="login-btn-area" href="{{route('changepassword')}}" id=""><i
+                                            class="fa fa-unlock" aria-hidden="true"></i> Change Password </a>
                                 </li>
                                 @endauth
-                                @auth('web')                  
+                                @auth('web')
                                 <li>
                                     <a class="login-btn-area" href="{{route('profile')}}" id=""><i class="fa fa-user"
                                             aria-hidden="true"></i> User Profile </a>
@@ -36,25 +36,25 @@
                                 @endauth
                                 @auth('web')
                                 <li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
-                                    <a class="login-btn-area" href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-lock"
-                                            aria-hidden="true"></i> Logout </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    <a class="login-btn-area" href="{{ route('logout')}}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                            class="fa fa-lock" aria-hidden="true"></i> Logout </a>
                                 </li>
                                 @endauth
-                                @guest('web')                  
+                                @guest('web')
                                 <li>
                                 <li>
                                     <a class="login-btn-area" href="{{ route('logins')}}" id=""><i class="fa fa-lock"
                                             aria-hidden="true"></i> Login </a>
                                 </li>
                                 @endguest
-                                @auth('web')                  
+                                @auth('web')
                                 <li>
-                                    <a class="login-btn-area" href="{{route('myaddmission')}}" id=""><i class="fa fa-book"
-                                            aria-hidden="true"></i> My Addmission </a>
+                                    <a class="login-btn-area" href="{{route('myaddmission')}}" id=""><i
+                                            class="fa fa-book" aria-hidden="true"></i> My Addmission </a>
                                 </li>
                                 @endauth
                             </ul>
@@ -75,12 +75,33 @@
                     <div class="col-xl-9 col-lg-9 col-md-9">
                         <nav id="desktop-nav">
                             <ul>
-                                <li class="active"><a href="{{ route('home')}}">Home</a></li>
-                                <li><a href="#">Pages</a></li>
+                                <li><a href="{{ route('home')}}">Home</a></li>
+                                <li><a href="{{ route('lecturers')}}">Lecturers</a></li>
                                 <li><a href="{{ route('course')}}">Courses</a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Gallery</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Research</a>
+                                    <ul>
+                                        <li class="active"><a href="{{ route('reserech')}}">Research</a></li>
+                                        <li><a href="{{ route('reserechdetails')}}">Research Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">News</a>
+                                    <ul>
+                                        <li class="has-child-menu"><a href="#">News</a>
+                                            <ul class="thired-level">
+                                                <li><a href="{{ route('news')}}">News</a></li>
+                                                <li><a href="{{ route('newsdetails')}}">News Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-child-menu"><a href="#">Event</a>
+                                            <ul class="thired-level">
+                                                <li><a href="{{ route('event')}}">Event</a></li>
+                                                <li><a href="{{ route('eventdetails')}}">Event Details</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="{{ route('gallery')}}">Gallery</a></li>
+                                <li><a href="{{ route('contact')}}">Contact</a></li>
                                 @auth('web')
                                 <li><a href="{{route('marksheet')}}">MarkSheet</a></li>
                                 @endauth

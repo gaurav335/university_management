@@ -24,20 +24,13 @@
                                 <ul class="featured-links">
                                     <li>
                                         <ul>
-                                            <li><a href="#">Graduation</a></li>
-                                            <li><a href="#">Admissions</a></li>
-                                            <li><a href="#">International</a></li>
-                                            <li><a href="#">FAQs</a></li>
+                                        <li><a href="{{ route('course')}}">Courses</a></li>
+                                        <li><a href="{{ route('about')}}">About Us</a></li>
+                                        <li><a href="{{ route('store')}}">Book Store</a></li>
+                                        <li><a href="{{ route('faq')}}">FAQs</a></li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <ul>
-                                            <li><a href="#">Courses</a></li>
-                                            <li><a href="#">About Us</a></li>
-                                            <li><a href="#">Book store</a></li>
-                                            <li><a href="#">Alumni</a></li>
-                                        </ul>
-                                    </li>
+                                
                                 </ul>
                             </div>
                         </div>
@@ -93,7 +86,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                            <p>&copy; 2017 Academics All Rights Reserved. &nbsp; Designed by<a target="_blank" href="https://www.radiustheme.com/" rel="nofollow"> RadiusTheme</a></p>
+                            <p>&copy; 2017 Academics All Rights Reserved.</p>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                             <ul class="payment-method">

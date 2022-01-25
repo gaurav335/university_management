@@ -23,10 +23,25 @@ Route::group(['namespace'=>'auth'],function(){
 });
 
 Route::get('/', [IndexController::class, 'home'])->name('home');
+Route::get('About', [IndexController::class, 'about'])->name('about');
+Route::get('Lecturers', [IndexController::class, 'lecturers'])->name('lecturers');
+Route::get('News', [IndexController::class, 'news'])->name('news');
+Route::get('NewsDetails', [IndexController::class, 'newsDetails'])->name('newsdetails');
+Route::get('Event', [IndexController::class, 'event'])->name('event');
+Route::get('EventDetails', [IndexController::class, 'eventDetails'])->name('eventdetails');
+Route::get('Gallery', [IndexController::class, 'gallery'])->name('gallery');
+Route::get('Contact', [IndexController::class, 'contact'])->name('contact');
+Route::get('Reserech', [IndexController::class, 'reserech'])->name('reserech');
+Route::get('ReserechDetails', [IndexController::class, 'reserechDetails'])->name('reserechdetails');
+Route::get('Faq', [IndexController::class, 'faq'])->name('faq');
+Route::get('Store', [IndexController::class, 'store'])->name('store');
+
+
 Route::get('Ragistration', [RagistrtionController::class, 'ragistration'])->name('ragistration');
 Route::post('CheckEmail', [RagistrtionController::class, 'checkStudentEmail'])->name('checkstudentemail');
 Route::post('CheckPhone', [RagistrtionController::class, 'checkStudentContactNo'])->name('checkstudentphone');
 Route::post('StudentRagistration', [RagistrtionController::class, 'studentRag'])->name('studentrag');
+Route::get('Course', [studentController::class, 'course'])->name('course');
 
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('MarkSheet', [studentController::class, 'marksheet'])->name('marksheet');
@@ -39,7 +54,6 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('ChangePassword', [RagistrtionController::class,'changePassword'])->name('changepassword');
     Route::post('ResetPassword', [RagistrtionController::class,'resetPassword'])->name('resetpassword');
 
-    Route::get('Course', [studentController::class, 'course'])->name('course');
     Route::post('AdmissionForm', [studentController::class, 'admissionform'])->name('admissionform');
     Route::post('AddAdmissionForm', [studentController::class, 'addAdminssionForm'])->name('addadmissionform');
 

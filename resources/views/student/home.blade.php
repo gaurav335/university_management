@@ -296,7 +296,7 @@
                                 </div>
                                 <div class="news-content-holder">
                                     <h3><a href="single-news.html">Summer Course Start From 1st June</a></h3>
-                                    <div class="post-date">June 15, 2017</div>
+                                    <div class="post-date">June 15, 2022</div>
                                     <p>Pellentese turpis dignissim amet area ducation process facilitating Knowledge.</p>
                                 </div>
                             </li>
@@ -306,7 +306,7 @@
                                 </div>
                                 <div class="news-content-holder">
                                     <h3><a href="single-news.html">Guest Interview will Occur Soon</a></h3>
-                                    <div class="post-date">June 15, 2017</div>
+                                    <div class="post-date">June 15, 2022</div>
                                     <p>Pellentese turpis dignissim amet area ducation process facilitating Knowledge.</p>
                                 </div>
                             </li>
@@ -316,7 +316,7 @@
                                 </div>
                                 <div class="news-content-holder">
                                     <h3><a href="single-news.html">Easy English Learning Way</a></h3>
-                                    <div class="post-date">June 15, 2017</div>
+                                    <div class="post-date">June 15, 2022</div>
                                     <p>Pellentese turpis dignissim amet area ducation process facilitating Knowledge.</p>
                                 </div>
                             </li>
@@ -332,12 +332,12 @@
                                 <div class="event-calender-wrapper">
                                     <div class="event-calender-holder">
                                         <h3>26</h3>
-                                        <p>Jan</p>
-                                        <span>2017</span>
+                                        <p>Feb</p>
+                                        <span>2022</span>
                                     </div>
                                 </div>
                                 <div class="event-content-holder">
-                                    <h3><a href="single-event.html">Html MeetUp Conference 2017</a></h3>
+                                    <h3><a href="single-event.html">Html MeetUp Conference 2022</a></h3>
                                     <p>Pellentese turpis dignissim amet area ducation process facilitating Knowledge. Pellentese turpis dignissim amet area ducation process facilitating Knowledge. Pellentese turpis dignissim amet area ducation.</p>
                                     <ul>
                                         <li>04:00 PM - 06:00 PM</li>
@@ -349,8 +349,8 @@
                                 <div class="event-calender-wrapper">
                                     <div class="event-calender-holder">
                                         <h3>26</h3>
-                                        <p>Jan</p>
-                                        <span>2017</span>
+                                        <p>Feb</p>
+                                        <span>2022</span>
                                     </div>
                                 </div>
                                 <div class="event-content-holder">

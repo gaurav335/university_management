@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="{{ asset('student/css/hover-min.css')}}">
     <!-- ReImageGrid CSS -->
     <link rel="stylesheet" href="{{ asset('student/css/reImageGrid.css')}}">
+        <!-- Nouislider Style CSS -->
+    <link rel="stylesheet" href="{{ asset('student/vendor/noUiSlider/nouislider.min.css')}}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('student/css/style.css')}}">
     <!-- Modernizr Js -->
@@ -87,8 +89,13 @@
     <script src="{{ asset('student/js/jquery.countdown.min.js')}}" type="text/javascript"></script>
     <!-- Isotope js -->
     <script src="{{ asset('student/js/isotope.pkgd.min.js')}}" type="text/javascript"></script>
+    <!-- Nouislider Js -->
+    <script src="{{ asset('student/vendor/noUiSlider/nouislider.min.js')}}" type="text/javascript"></script>
     <!-- Magic Popup js -->
     <script src="{{ asset('student/js/jquery.magnific-popup.min.js')}}" type="text/javascript"></script>
+    <!-- wNumb Js -->
+    <script src="{{ asset('student/js/wNumb.js')}}" type="text/javascript"></script>
+
     <!-- Gridrotator js -->
     <script src="{{ asset('student/js/jquery.gridrotator.js')}}" type="text/javascript"></script>
     <!-- Custom Js -->
